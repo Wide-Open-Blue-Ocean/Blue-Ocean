@@ -1,19 +1,44 @@
 {
-  "name": "blue-ocean",
+  "name": "empty-project",
   "version": "1.0.0",
-  "description": "Full stack web and mobile application that allows users and trainers to interact with nutrition and workout regimens. Includes central calendar feature to organize routine as well as daily journal. Chat feature allows trainer and user to interact in real time.",
+  "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Wide-Open-Blue-Ocean/Blue-Ocean.git"
-  },
-  "author": "Varun Chillara, Austin Miller, MarcAnthony Petrecca, Suliman Tekalli, Mark Vale, David Wang, Anthony Ye",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Wide-Open-Blue-Ocean/Blue-Ocean/issues"
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "start": "nodemon backend/server/app.js",
+    "build-dev": "webpack --mode development -w",
+    "build-prod": "webpack --mode production"
   },
-  "homepage": "https://github.com/Wide-Open-Blue-Ocean/Blue-Ocean#readme"
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "axios": "^0.21.1",
+    "bootstrap": "^5.0.1",
+    "express": "^4.17.1",
+    "fontsource-roboto": "^4.0.0",
+    "jquery": "^3.6.0",
+    "mongodb": "^3.6.10",
+    "mongoose": "^5.13.2",
+    "popper.js": "^1.16.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
+    "file-loader": "^6.2.0",
+    "node-sass": "^6.0.0",
+    "prettier": "^2.3.0",
+    "sass-loader": "^11.1.1",
+    "style-loader": "^3.0.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.38.0",
+    "webpack-cli": "^4.7.0"
+  }
 }
