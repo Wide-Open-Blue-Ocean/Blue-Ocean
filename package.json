@@ -1,0 +1,19 @@
+{
+  "name": "blue-ocean",
+  "version": "1.0.0",
+  "description": "Full stack web and mobile application that allows users and trainers to interact with nutrition and workout regimens. Includes central calendar feature to organize routine as well as daily journal. Chat feature allows trainer and user to interact in real time.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wide-Open-Blue-Ocean/Blue-Ocean.git"
+  },
+  "author": "Varun Chillara, Austin Miller, MarcAnthony Petrecca, Suliman Tekalli, Mark Vale, David Wang, Anthony Ye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wide-Open-Blue-Ocean/Blue-Ocean/issues"
+  },
+  "homepage": "https://github.com/Wide-Open-Blue-Ocean/Blue-Ocean#readme"
+}
