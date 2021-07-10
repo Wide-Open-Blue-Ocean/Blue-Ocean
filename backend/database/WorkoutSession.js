@@ -35,6 +35,7 @@ module.exports.findRange = (userId, startDate, endDate) {
   });
 };
 
+//deleting session deletes associated workouts
 module.exports.delete = (sessionName) => {
   var promises = [];
   const Workout = require('./Workout.js');
