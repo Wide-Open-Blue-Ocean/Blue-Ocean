@@ -10,6 +10,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(__dirname + '/../../dist'));
 
+
 /*
   While writing your endpoints, please do not remove any of the mongo created
   _id properties
@@ -18,6 +19,8 @@ app.use(express.static(__dirname + '/../../dist'));
 app.get('/test', (req, res) => {
   // Models.User.add({userId: 0, name: 'Tom Marvolo Riddle'});
 });
+
+//ENDPOINTS
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`)
