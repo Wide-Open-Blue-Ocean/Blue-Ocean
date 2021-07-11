@@ -25,7 +25,7 @@ module.exports.find = (userId, date) => {
 };
 
 //inclusive
-module.exports.findRange = (userId, startDate, endDate) {
+module.exports.findRange = (userId, startDate, endDate) => {
   return Journal.find({
     userId: userId,
     date: {

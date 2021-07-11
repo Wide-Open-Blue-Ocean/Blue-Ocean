@@ -1,7 +1,7 @@
 const express = require('express');
 // const cors = require('cors');
 const db = require('../database');
-
+const Models = require('../database/models.js');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -15,8 +15,8 @@ app.use(express.static(__dirname + '/../../dist'));
   __id properties
 **/
 
-app.get('/', (req, res) => {
-  res.send('Test: MR T');
+app.get('/test', (req, res) => {
+  // Models.User.add({userId: 0, name: 'Tom Marvolo Riddle'});
 });
 
 app.listen(port, () => {
