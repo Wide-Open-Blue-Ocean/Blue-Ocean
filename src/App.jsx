@@ -7,6 +7,8 @@ import Calendar from './components/calendar'
 import Workout from './components/workout'
 import Meals from './components/meals'
 import Journal from './components/journal'
+import Navbar from './components/Navbar/navbar'
+import Buttonz from './components/test'
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,11 +16,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
     return (
       <>
+        <div className='App'>
+          <Navbar />
+        </div>
         <Switch>
           <Route path='/' component={Home} exact/>
           <Route exact path='/calendar' component={Calendar}/>
           <Route path='/workout' component={Workout}/>
-          <Route path='/meals' component={Meals}/>
+          <Route path='/meals' >
+            <Meals />
+            <Buttonz />
+            </Route>
           <Route path='/journal' component={Journal}/>
           <Route exact path='/' component={Home}/>
         </Switch>
