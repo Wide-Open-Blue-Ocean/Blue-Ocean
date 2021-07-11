@@ -1,4 +1,4 @@
-const mongoose = require('./index.js');
+const mongoose = require('../index.js');
 
 //hhmm-hhmm time range
 //yyyymmdd date format allows comparison of dates using numerical comparison operators like >= or <=
@@ -15,7 +15,7 @@ let WorkoutSession = mongoose.model('WorkoutSession', workoutSessionSchema, 'wor
 module.exports.add = (entry) => {
   var newSession = new WorkoutSession(entry);
   return newSession.save();
-}
+};
 
 module.exports.find = (userId, date) => {
   return WorkoutSession.find({

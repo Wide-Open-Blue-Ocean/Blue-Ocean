@@ -1,7 +1,7 @@
 const express = require('express');
 // const cors = require('cors');
 const db = require('../database');
-const Models = require('../database/models.js');
+const Models = require('../database/models/index.js');
 const app = express();
 const port = process.env.PORT || 3000;
 
