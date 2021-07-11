@@ -36,8 +36,8 @@ module.exports.findRange = (userId, startDate, endDate) => {
 };
 
 //pass in the mongo created __id property
-module.exports.delete = (__id) => {
+module.exports.delete = (_id) => {
   return Journal.deleteOne({
-    __id: __id
+    _id: _id
   });
 };

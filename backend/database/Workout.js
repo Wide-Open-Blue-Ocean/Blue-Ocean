@@ -36,9 +36,9 @@ module.exports.findChecked = (userId, date) => {
   });
 };
 //pass in mongo generated __id
-module.exports.delete = (__id) => {
+module.exports.delete = (_id) => {
   return Workout.deleteOne({
-    __id: __id
+    _id: _id
   });
 };
 

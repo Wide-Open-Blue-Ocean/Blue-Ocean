@@ -36,9 +36,9 @@ module.exports.findChecked = (userId, date) => {
   });
 };
 //pass in mongo created __id property
-module.exports.delete = (__id) => {
+module.exports.delete = (_id) => {
   return Food.deleteOne({
-    __id: __id
+    _id: _id
   });
 };
 

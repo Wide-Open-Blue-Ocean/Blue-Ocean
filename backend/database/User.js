@@ -22,8 +22,8 @@ module.exports.find = (userId) => {
 };
 
 //pass in the mongo created __id property
-module.exports.delete = (__id) => {
+module.exports.delete = (_id) => {
   return User.deleteOne({
-    __id: __id
+    _id: _id
   });
 };

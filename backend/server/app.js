@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/../../dist'));
 
 /*
   While writing your endpoints, please do not remove any of the mongo created
-  __id properties
+  _id properties
 **/
 
 app.get('/test', (req, res) => {
