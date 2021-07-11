@@ -22,6 +22,21 @@ app.get('/test', (req, res) => {
 
 //ENDPOINTS
 
+//format for dateRange query:
+// yyyymmdd-yyyymmdd
+app.get('/workoutSession', (req, res) => {
+
+  let userId = req.query.userId
+
+  if (req.query.date.length === 6) {
+    let date = req.query.date;
+    Models.WorkoutSession.find(userId, date)
+  }
+  res.sendStatus(200).json('success')
+})
+
+
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`)
 });
