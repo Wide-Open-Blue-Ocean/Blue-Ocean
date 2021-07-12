@@ -1,5 +1,30 @@
-$primary-color: blue;
-$bg: black;
+@import '../Sass/utilities/variables';
+@import '../Sass/utilities/functions';
+@import '../Sass/utilities/mixins';
+
+@import '../Sass/vendors/bootstrap';
+
+@import '../Sass/themes/theme';
+@import '../Sass/themes/admin';
+
+@import '../Sass/layout/forms';
+@import '../Sass/layout/header';
+@import '../Sass/layout/navigation';
+
+@import '../Sass/components/button';
+
+@import '../Sass/pages/calendar';
+@import '../Sass/pages/home';
+@import '../Sass/pages/journal';
+@import '../Sass/pages/mealplan';
+@import '../Sass/pages/workout';
+
+@import '../Sass/themes/theme';
+@import '../Sass/themes/admin';
+
+
+
+// current h1 css should not be here, putting it here to serve as an example that it works.
 h1 {
   color: $primary-color;
   background-color: $bg;

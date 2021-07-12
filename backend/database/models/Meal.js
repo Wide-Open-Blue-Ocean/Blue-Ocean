@@ -1,4 +1,4 @@
-const mongoose = require('./index.js');
+const mongoose = require('../index.js');
 
 //hhmm-hhmm time range
 //yyyymmdd date format allows comparison of dates using numerical comparison operators like >= or <=
@@ -15,7 +15,7 @@ let Meal = mongoose.model('Meal', mealSchema, 'meals');
 module.exports.add = (entry) => {
   var newMeal = new Meal(entry);
   return newMeal.save();
-}
+};
 
 module.exports.find = (userId, date) => {
   return Meal.find({
