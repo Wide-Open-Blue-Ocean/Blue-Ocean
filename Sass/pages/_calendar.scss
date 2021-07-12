@@ -1,0 +1,68 @@
+#calendarContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#calendarWidget {
+  position: relative;
+  width: 90%;
+}
+#calendar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.calendarColumn {
+  position: relative;
+  width: 12%;
+  height: 640px;
+  border: 1px solid #AAAAAA;
+}
+#overlay {
+  position: absolute;
+  width: 90%;
+  margin-left: -6%;
+}
+#dateRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.dateTop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 12%;
+}
+#calendarBackground {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+.calendarModalLink {
+  margin: 5px;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.calendarModalLink:hover {
+  color: fuchsia;
+}
+#calendarModalX {
+  width: 20px;
+  height: 20px;
+  align-self: flex-end;
+  position: relative;
+  top: 5px;
+  cursor: pointer;
+}

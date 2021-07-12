@@ -19,7 +19,7 @@ export default function Event(props) {
       position: 'absolute',
       height: height,
       top: startPixel,
-      width: 150,
+      width: '100%',
       backgroundColor: color,
       zIndex: 3,
       borderRadius: 8,
@@ -35,7 +35,7 @@ export default function Event(props) {
 
   const eventClick = (e) => {
     e.stopPropagation();
-    alert('linking to ' + props.event.date + ' ' + props.event.type);
+    alert('linking to ' + props.event.date + ' ' + props.event.type + ' ' + (props.event.mealName ? props.event.mealName : props.event.sessionName));
   };
 
   return (
