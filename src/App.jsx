@@ -1,25 +1,33 @@
 
-import React from "react";
+import React, {Component} from "react";
 import Button from '@material-ui/core/Button';
-import 'bootstrap';
+import {Route, Switch } from 'react-router-dom';
+import Home from './components/home'
+import Calendar from './Calendar/calendar.jsx'
+import Workout from './components/workout'
+import Meals from './components/meals'
+import Journal from './components/journal'
+import Navbar from './components/Navbar/navbar'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Signup from './Signup.jsx';
-class App extends React.Component {
-  render() {
-    const { name } = this.props;
+
+const App = () => {
     return (
       <>
-        <h1>
-          Hello {name}
-        </h1>
-        <Button variant="contained">this is a material UI button</Button>
-        <button type="button" className="btn btn-primary">
-          This is a bootstrap button
-        </button>
-        <Signup/>
+        <div >
+          <Navbar />
+        </div>
+        <Switch>
+          <Route path='/' component={Home} exact/>
+          <Route exact path='/calendar' component={Calendar}/>
+          <Route path='/workout' component={Workout}/>
+          <Route path='/meals' >
+            <Meals />
+          </Route>
+          <Route path='/journal' component={Journal}/>
+          <Route exact path='/' component={Home}/>
+        </Switch>
       </>
     );
-  }
 }
 
 export default App;
