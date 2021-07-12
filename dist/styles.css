@@ -39,18 +39,22 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.1);
+  background-color: transparent;
 }
-#calendarModal {
-  margin: 10% 5% 5% 5%;
-  align-self: center;
-  background-color: #ffffff;
-  padding: 5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 67%;
-  width: 50%;
-  border: 3px solid blue;
-  border-radius: 5px;
+.calendarModalLink {
+  margin: 5px;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.calendarModalLink:hover {
+  color: fuchsia;
+}
+#calendarModalX {
+  width: 20px;
+  height: 20px;
+  align-self: flex-end;
+  position: relative;
+  top: 5px;
+  cursor: pointer;
 }
