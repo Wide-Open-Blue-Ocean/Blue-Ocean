@@ -1,13 +1,20 @@
-import React from 'react';
+import React from 'react'
+import axios from 'axios'
 
-function Workout() {
+function Workout (props) {
+  React.useEffect(() => {
+    axios.get('/workoutSession?userId=0&date=20210712')
+      .then((result) => {
+        console.log('***', result.data)
+      })
+  })
   return (
     <div>
-      <h1>Hello, Workout Plan</h1>
-      <div>This is the Workout Planner</div>
+      <div className="cardSession"></div>
+      <div className="excercises"></div>
     </div>
 
   )
 }
 
-export default Workout;
+export default Workout
