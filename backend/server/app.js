@@ -103,7 +103,7 @@ app.delete('/workoutSession', (req, res) => {
 
 
 app.get('/workout', (req, res) => {
-  let {userId, date, sessionName} = req.query;
+  let {userId, date, sessionName} = req.body;
   routeSpecs.handleBadRequest.getWorkout(userId, date, sessionName)
   .then(_=> {
     Models.Workout.find(Number(userId), Number(date), sessionName)
@@ -131,7 +131,7 @@ app.post('/workout', (req, res) => {
 })
 
 app.delete('/workout', (req, res) => {
-  let id = req.query.id;
+  let id = req.body.id;
   routeSpecs.handleBadRequest.deleteWorkout(id)
   .then(_=>{
     Models.Workout.delete(Number(id))
@@ -139,7 +139,7 @@ app.delete('/workout', (req, res) => {
 })
 
 app.get('/workout/checked', (req, res) => {
-  let {userId, date} = req.query;
+  let {userId, date} = req.body;
   routeSpecs.handleBadRequest.getWorkoutChecked(userId, date)
   .then(_=>{
     Models.Workout.findChecked(Number(userId), Number(date))
