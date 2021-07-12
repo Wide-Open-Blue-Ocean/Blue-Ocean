@@ -7,8 +7,6 @@ const port = process.env.PORT || 3000;
 const routeSpecs = require('../routeSpecs/tests.js')
 
 
-// middleware
-// app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/../../dist'));
@@ -18,7 +16,6 @@ app.use(express.static(__dirname + '/../../dist'));
   While writing your endpoints, please do not remove any of the mongo created
   _id properties
 **/
-
 app.get('/test', (req, res) => {
   // Models.User.add({userId: 0, name: 'Tom Marvolo Riddle'});
 });
