@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import Button from '@material-ui/core/Button';
 import {Route, Switch } from 'react-router-dom';
 import Home from './components/home'
-import Calendar from './components/calendar'
+import Calendar from './Calendar/calendar.jsx'
 import Workout from './components/workout'
 import Meals from './components/meals'
 import Journal from './components/journal'
