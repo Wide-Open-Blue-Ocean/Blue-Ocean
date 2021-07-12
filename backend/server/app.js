@@ -33,12 +33,18 @@ app.get('/workoutSession', (req, res) => {
   /*if a 400 is thrown, client side logic isn't adhering
   to requirements from the server.  This is a stand in for a jest test*/
   .then(() => {
-    return date ? Models.WorkoutSession.find(userId, date) : Models.WorkoutSession.findRange(userId, dateRange);
+    if (date) {
+      Models.WorkoutSession.find(Number(userId), Number(date))
+    } else {
+      let [startDate, endDate] = dateRange.split('-');
+      Models.WorkoutSession.findRange(Number(userId), Number(startDate), Number(endDate));
+    }
   })
   .then((results) => {
     res.status(200).json(results)
   })
   .catch((err) => {
+    //Delete this conditional when Jest test suite has replaced tests.js in routeSpecs
     Array.isArray(err) ? res.json(err) : res.sendStatus(500);
   });
 });

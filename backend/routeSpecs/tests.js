@@ -6,7 +6,7 @@ const handleBadRequest = {
         return;
       }
       if (dateParams[0]) {
-        if (Number(dateParams[0]).toString() === 'NaN' || date.length !== 8) {
+        if (Number(dateParams[0]).toString() === 'NaN' || dateParams[0].length !== 8) {
           reject(['The date parameter string must be 8 characters long AND only contain numbers'])
           return;
         }
