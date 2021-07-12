@@ -11,7 +11,7 @@ import Navbar from './components/Navbar/navbar'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
-    return (
+  return (
       <>
         <div >
           <Navbar />
@@ -27,7 +27,7 @@ const App = () => {
           <Route exact path='/' component={Home}/>
         </Switch>
       </>
-    );
+  );
 }
 
 export default App;
