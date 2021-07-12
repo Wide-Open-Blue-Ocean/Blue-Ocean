@@ -5,8 +5,8 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
-  render() {
-    const { name } = this.props;
+  render () {
+    const { name } = this.props
     return (
       <>
         <h1>
