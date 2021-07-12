@@ -32,20 +32,14 @@ app.get('/test', (req, res) => {
 //format for 'dateRange' query: yyyymmdd-yyyymmdd
 
 app.get('/workoutSession', (req, res) => {
-  let {userId, date, dateRange} = req.query
-  routeSpecs.handleBadRequest.getWorkoutSession(userId, [date, dateRange])
+  let {userId, date, startDate, endDate} = req.body
+  routeSpecs.handleBadRequest.getWorkoutSession(userId, date, startDate, endDate)
   /*if a 400 is thrown, client side logic isn't adhering
   to requirements from the server.  This is a stand in for a jest test*/
   .then(() => {
-    if (date) {
-      return Models.WorkoutSession.find(Number(userId), Number(date))
-    } else {
-      let [startDate, endDate] = dateRange.split('-');
-      return Models.WorkoutSession.findRange(Number(userId), Number(startDate), Number(endDate));
-    }
+    return date ? Models.WorkoutSession.find(userId, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate);
   })
   .then((results) => {
-    console.log(results)
     res.status(200).json(results)
   })
   .catch((err) => {
@@ -63,7 +57,6 @@ app.post('/workoutSession', (req, res) => {
     Models.WorkoutSession.add(entry)
   })
   .then(result => {
-    console.log(result)
     res.sendStatus(201);
   })
   .catch(err => {
@@ -106,7 +99,7 @@ app.get('/workout', (req, res) => {
   let {userId, date, sessionName} = req.body;
   routeSpecs.handleBadRequest.getWorkout(userId, date, sessionName)
   .then(_=> {
-    Models.Workout.find(Number(userId), Number(date), sessionName)
+    Models.Workout.find(userId, date, sessionName)
   })
   .then(result => {
     res.status(200).json(result)
