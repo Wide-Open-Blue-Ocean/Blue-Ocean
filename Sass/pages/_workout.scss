@@ -1,0 +1,31 @@
+
+.workoutContainer {
+  display: flex;
+  width: 99%;
+  height: 99%;
+}
+
+.workout {
+  display: flex;
+  margin: auto;
+}
+
+.cardSession {
+  border-radius: 15px;
+  width: 550px;
+  height: 650px;
+  background-color: #59B4D1;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin-right: 100px;
+  align-content: center;
+}
+
+.session {
+  align-self: center;
+}
+
+.excercises {
+  width: 500px;
+  height: 500px;
+  background-color: lightgray;
+}
