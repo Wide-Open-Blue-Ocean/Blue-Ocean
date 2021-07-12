@@ -1,5 +1,5 @@
 const handleBadRequest = {
-  workoutSession: (userId, dateParams) => {
+  getWorkoutSession: (userId, dateParams) => {
     return new Promise ((resolve, reject) => {
       if (userId === undefined || userId === '' || dateParams.every(param => param === undefined)) {
         reject(['There must be a userId parameter that cannot be set to an empty string AND there must be either a dateRange or date parameter'])
@@ -19,7 +19,85 @@ const handleBadRequest = {
       }
       resolve();
     })
+  },
+
+  postWorkoutSession: (entry) => {
+    return new Promise ((resolve, reject) => {
+      if (entry.userId === undefined
+        || entry.sessionName === undefined
+        || entry.timeRange === undefined
+        || entry.date === undefined
+      ) {
+          reject([`required keys for this endpoint object are 'userId', 'sessionName', ` +
+          `'timeRange', and 'date'`]);
+          return;
+      }
+      let {userId, sessionName, timeRange, date} = entry;
+      if (
+          typeof userId !== 'number'
+        || typeof sessionName !== 'string'
+        || typeof timeRange !== 'string'
+        || typeof date !== 'string'
+          ) {
+        reject(['userId must be a number, sessionName must be a string,' +
+        ' timeRange must be a string, date must be a number'])
+        return;
+      }
+      // hhmm-hhmm
+      if (
+         timeRange[4] !== '-'
+      || Number(timeRange.substring(0, 4)).toString() === 'NaN'
+      || Number(timeRange.substring(5)).toString() === 'NaN'
+      ) {
+        reject([`timeRange must adhere to format hhmm-hhmm where 'h' and 'm' are numbers`])
+      }
+      if (Number(date).toString() === 'NaN') {
+        reject(['date must only contain numbers within the string'])
+      }
+      if (date.length !== 8) {
+        reject(['date must be 8 characters long representing '])
+      }
+      resolve();
+    })
+  },
+
+  deleteWorkoutSession: (sessionName) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+
+  getWorkout: (userId, date, sessionName) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+
+  postWorkout: (entry) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+
+  deleteWorkout: (id) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  getWorkoutChecked: (userId, date) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  putWorkoutChecked: (id, checked) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
   }
+
+  // deleteWorkoutBySessionName: () => {
+
+  // },
 }
 
 module.exports = {

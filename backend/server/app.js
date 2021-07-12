@@ -21,12 +21,19 @@ app.get('/test', (req, res) => {
 });
 
 //ENDPOINTS
+
+/****************************
+ *
+ *        workoutSessions
+ *
+ ****************************/
+
 //format for 'date' query: yyyymmdd
 //format for 'dateRange' query: yyyymmdd-yyyymmdd
 
 app.get('/workoutSession', (req, res) => {
   let {userId, date, dateRange} = req.query
-  routeSpecs.handleBadRequest.workoutSession(userId, [date, dateRange])
+  routeSpecs.handleBadRequest.getWorkoutSession(userId, [date, dateRange])
   /*if a 400 is thrown, client side logic isn't adhering
   to requirements from the server.  This is a stand in for a jest test*/
   .then(() => {
@@ -47,57 +54,113 @@ app.get('/workoutSession', (req, res) => {
 });
 
 
+app.post('/workoutSession', (req, res) => {
+  let entry = req.body
+  routeSpecs.handleBadRequest.postWorkoutSession(entry)
+  .then(_ => {
+    entry.date = parseInt(entry.date);
+    return (entry)
+    Models.WorkoutSession.add(entry)
+  })
+  .then(result => {
+    console.log(result)
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+    res.json(err)
+  })
+})
+
+app.delete('/workoutSession', (req, res) => {
+  let sessionName = req.query.sessionName;
+  routeSpecs.handleBadRequest.deleteWorkoutSession(sessionName)
+  .then(_=> {
+    Models.WorkoutSession.delete(sessionName)
+  })
+  .then(_=> {
+    res.sendStatus(201)
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  })
+})
+
+
+/****************************
+ *
+ *        workout
+ *
+ ****************************/
+
+//  userId: Number,
+//  sessionName: String,
+//  exercise: String,
+//  description: String,
+//  calories: Number,
+//  date: Number,
+//  checked: Boolean
+
+
+app.get('/workout', (req, res) => {
+  let {userId, date, sessionName} = req.query;
+  routeSpecs.handleBadRequest.getWorkout(userId, date, sessionName)
+  .then(_=> {
+    Models.Workout.find(Number(userId), Number(date), sessionName)
+  })
+  .then(result => {
+    res.status(200).json(result)
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  })
+})
+
+app.post('/workout', (req, res) => {
+  let entry = req.body;
+  routeSpecs.handleBadRequest.postWorkout(entry)
+  .then(_=>{
+    Models.Workout.add(entry)
+  })
+  .then(result => {
+    res.status(200).json(result);
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  })
+})
+
+app.delete('/workout', (req, res) => {
+  let id = req.query.id;
+  routeSpecs.handleBadRequest.deleteWorkout(id)
+  .then(_=>{
+    Models.Workout.delete(Number(id))
+  })
+})
+
+app.get('/workout/checked', (req, res) => {
+  let {userId, date} = req.query;
+  routeSpecs.handleBadRequest.getWorkoutChecked(userId, date)
+  .then(_=>{
+    Models.Workout.findChecked(Number(userId), Number(date))
+  })
+})
+
+app.put('/workout/checked', (req, res) => {
+  let {id, checked} = req.body;
+  routeSpecs.handleBadRequest.putWorkoutChecked(id, checked)
+  .then(_=>{
+    Models.Workout.updateCheck(Number(id), checked)
+  })
+})
+
+// app.delete('/workout', (req, res) => {
+//   let sessionName = req.query.sessionName;
+//   Models.Workout.deleteBySession(sessionName)
+// })
 
 
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`)
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//for either requiredParams or optionalParams, a single param per argument can be passed in as is, otherwise more than one param per argument should be passed in as an array
-//tests are functions that determine whether or not a param is to be considered a 404 argument;
-//if nothing is passed in for tests, all params will be tested by the default test: if param is undefined, throw a 404.
-//if a single test is passed in, setting applyAll to true will apply the test to all params.
-//leaving applyAll undefined will apply the test only to the first param
-//if multiple different tests are to be applied to different params, they must be entered in as an array in the order of which each param has been entered in as an argument, first counting the requiredParams, then the optionalParams
-//in this case, params without custom tests should be given a corresponidng null value for a test in the tests argument.
-
-// const is404 = (requiredParams, optionalParams, tests, applyAll) => {
-//   const defaultTest = (param) => {
-//     return param ? false : true;
-//   }
-//   requiredParams = requiredParams === null ? [] : requiredParams;
-//   optionalParams = optionalParams === null ? [] : optionalParams;
-//   requiredParams = !Array.isArray(requiredParams) ? [requiredParams] : requiredParams;
-//   optionalParams = !Array.isArray(optionalParams) ? [optionalParams] : optionalParams;
-//   totalParams = requiredParams.concat(optionalParams);
-
-//   for (let i = 0; i < totalParams; i++) {
-//     let test = tests[i];
-//     if (test === null) {
-
-//     }
-//     if test()
-//   }
-// }
