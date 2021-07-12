@@ -4,7 +4,7 @@ function Journal() {
   return (
     <div>
       <h1>Hello, Journal</h1>
-      <div>alks alsdfj aljdf </div>
+      <div>This is a Journal</div>
     </div>
   )
 

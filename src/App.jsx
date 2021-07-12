@@ -8,15 +8,12 @@ import Workout from './components/workout'
 import Meals from './components/meals'
 import Journal from './components/journal'
 import Navbar from './components/Navbar/navbar'
-import Buttonz from './components/test'
-
-import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
     return (
       <>
-        <div className='App'>
+        <div >
           <Navbar />
         </div>
         <Switch>
@@ -25,8 +22,7 @@ const App = () => {
           <Route path='/workout' component={Workout}/>
           <Route path='/meals' >
             <Meals />
-            <Buttonz />
-            </Route>
+          </Route>
           <Route path='/journal' component={Journal}/>
           <Route exact path='/' component={Home}/>
         </Switch>

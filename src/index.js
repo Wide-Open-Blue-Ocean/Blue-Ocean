@@ -6,9 +6,9 @@ import App from "./App";
 import "./styles.css";
 import "./styles.scss";
 
-// var mountNode = document.getElementById("app");
+var mountNode = document.getElementById("app");
 ReactDOM.render(
   <Router>
     <App  />
-  </Router>,document.getElementById('app')
+  </Router>, mountNode
 );

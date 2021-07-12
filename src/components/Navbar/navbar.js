@@ -1,32 +1,90 @@
 import React, {useState} from 'react';
-import Burger from './burger';
-import styled from 'styled-components';
+import {NavLink} from 'react-router-dom';
+import 'bulma/css/bulma.min.css';
 
-// import { Navbar, Nav, Container } from 'bootstrap';
+  const Navbar = () => {
+    const [isOpen, setOpen] = useState(false);
+    return (
+      <nav
+        className="navbar is-primary"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="container">
+          {/* burger */}
+          <div className="navbar-brand">
+          <NavLink
+                className="navbar-item"
+                activeClassName="is-active"
+                to="/"
+              >
+                Workout Pal
+              </NavLink>
+              </div>
+              <div className="navbar-end">
+            <a
+              role="button"
+              className={`navbar-burger burger ${isOpen && "is-active"}`}
+              aria-label="menu"
+              aria-expanded="false"
+              onClick={() => setOpen(!isOpen)}
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          {/* burger  end*/}
 
-const Nav = styled.nav`
-  width: 100%;
-  height: 55px;
-  border-bottom: 2px solid #f1f1f1;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
+          <div className={`navbar-menu ${isOpen && "is-active"}`}>
+            <div className="navbar-end">
+              <NavLink className="navbar-item" activeClassName="is-active" to="/">
+                Home
+              </NavLink>
 
-  .logo {
-    padding: 15px 0;
-  }`
+              <NavLink
+                className="navbar-item"
+                activeClassName="is-active"
+                to="/Calendar"
+              >
+                Calendar
+              </NavLink>
 
-const Navbar = () => {
-  return (
-    <>
-      <Nav>
-        <div className="logo">
-          Nav Bar
+              <NavLink
+                className="navbar-item"
+                activeClassName="is-active"
+                to="/Workout"
+              >
+                Workout
+              </NavLink>
+
+              <NavLink
+                className="navbar-item"
+                activeClassName="is-active"
+                to="/Meals"
+              >
+                Meals
+              </NavLink>
+
+              <NavLink
+                className="navbar-item"
+                activeClassName="is-active"
+                to="/Journal"
+              >
+                Journal
+              </NavLink>
+            {/* </div> */}
+
+            {/* <div className="navbar-end"> */}
+              <div className="navbar-item">
+                <div className="buttons">
+                  <a className="button is-white">Log in</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <Burger />
-      </Nav>
-    </>
-  )
-}
-
+      </nav>
+    );
+  };
 export default Navbar;
