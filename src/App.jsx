@@ -1,4 +1,4 @@
-
+import Calendar from './Calendar/Calendar.jsx';
 import React from "react";
 import Button from '@material-ui/core/Button';
 import 'bootstrap';
@@ -13,9 +13,10 @@ class App extends React.Component {
           Hello {name}
         </h1>
         <Button variant="contained">this is a material UI button</Button>
-        <button type="button" class="btn btn-primary">
+        <button type="button" className="btn btn-primary">
           This is a bootstrap button
         </button>
+        <Calendar />
       </>
     );
   }
