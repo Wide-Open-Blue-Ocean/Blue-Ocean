@@ -123,7 +123,7 @@ app.post('/workout', (req, res) => {
     Models.Workout.add(entry)
   })
   .then(result => {
-    res.status(200).json(result);
+    res.sendStatus(201);
   })
   .catch(err => {
     Array.isArray(err) ? res.json(err) : res.sendStatus(500);
