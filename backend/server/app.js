@@ -112,7 +112,7 @@ app.get('/workout', (req, res) => {
     Models.Workout.find(Number(userId), Number(date), sessionName)
   })
   .then(result => {
-    res.status(200).json(result);
+    res.status(200).json(result)
   })
   .catch(err => {
     Array.isArray(err) ? res.json(err) : res.sendStatus(500);
@@ -153,7 +153,7 @@ app.put('/workout/checked', (req, res) => {
   let {id, checked} = req.body;
   routeSpecs.handleBadRequest.putWorkoutChecked(id, checked)
   .then(_=>{
-    Models.Workout.updateCheck(id, checked)
+    Models.Workout.updateCheck(Number(id), checked)
   })
 })
 

@@ -69,29 +69,29 @@ const handleBadRequest = {
 
   getWorkout: (userId, date, sessionName) => {
     return new Promise ((resolve, reject) => {
-
+      resolve()
     })
   },
 
   postWorkout: (entry) => {
     return new Promise ((resolve, reject) => {
-
+      resolve()
     })
   },
 
   deleteWorkout: (id) => {
     return new Promise ((resolve, reject) => {
-
+      resolve()
     })
   },
   getWorkoutChecked: (userId, date) => {
     return new Promise ((resolve, reject) => {
-
+      resolve()
     })
   },
   putWorkoutChecked: (id, checked) => {
     return new Promise ((resolve, reject) => {
-
+      resolve()
     })
   }
 
