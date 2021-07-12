@@ -14,6 +14,7 @@ let WorkoutSession = mongoose.model('WorkoutSession', workoutSessionSchema, 'wor
 
 module.exports.add = (entry) => {
   var newSession = new WorkoutSession(entry);
+  console.log(newSession)
   return newSession.save();
 };
 

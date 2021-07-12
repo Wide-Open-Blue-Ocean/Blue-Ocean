@@ -38,13 +38,14 @@ app.get('/workoutSession', (req, res) => {
   to requirements from the server.  This is a stand in for a jest test*/
   .then(() => {
     if (date) {
-      Models.WorkoutSession.find(Number(userId), Number(date))
+      return Models.WorkoutSession.find(Number(userId), Number(date))
     } else {
       let [startDate, endDate] = dateRange.split('-');
-      Models.WorkoutSession.findRange(Number(userId), Number(startDate), Number(endDate));
+      return Models.WorkoutSession.findRange(Number(userId), Number(startDate), Number(endDate));
     }
   })
   .then((results) => {
+    console.log(results)
     res.status(200).json(results)
   })
   .catch((err) => {
@@ -59,7 +60,6 @@ app.post('/workoutSession', (req, res) => {
   routeSpecs.handleBadRequest.postWorkoutSession(entry)
   .then(_ => {
     entry.date = parseInt(entry.date);
-    return (entry)
     Models.WorkoutSession.add(entry)
   })
   .then(result => {
@@ -158,6 +158,41 @@ app.put('/workout/checked', (req, res) => {
 //   let sessionName = req.query.sessionName;
 //   Models.Workout.deleteBySession(sessionName)
 // })
+
+
+
+//FOOD
+// userId: Number,
+// mealName: String,
+// item: String,
+// description: String,
+// calories: Number,
+// date: Number,
+// checked: Boolean
+
+
+//MEAL
+// userId: Number,
+// mealEntry: String,
+// workoutEntry: String,
+// date: Number,
+
+//USER
+// userId: Number,
+// name: String,
+
+//JOURNAL
+// userId: Number,
+// mealEntry: String,
+// workoutEntry: String,
+// date: Number,
+
+
+
+
+
+
+
 
 
 app.get('/dummySessions', (req, res) => {
