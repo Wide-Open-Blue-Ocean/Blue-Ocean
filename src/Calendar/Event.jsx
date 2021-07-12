@@ -35,7 +35,7 @@ export default function Event(props) {
 
   const eventClick = (e) => {
     e.stopPropagation();
-    console.log(props.event.date + ' ' + props.event.type);
+    alert('linking to ' + props.event.date + ' ' + props.event.type);
   };
 
   return (

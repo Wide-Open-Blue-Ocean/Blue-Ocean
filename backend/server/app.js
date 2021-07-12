@@ -216,6 +216,12 @@ app.get('/dummyMeals', (req, res) => {
   res.json([
     {
       userId: 0,
+      sessionName: 'saturdayMeal1',
+      timeRange: '0900-1000',
+      date: '20210710'
+    },
+    {
+      userId: 0,
       sessionName: 'sundayMeal1',
       timeRange: '0800-0900',
       date: '20210711'
@@ -262,6 +268,12 @@ app.get('/dummyMeals', (req, res) => {
       timeRange: '1730-1830',
       date: '20210714'
     },
+    {
+      userId: 0,
+      sessionName: 'nextSundayMeal1',
+      timeRange: '0800-0900',
+      date: '20210718'
+    }
   ]);
 });
 
