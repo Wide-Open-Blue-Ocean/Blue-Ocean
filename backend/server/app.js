@@ -4,6 +4,8 @@ const db = require('../database');
 const Models = require('../database/models/index.js');
 const app = express();
 const port = process.env.PORT || 3000;
+const routeSpecs = require('../routeSpecs/tests.js')
+
 
 // middleware
 // app.use(cors());
@@ -21,22 +23,77 @@ app.get('/test', (req, res) => {
 });
 
 //ENDPOINTS
+//format for 'date' query: yyyymmdd
+//format for 'dateRange' query: yyyymmdd-yyyymmdd
 
-//format for dateRange query:
-// yyyymmdd-yyyymmdd
 app.get('/workoutSession', (req, res) => {
+  let {userId, date, dateRange} = req.query
+  routeSpecs.handleBadRequest.workoutSession(userId, [date, dateRange])
+  /*if a 400 is thrown, client side logic isn't adhering
+  to requirements from the server.  This is a stand in for a jest test*/
+  .then(() => {
+    return date ? Models.WorkoutSession.find(userId, date) : Models.WorkoutSession.findRange(userId, dateRange);
+  })
+  .then((results) => {
+    res.status(200).json(results)
+  })
+  .catch((err) => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  });
+});
 
-  let userId = req.query.userId
 
-  if (req.query.date.length === 6) {
-    let date = req.query.date;
-    Models.WorkoutSession.find(userId, date)
-  }
-  res.sendStatus(200).json('success')
-})
 
 
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`)
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//for either requiredParams or optionalParams, a single param per argument can be passed in as is, otherwise more than one param per argument should be passed in as an array
+//tests are functions that determine whether or not a param is to be considered a 404 argument;
+//if nothing is passed in for tests, all params will be tested by the default test: if param is undefined, throw a 404.
+//if a single test is passed in, setting applyAll to true will apply the test to all params.
+//leaving applyAll undefined will apply the test only to the first param
+//if multiple different tests are to be applied to different params, they must be entered in as an array in the order of which each param has been entered in as an argument, first counting the requiredParams, then the optionalParams
+//in this case, params without custom tests should be given a corresponidng null value for a test in the tests argument.
+
+// const is404 = (requiredParams, optionalParams, tests, applyAll) => {
+//   const defaultTest = (param) => {
+//     return param ? false : true;
+//   }
+//   requiredParams = requiredParams === null ? [] : requiredParams;
+//   optionalParams = optionalParams === null ? [] : optionalParams;
+//   requiredParams = !Array.isArray(requiredParams) ? [requiredParams] : requiredParams;
+//   optionalParams = !Array.isArray(optionalParams) ? [optionalParams] : optionalParams;
+//   totalParams = requiredParams.concat(optionalParams);
+
+//   for (let i = 0; i < totalParams; i++) {
+//     let test = tests[i];
+//     if (test === null) {
+
+//     }
+//     if test()
+//   }
+// }
