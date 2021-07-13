@@ -221,7 +221,7 @@ app.delete('/workout', (req, res) => {
   let sessionName = req.query.sessionName;
   Models.Workout.deleteBySession(sessionName)
 })
-/****************************
+/*****************************
  *
  *            FOOD
  *
