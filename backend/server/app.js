@@ -435,14 +435,26 @@ app.get('/dummySessions', (req, res) => {
   res.json([
     {
       userId: 0,
+      sessionName: 'sundayTest2',
+      timeRange: '1500-1700',
+      date: '20210711'
+    },
+    {
+      userId: 0,
       sessionName: 'sundayTest1',
       timeRange: '1200-1330',
       date: '20210711'
     },
     {
       userId: 0,
-      sessionName: 'sundayTest2',
-      timeRange: '1500-1700',
+      sessionName: 'sundayTest3',
+      timeRange: '0900-1000',
+      date: '20210711'
+    },
+    {
+      userId: 0,
+      sessionName: 'sundayTest4',
+      timeRange: '2000-2100',
       date: '20210711'
     }
   ]);
@@ -452,61 +464,61 @@ app.get('/dummyMeals', (req, res) => {
   res.json([
     {
       userId: 0,
-      sessionName: 'saturdayMeal1',
+      mealName: 'saturdayMeal1',
       timeRange: '0900-1000',
       date: '20210710'
     },
     {
       userId: 0,
-      sessionName: 'sundayMeal1',
+      mealName: 'sundayMeal1',
       timeRange: '0800-0900',
       date: '20210711'
     },
     {
       userId: 0,
-      sessionName: 'sundayMeal2',
+      mealName: 'sundayMeal2',
       timeRange: '1730-1830',
       date: '20210711'
     },
     {
       userId: 0,
-      sessionName: 'mondayMeal1',
+      mealName: 'mondayMeal1',
       timeRange: '0600-0630',
       date: '20210712'
     },
     {
       userId: 0,
-      sessionName: 'mondayMeal2',
+      mealName: 'mondayMeal2',
       timeRange: '1430-1545',
       date: '20210712'
     },
     {
       userId: 0,
-      sessionName: 'tuesdayMeal1',
+      mealName: 'tuesdayMeal1',
       timeRange: '0500-0600',
       date: '20210713'
     },
     {
       userId: 0,
-      sessionName: 'tuesdayMeal2',
+      mealName: 'tuesdayMeal2',
       timeRange: '1200-1300',
       date: '20210713'
     },
     {
       userId: 0,
-      sessionName: 'wednesdayMeal1',
+      mealName: 'wednesdayMeal1',
       timeRange: '0800-0900',
       date: '20210714'
     },
     {
       userId: 0,
-      sessionName: 'wednesdayMeal2reallylongname',
+      mealName: 'wednesdayMeal2reallylongname',
       timeRange: '1730-1830',
       date: '20210714'
     },
     {
       userId: 0,
-      sessionName: 'nextSundayMeal1',
+      mealName: 'nextSundayMeal1',
       timeRange: '0800-0900',
       date: '20210718'
     }
