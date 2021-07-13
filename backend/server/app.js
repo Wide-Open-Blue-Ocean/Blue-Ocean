@@ -22,9 +22,66 @@ app.get('/test', (req, res) => {
 
 //ENDPOINTS
 
+
+
+
+
 /****************************
  *
- *        workoutSessions
+ *        USER
+ *
+ ****************************/
+//USER
+// userId: Number,
+// name: String,
+
+app.get('/user', (req, res) => {
+  let userId = req.body.userId
+  routeSpecs.handleBadRequest.getUser(userId)
+  .then(_=> {
+    return Models.User.find(userId);
+  })
+  .then(result => {
+    res.status(200).json(result);
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  })
+})
+
+app.post('/user', (req, res) => {
+  let entry = req.body;
+  routeSpecs.handleBadRequest.postUser(entry)
+  .then(_=> {
+    Models.User.add(entry)
+  })
+  .then(_=> {
+    res.sendStatus(201)
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  })
+})
+
+app.delete('/user', (req, res) => {
+  let id = req.body.id
+  routeSpecs.handleBadRequest.deleteUser(id)
+  .then(_=> {
+    Models.User.delete(id)
+  })
+  .then(_=> {
+    res.sendStatus(201)
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  })
+})
+
+
+
+/****************************
+ *
+ *    WORKOUT SESSIONS
  *
  ****************************/
 
@@ -34,8 +91,6 @@ app.get('/test', (req, res) => {
 app.get('/workoutSession', (req, res) => {
   let {userId, date, startDate, endDate} = req.body
   routeSpecs.handleBadRequest.getWorkoutSession(userId, date, startDate, endDate)
-  /*if a 400 is thrown, client side logic isn't adhering
-  to requirements from the server.  This is a stand in for a jest test*/
   .then(() => {
     return date ? Models.WorkoutSession.find(userId, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate);
   })
@@ -43,11 +98,9 @@ app.get('/workoutSession', (req, res) => {
     res.status(200).json(results)
   })
   .catch((err) => {
-    //Delete this conditional when Jest test suite has replaced tests.js in routeSpecs
     Array.isArray(err) ? res.json(err) : res.sendStatus(500);
   });
 });
-
 
 app.post('/workoutSession', (req, res) => {
   let entry = req.body
@@ -61,7 +114,6 @@ app.post('/workoutSession', (req, res) => {
   })
   .catch(err => {
     Array.isArray(err) ? res.json(err) : res.sendStatus(500);
-    res.json(err)
   })
 })
 
@@ -82,7 +134,7 @@ app.delete('/workoutSession', (req, res) => {
 
 /****************************
  *
- *        workout
+ *        WORKOUT
  *
  ****************************/
 
@@ -129,6 +181,12 @@ app.delete('/workout', (req, res) => {
   .then(_=>{
     Models.Workout.delete(Number(id))
   })
+  .then(_=> {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500)
+  })
 })
 
 app.get('/workout/checked', (req, res) => {
@@ -136,6 +194,12 @@ app.get('/workout/checked', (req, res) => {
   routeSpecs.handleBadRequest.getWorkoutChecked(userId, date)
   .then(_=>{
     Models.Workout.findChecked(Number(userId), Number(date))
+  })
+  .then(result => {
+    res.status(200).json(result);
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500)
   })
 })
 
@@ -145,16 +209,24 @@ app.put('/workout/checked', (req, res) => {
   .then(_=>{
     Models.Workout.updateCheck(Number(id), checked)
   })
+  .then(_=> {
+    res.sendStatus(201)
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500)
+  })
 })
 
-// app.delete('/workout', (req, res) => {
-//   let sessionName = req.query.sessionName;
-//   Models.Workout.deleteBySession(sessionName)
-// })
+app.delete('/workout', (req, res) => {
+  let sessionName = req.query.sessionName;
+  Models.Workout.deleteBySession(sessionName)
+})
+/****************************
+ *
+ *            FOOD
+ *
+ ****************************/
 
-
-
-//FOOD
 // userId: Number,
 // mealName: String,
 // item: String,
@@ -163,26 +235,196 @@ app.put('/workout/checked', (req, res) => {
 // date: Number,
 // checked: Boolean
 
+app.get('/food', (req, res) => {
+  let {userId, date, mealName} = req.body;
+  routeSpecs.handleBadRequest.getFood(userId, date, mealName)
+  .then(_=> {
+    Models.Food.find(userId, date, mealName)
+  })
+  .then(results => {
+    res.status(200).json(results)
+  })
+  .catch(err => {
+    Array.isArray ? res.json(err) : res.sendStatus(500)
+  })
+})
 
-//MEAL
+app.post('/food', (req, res) => {
+  let entry = req.body;
+  routeSpecs.handleBadRequest.postFood(entry)
+  .then(_=> {
+    Models.Food.add(entry)
+  })
+  .then(_=> {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    Array.isArray ? res.json(err) : res.sendStatus(500)
+  })
+})
+
+app.get('/food/checked', (req, res) => {
+  let {userId, date} = req.body;
+  routeSpecs.handleBadRequest.getFoodChecked(userId, date)
+  .then(_=> {
+    Models.Food.findChecked(userId, date)
+  })
+  .then(results => {
+    res.status(200).json(results);
+  })
+  .catch(err => {
+    Array.isArray ? res.json(err) : res.sendStatus(500)
+  })
+})
+
+app.put('/food/checked', (req, res) => {
+  let {id, checked} = req.body;
+  routeSpecs.handleBadRequest.putFoodChecked(id, checked)
+  .then(_=> {
+    Models.Food.updateCheck(id, checked);
+  })
+  .then(_=> {
+    res.sendStatus(201)
+  })
+  .catch(err => {
+    Array.isArray ? res.json(err) : res.sendStatus(500)
+  })
+})
+
+app.delete('/food', (req, res) => {
+  let id = req.body.id;
+  routeSpecs.handleBadRequest.deleteFood(id)
+  .then(_=> {
+    Models.Food.delete(id)
+  })
+  .then(_=> {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    Array.isArray ? res.json(err) : res.sendStatus(500)
+  })
+})
+
+app.delete('/food', (req, res) => {
+  let mealName = req.body.mealName;
+  routeSpecs.handleBadRequest.deleteFoodByMeal(mealName)
+  .then(_=> {
+    Models.Food.deleteByMeal(mealName)
+  })
+  .then(_=> {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+  Array.isArray ? res.json(err) : res.sendStatus(500)
+})
+})
+
+/****************************
+ *
+ *            MEAL
+ *
+ ****************************/
+
 // userId: Number,
 // mealEntry: String,
 // workoutEntry: String,
 // date: Number,
 
-//USER
-// userId: Number,
-// name: String,
+app.post('/meal', (req, res) => {
+  let entry = req.body;
+  routeSpecs.handleBadRequest.postMeal(entry)
+  .then(_=> {
+    Models.Meal.add(entry)
+  })
+  .then(_=> {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    Array.isArray ? res.json(err) : res.sendStatus(500)
+  })
+})
 
-//JOURNAL
+app.get('/meal', (req, res) => {
+  let {userId, date, startDate, endDate} = req.body;
+  routeSpecs.handleBadRequest.getMeal(userId, date, startDate, endDate)
+  .then(_=> {
+    return date ? Models.Meal.find(userId, date) : Models.Meal.findRange(userId, startDate, endDate)
+  })
+  .then(result => {
+    res.status(200).json(result);
+  })
+  .catch(err => {
+    Array.isArray ? res.json(err) : res.sendStatus(500)
+  })
+})
+
+app.delete('/meal', (req, res) => {
+  let mealName = req.body.mealName;
+  routeSpecs.handleBadRequest.deleteMeal(mealName)
+  .then(_=> {
+    Models.Meal.delete(mealName)
+  })
+  .then(_=> {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    Array.isArray ? res.json(err) : res.sendStatus(500)
+  })
+})
+
+
+/****************************
+ *
+ *        JOURNAL
+ *
+ ****************************/
+
 // userId: Number,
 // mealEntry: String,
 // workoutEntry: String,
 // date: Number,
 
+app.get('/journal', (req, res) => {
+  let {userId, date, startDate, endDate} = req.body;
+  routeSpecs.handleBadRequest.getJournalEntry(userId, date, startDate, endDate)
+  .then(_=> {
+    return date ? Models.Journal.find(userId, date) : Models.Journal.findRange(userId, startDate, endDate);
+  })
+  .then(result => {
+    res.status(200).json(result)
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  })
+})
 
+app.post('/journal', (req, res) => {
+  let entry = req.body
+  routeSpecs.handleBadRequest.postJournalEntry(entry)
+  .then(_=> {
+    Models.Journal.find(entry)
+  })
+  .then(_=> {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  })
+})
 
-
+app.delete('/journal', (req, res) => {
+  let id = req.body.id
+  routeSpecs.handleBadRequest.deleteJournalEntry(id)
+  .then(_=> {
+    Models.Journal.delete(id);
+  })
+  .then(_=> {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  })
+})
 
 
 

@@ -22,7 +22,6 @@ const handleBadRequest = {
       resolve();
     })
   },
-
   postWorkoutSession: (entry) => {
     return new Promise ((resolve, reject) => {
       if (entry.userId === undefined
@@ -65,25 +64,29 @@ const handleBadRequest = {
       resolve();
     })
   },
-
   deleteWorkoutSession: (sessionName) => {
     return new Promise ((resolve, reject) => {
       resolve();
     })
   },
+  deleteWorkoutBySessionName: () => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+
+
 
   getWorkout: (userId, date, sessionName) => {
     return new Promise ((resolve, reject) => {
       resolve()
     })
   },
-
   postWorkout: (entry) => {
     return new Promise ((resolve, reject) => {
       resolve()
     })
   },
-
   deleteWorkout: (id) => {
     return new Promise ((resolve, reject) => {
       resolve()
@@ -98,11 +101,94 @@ const handleBadRequest = {
     return new Promise ((resolve, reject) => {
       resolve()
     })
+  },
+
+
+
+  getUser: (userId) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+  postUser: (entry) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+  deleteUser: (_id) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+
+
+
+  getFood: (userId, date, mealName) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  postFood: (entry) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  getFoodChecked: (userId, date) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  putFoodChecked: (id, checked) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  deleteFood: (id) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  deleteFoodByMeal: (mealName) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+
+
+
+  postMeal: (entry) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+  getMeal: (userId, date, startDate, endDate) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+  deleteMeal: (mealName) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+
+
+
+  getJournalEntry: (userId, date, startDate, endDate) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  postJournalEntry: (entry) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  deleteJournalEntry: (id) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
   }
-
-  // deleteWorkoutBySessionName: () => {
-
-  // },
 }
 
 module.exports = {
