@@ -1,24 +1,38 @@
 import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
+import styled from 'styled-components'
 import 'bulma/css/bulma.min.css';
+
+const HoverText = styled.p`
+	color: #000;
+	:hover {
+		color: #000;
+		cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: red;
+	}`
 
   const Navbar = () => {
     const [isOpen, setOpen] = useState(false);
     return (
       <nav
-        className="navbar is-primary"
-        role="navigation"
+        className="navbar  is-white is-rounded"
         aria-label="main navigation"
+        style={{borderRadius: '25px', boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)'}}
       >
         <div className="container">
           {/* burger */}
           <div className="navbar-brand">
           <NavLink
-                className="navbar-item"
+                className="navbar-item "
                 activeClassName="is-active"
                 to="/"
+                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
               >
+                <HoverText>
                 Workout Pal
+
+                </HoverText>
               </NavLink>
               </div>
               <div className="navbar-end">
@@ -38,47 +52,78 @@ import 'bulma/css/bulma.min.css';
 
           <div className={`navbar-menu ${isOpen && "is-active"}`}>
             <div className="navbar-end">
-              <NavLink className="navbar-item" activeClassName="is-active" to="/">
-                Home
+              <NavLink
+              className="navbar-item"
+              activeClassName="is-active"
+              to="/"
+              style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+
+              >
+                <HoverText>
+                  Home
+                </HoverText>
               </NavLink>
 
               <NavLink
                 className="navbar-item"
                 activeClassName="is-active"
                 to="/Calendar"
+                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+
               >
-                Calendar
+                <HoverText>
+                  Calendar
+                </HoverText>
               </NavLink>
 
               <NavLink
                 className="navbar-item"
                 activeClassName="is-active"
                 to="/Workout"
+                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+
+
               >
-                Workout
+                <HoverText>
+                  Workout
+                </HoverText>
               </NavLink>
 
               <NavLink
                 className="navbar-item"
                 activeClassName="is-active"
                 to="/Meals"
+                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+
               >
-                Meals
+                <HoverText>
+                  Meals
+                </HoverText>
               </NavLink>
 
               <NavLink
                 className="navbar-item"
                 activeClassName="is-active"
                 to="/Journal"
+                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
               >
-                Journal
+                <HoverText>
+                 Journal
+                </HoverText>
               </NavLink>
             {/* </div> */}
 
             {/* <div className="navbar-end"> */}
               <div className="navbar-item">
                 <div className="buttons">
-                  <a className="button is-white">Log in</a>
+                  <a
+                    className="button is-white"
+                    style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+                  >
+                    <HoverText>
+                      Log in
+                    </HoverText>
+                  </a>
                 </div>
               </div>
             </div>
