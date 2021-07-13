@@ -3,15 +3,14 @@ import axios from 'axios';
 import Column from './Column.jsx';
 import Overlay from './Overlay.jsx';
 import LinkModal from './LinkModal.jsx';
+import dateUtils from '../utils/dateUtils.js';
 // goes from 0500 to 2100
 export default class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.loadDates = this.loadDates.bind(this);
-    this.getFuture = this.getFuture.bind(this);
     this.loadSessions = this.loadSessions.bind(this);
     this.loadMeals = this.loadMeals.bind(this);
-    this.getWeekday = this.getWeekday.bind(this);
     this.cycleLeft = this.cycleLeft.bind(this);
     this.cycleRight = this.cycleRight.bind(this);
     this._onClick = this._onClick.bind(this);
@@ -78,35 +77,23 @@ export default class Calendar extends React.Component {
     var currentTime = new Date(Date.now());
     currentTime.setHours(12); //prevents any errors that could be caused by DST
     var sunday = new Date(currentTime.valueOf() - (24 * 3600 * 1000 * dayofweek));
-    sunday = sunday.getFullYear() + (sunday.getMonth() + 1).toString().padStart(2, '0') +sunday.getDate().toString().padStart(2, '0');
+    sunday = sunday.getFullYear() + (sunday.getMonth() + 1).toString().padStart(2, '0') + sunday.getDate().toString().padStart(2, '0');
     var newDateObject = {};
     newDateObject[sunday] = [];
     for (var i = 1; i <= 6; i++) {
-      var nextDate = this.getFuture(sunday, i);
+      var nextDate = dateUtils.getFutureOrPast(sunday, i);
       newDateObject[nextDate] = [];
     }
     this.setState({
-      dates: newDateObject
+      dates: newDateObject,
     });
   }
 
-  getFuture (yyyymmdd, add) {
-    var currentDate = new Date(yyyymmdd.slice(0,4), parseInt(yyyymmdd.slice(4,6)) - 1, yyyymmdd.slice(6,8), 12);
-    var ms = currentDate.valueOf() + (24 * 3600 * 1000 * add);
-    var newDate = new Date(ms);
-    var string = newDate.getFullYear() + (newDate.getMonth() + 1).toString().padStart(2, '0') + newDate.getDate().toString().padStart(2, '0');
-    return string;
-  }
-
-  getWeekday (yyyymmdd) {
-    var currentDate = new Date(yyyymmdd.slice(0,4), parseInt(yyyymmdd.slice(4,6)) - 1, yyyymmdd.slice(6,8), 12);
-    return currentDate.toDateString().split(' ')[0];
-  }
 
   cycleLeft () {
     var newDateObject = {};
     for (var i = -7; i <= -1; i++) {
-      var newDate = this.getFuture(Object.keys(this.state.dates)[0], i);
+      var newDate = dateUtils.getFutureOrPast(Object.keys(this.state.dates)[0], i);
       newDateObject[newDate] = [];
     }
     this.setState({
@@ -120,7 +107,7 @@ export default class Calendar extends React.Component {
   cycleRight () {
     var newDateObject = {};
     for (var i = 7; i <= 13; i++) {
-      var newDate = this.getFuture(Object.keys(this.state.dates)[0], i);
+      var newDate = dateUtils.getFutureOrPast(Object.keys(this.state.dates)[0], i);
       newDateObject[newDate] = [];
     }
     this.setState({
@@ -160,7 +147,7 @@ export default class Calendar extends React.Component {
           <div id="dateRow">
           {Object.keys(this.state.dates).map(date =>
             <div key={date} className="dateTop">
-              <p>{this.getWeekday(date)}</p>
+              <p>{dateUtils.getWeekday(date)}</p>
               <p>{date.slice(4, 6) + ' / ' + date.slice(6, 8)}</p>
             </div>
           )}
