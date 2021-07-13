@@ -105,6 +105,7 @@ app.get('/workoutSession', (req, res) => {
 });
 
 app.post('/workoutSession', (req, res) => {
+  console.log(req.params);
   let entry = req.body
   routeSpecs.handleBadRequest.postWorkoutSession(entry)
   .then(_ => {

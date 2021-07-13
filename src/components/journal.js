@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-function Journal() {
+function Journal () {
   return (
     <div className="main">
       <h1>Hello, Journal</h1>
@@ -9,4 +9,4 @@ function Journal() {
   )
 }
 
-export default Journal;
+export default Journal
