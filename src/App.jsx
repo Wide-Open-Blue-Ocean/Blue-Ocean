@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import {Route, Switch } from 'react-router-dom';
 import Home from './components/home'
 import Calendar from './Calendar/calendar.jsx'
+import MobileCalendar from './MobileCalendar/MobileCalendar.jsx'
 import Workout from './components/workout'
 import Meals from './components/meals'
 import Journal from './components/journal'
@@ -18,7 +19,7 @@ const App = () => {
         </div>
         <Switch>
           <Route path='/' component={Home} exact/>
-          <Route exact path='/calendar' component={Calendar}/>
+          <Route exact path='/calendar' component={window.screen.width <= 600 ? MobileCalendar : Calendar}/>
           <Route path='/workout' component={Workout}/>
           <Route path='/meals' >
             <Meals />
