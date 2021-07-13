@@ -16,9 +16,9 @@ const HoverText = styled.p`
     const [isOpen, setOpen] = useState(false);
     return (
       <nav
-        className="navbar  is-white is-rounded"
+        className="navbar  "
         aria-label="main navigation"
-        style={{borderRadius: '25px', boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)'}}
+        style={{borderRadius: '0 0 25px 25px', boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)'}}
       >
         <div className="container">
           {/* burger */}
