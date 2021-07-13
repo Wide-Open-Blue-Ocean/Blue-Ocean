@@ -22,6 +22,14 @@
   user-select: none;
   font-size: xxx-large;
 }
+.mobileDaySelectionSelected {
+  color: white;
+  background-color: fuchsia;
+  font-weight: bold;
+  border-radius: 50%;
+  border: solid 2px black;
+  padding: 1%;
+}
 #mobileDateBanner {
   color: black;
   font-size: xxx-large;
