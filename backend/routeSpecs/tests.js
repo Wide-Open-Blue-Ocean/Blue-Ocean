@@ -1,26 +1,27 @@
 const handleBadRequest = {
-  getWorkoutSession: (userId, dateParams) => {
+  getWorkoutSession: (userId, date, startDate, endDate) => {
     return new Promise ((resolve, reject) => {
-      if (userId === undefined || userId === '' || dateParams.every(param => param === undefined)) {
-        reject(['There must be a userId parameter that cannot be set to an empty string AND there must be either a dateRange or date parameter'])
+      if (userId === undefined) {
+        reject(['There must be a userId parameter that cannot be set to an empty string'])
         return;
       }
-      if (dateParams[0]) {
-        if (Number(dateParams[0]).toString() === 'NaN' || dateParams[0].length !== 8) {
-          reject(['The date parameter string must be 8 characters long AND only contain numbers'])
+      if (date === undefined) {
+        if (startDate === undefined || endDate === undefined) {
+          reject(['If date is undefined, then startDate and endDate must have values'])
+          return;
+        }
+        if (startDate.toString().length !== 8 || endDate.toString().length !== 8) {
+          reject(['startDate and endDate must be an 8 digit number']);
           return;
         }
       } else {
-        let dateRange = dateParams[1].split('-')
-        if (dateRange.some(date => (Number(date).toString === 'NaN' || date.length !== 8))) {
-          reject(['Each date of the dateRange parameter string must be 8 characters long AND only contain numbers'])
-          return;
+        if (date.toString().length !== 8) {
+          reject(['date must be an 8 digit number']);
         }
       }
       resolve();
     })
   },
-
   postWorkoutSession: (entry) => {
     return new Promise ((resolve, reject) => {
       if (entry.userId === undefined
@@ -37,7 +38,7 @@ const handleBadRequest = {
           typeof userId !== 'number'
         || typeof sessionName !== 'string'
         || typeof timeRange !== 'string'
-        || typeof date !== 'string'
+        || typeof date !== 'number'
           ) {
         reject(['userId must be a number, sessionName must be a string,' +
         ' timeRange must be a string, date must be a number'])
@@ -50,35 +51,42 @@ const handleBadRequest = {
       || Number(timeRange.substring(5)).toString() === 'NaN'
       ) {
         reject([`timeRange must adhere to format hhmm-hhmm where 'h' and 'm' are numbers`])
+        return;
       }
-      if (Number(date).toString() === 'NaN') {
-        reject(['date must only contain numbers within the string'])
+      if (timeRange.length !== 9) {
+        reject(['timeRange must be a string of 4 digits followed by a hyphen followed by 4 more digits'])
+        return;
       }
-      if (date.length !== 8) {
-        reject(['date must be 8 characters long representing '])
+      if (date.toString().length !== 8) {
+        reject(['date must be 8 digits long'])
+        return;
       }
       resolve();
     })
   },
-
   deleteWorkoutSession: (sessionName) => {
     return new Promise ((resolve, reject) => {
       resolve();
     })
   },
+  deleteWorkoutBySessionName: () => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+
+
 
   getWorkout: (userId, date, sessionName) => {
     return new Promise ((resolve, reject) => {
       resolve()
     })
   },
-
   postWorkout: (entry) => {
     return new Promise ((resolve, reject) => {
       resolve()
     })
   },
-
   deleteWorkout: (id) => {
     return new Promise ((resolve, reject) => {
       resolve()
@@ -93,11 +101,94 @@ const handleBadRequest = {
     return new Promise ((resolve, reject) => {
       resolve()
     })
+  },
+
+
+
+  getUser: (userId) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+  postUser: (entry) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+  deleteUser: (_id) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+
+
+
+  getFood: (userId, date, mealName) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  postFood: (entry) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  getFoodChecked: (userId, date) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  putFoodChecked: (id, checked) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  deleteFood: (id) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  deleteFoodByMeal: (mealName) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+
+
+
+  postMeal: (entry) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+  getMeal: (userId, date, startDate, endDate) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+  deleteMeal: (mealName) => {
+    return new Promise ((resolve, reject) => {
+      resolve();
+    })
+  },
+
+
+
+  getJournalEntry: (userId, date, startDate, endDate) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  postJournalEntry: (entry) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
+  },
+  deleteJournalEntry: (id) => {
+    return new Promise ((resolve, reject) => {
+      resolve()
+    })
   }
-
-  // deleteWorkoutBySessionName: () => {
-
-  // },
 }
 
 module.exports = {
