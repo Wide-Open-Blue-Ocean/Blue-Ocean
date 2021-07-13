@@ -89,7 +89,9 @@ app.delete('/user', (req, res) => {
 //format for 'dateRange' query: yyyymmdd-yyyymmdd
 
 app.get('/workoutSession', (req, res) => {
+
   let {userId, date, startDate, endDate} = req.params
+  console.log(req)
   routeSpecs.handleBadRequest.getWorkoutSession(userId, date, startDate, endDate)
   .then(() => {
     return date ? Models.WorkoutSession.find(userId, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate);
