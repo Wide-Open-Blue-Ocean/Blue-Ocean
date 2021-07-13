@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-function Meals() {
+function Meals () {
   return (
     <div>
       <h1>Hello, Meal Plan</h1>
@@ -9,4 +9,4 @@ function Meals() {
   )
 }
 
-export default Meals;
+export default Meals

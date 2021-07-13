@@ -1,0 +1,64 @@
+.modalForm {
+  font-family: Cormorant;
+  // color: #858585;
+  font-size: 56px;
+  font-weight: bold;
+  margin-top: 10px
+}
+.inputName {
+  outline: none !important;
+  font-size: 26px;
+  text-align: center;
+  color: #858585;
+  margin-left: 10px;
+  margin-top: 20px;
+  height: 50px;
+  width: 310px;
+  background: #F5F5F5;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #59B4D1
+}
+.timeStart {
+  outline: none !important;
+  font-size: 26px;
+  text-align: center;
+  color: #858585;
+  margin-right: 6px;
+  height: 50px;
+  width: 150px;
+  background: #F5F5F5;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #59B4D1
+}
+.timeEnd {
+  outline: none !important;
+  font-size: 26px;
+  text-align: center;
+  color: #858585;
+  margin-left: 6px;
+  height: 50px;
+  width: 150px;
+  background: #F5F5F5;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #59B4D1
+}
+.Add {
+  font-Size: 22px;
+  // color: #858585;
+  margin-left: 110px;
+  height: 50px;
+  width: 100px;
+  background: white;
+  border-radius: 10px;
+  border: outset;
+}
+.Add:hover {
+  background-color: rgb(243, 243, 243);
+}
+.label {
+  font-Size: 18px;
+  margin-left: 70px;
+}

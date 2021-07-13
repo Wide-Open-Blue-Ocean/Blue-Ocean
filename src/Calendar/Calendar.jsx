@@ -3,7 +3,7 @@ import axios from 'axios';
 import Column from './Column.jsx';
 import Overlay from './Overlay.jsx';
 import LinkModal from './LinkModal.jsx';
-//goes from 0500 to 2100
+// goes from 0500 to 2100
 export default class Calendar extends React.Component {
   constructor(props) {
     super(props);
@@ -15,12 +15,15 @@ export default class Calendar extends React.Component {
     this.cycleLeft = this.cycleLeft.bind(this);
     this.cycleRight = this.cycleRight.bind(this);
     this._onClick = this._onClick.bind(this);
+    this.closeModal = this.closeModal.bind(this);
 
     this.state = {
       dates: {
-        '20210711': []
+        20210711: []
       },
 
+
+      modal: undefined
     };
   }
 
@@ -32,42 +35,42 @@ export default class Calendar extends React.Component {
 
   loadSessions() {
     axios.get('/dummySessions')
-    .then((response) => {
-      var dates = JSON.parse(JSON.stringify(this.state.dates));
-      for (var i = 0; i < response.data.length; i++) {
-        var session = response.data[i];
-        session.type = 'session';
-        if (dates[session.date]) {
-          dates[session.date].push(session);
+      .then((response) => {
+        var dates = JSON.parse(JSON.stringify(this.state.dates));
+        for (var i = 0; i < response.data.length; i++) {
+          var session = response.data[i];
+          session.type = 'session';
+          if (dates[session.date]) {
+            dates[session.date].push(session);
+          }
         }
-      }
-      this.setState({
-        dates: dates
+        this.setState({
+          dates: dates
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
   }
 
   loadMeals() {
     axios.get('/dummyMeals')
-    .then((response) => {
-      var dates = JSON.parse(JSON.stringify(this.state.dates));
-      for (var i = 0; i < response.data.length; i++) {
-        var session = response.data[i];
-        session.type = 'meal';
-        if (dates[session.date]) {
-          dates[session.date].push(session);
+      .then((response) => {
+        var dates = JSON.parse(JSON.stringify(this.state.dates));
+        for (var i = 0; i < response.data.length; i++) {
+          var session = response.data[i];
+          session.type = 'meal';
+          if (dates[session.date]) {
+            dates[session.date].push(session);
+          }
         }
-      }
-      this.setState({
-        dates: dates
+        this.setState({
+          dates: dates
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
   }
 
   loadDates() {
@@ -115,7 +118,6 @@ export default class Calendar extends React.Component {
   }
 
   cycleRight () {
-    console.log('hey');
     var newDateObject = {};
     for (var i = 7; i <= 13; i++) {
       var newDate = this.getFuture(Object.keys(this.state.dates)[0], i);
@@ -130,34 +132,51 @@ export default class Calendar extends React.Component {
   }
 
   _onClick(e) {
-    if (e.date) { //should only handle events propagated from Column
-      console.log(e.date, e.clientX, e.clientY);
+    if (e.date) { // should only handle events propagated from Column
+      // console.log(e.date, e.clientX, e.clientY);
+      this.setState({
+        modal: {
+          x: e.clientX,
+          y: e.clientY,
+          date: e.date
+        }
+      });
     }
+  }
+
+  closeModal() {
+    this.setState({
+      modal: undefined
+    });
   }
 
   render() {
     return (
-      <div id="calendarWidget">
-        <svg style={{position: 'absolute', top: 350, left: -90, cursor: 'pointer'}} width={40} height={40} onClick={this.cycleLeft} data-name="arrow_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#ff0000" d="M51.66 2.65L49 0 2.66 46.34h-.01L0 48.99h.01L0 49l2.65 2.66.01-.01L49 97.99l2.66-2.65L5.31 48.99 51.66 2.65z"/></svg>
-        <svg style={{position: 'absolute', top: 350, left: window.innerWidth - 160, zIndex: 5, cursor: 'pointer'}} width={40} height={40} onClick={this.cycleRight} data-name="arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#ff0000" d="M0 95.34l2.65 2.65 46.34-46.34.01.01L51.66 49l-.01-.01h.01L49 46.34h-.01L2.65 0 0 2.65l46.34 46.34L0 95.34z"/></svg>
+      <div id="calendarContainer">
+        <svg style={{cursor: 'pointer', zIndex: 5}} width={40} height={40} onClick={this.cycleLeft} data-name="arrow_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#ff0000" d="M51.66 2.65L49 0 2.66 46.34h-.01L0 48.99h.01L0 49l2.65 2.66.01-.01L49 97.99l2.66-2.65L5.31 48.99 51.66 2.65z"/></svg>
 
-        <div id="dateRow">
-        {Object.keys(this.state.dates).map(date =>
-          <div className="dateTop">
-            <p key={this.getWeekday(date)}>{this.getWeekday(date)}</p>
-            <p key={date}>{date.slice(4, 6) + ' / ' + date.slice(6, 8)}</p>
-          </div>
-        )}
-        </div>
-        <div id="calendar" onClick={this._onClick}>
-          <Overlay/>
-          {Object.keys(this.state.dates).map(key =>
-            <Column events={this.state.dates[key]} key={key} date={key}/>
+        <div id="calendarWidget">
+
+          <div id="dateRow">
+          {Object.keys(this.state.dates).map(date =>
+            <div key={date} className="dateTop">
+              <p>{this.getWeekday(date)}</p>
+              <p>{date.slice(4, 6) + ' / ' + date.slice(6, 8)}</p>
+            </div>
           )}
+          </div>
+          <div id="calendar" onClick={this._onClick}>
+            <Overlay/>
+            {Object.keys(this.state.dates).map(key =>
+              <Column events={this.state.dates[key]} key={key} date={key}/>
+            )}
+          </div>
+          {this.state.modal &&
+            <LinkModal modal={this.state.modal} closeModal={this.closeModal}/>
+          }
         </div>
-        {/* <LinkModal /> */}
+        <svg style={{ zIndex: 5, cursor: 'pointer'}} width={40} height={40} onClick={this.cycleRight} data-name="arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#ff0000" d="M0 95.34l2.65 2.65 46.34-46.34.01.01L51.66 49l-.01-.01h.01L49 46.34h-.01L2.65 0 0 2.65l46.34 46.34L0 95.34z"/></svg>
       </div>
-
     );
   }
 }
