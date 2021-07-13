@@ -31,20 +31,36 @@
   margin-top: 15px;
   background-color: #FEFEFE;
   width: 500px;
-  height: 100px;
+  height: 120px;
   border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
-
-.excercises {
+.exerciseCard {
+  margin-top: 15px;
+  background-color: #FEFEFE;
   width: 500px;
-  height: 500px;
-  background-color: lightgray;
+  height: 80px;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions {
+  display: flex;
+}
+
+.actions {
+  margin-right: 15px;
 }
 
 .sessionText {
   margin-top: 10px;
   margin-left: 15px;
   font-size: 20px;
+}
+
+.eText {
+  margin-left: 15px;
 }

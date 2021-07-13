@@ -89,6 +89,7 @@ app.delete('/user', (req, res) => {
 //format for 'dateRange' query: yyyymmdd-yyyymmdd
 
 app.get('/workoutSession', (req, res) => {
+  console.log('*****', req.params);
   let {userId, date, startDate, endDate} = req.body
   routeSpecs.handleBadRequest.getWorkoutSession(userId, date, startDate, endDate)
   .then(() => {
@@ -103,6 +104,7 @@ app.get('/workoutSession', (req, res) => {
 });
 
 app.post('/workoutSession', (req, res) => {
+  console.log(req.params);
   let entry = req.body
   routeSpecs.handleBadRequest.postWorkoutSession(entry)
   .then(_ => {
