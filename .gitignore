@@ -4,4 +4,4 @@ node_modules
 
 backend/database/config.js
 package-lock.json
-dist/bundle.j
+dist/bundle.js
