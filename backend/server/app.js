@@ -36,7 +36,7 @@ app.get('/test', (req, res) => {
 // name: String,
 
 app.get('/user', (req, res) => {
-  let userId = req.body.userId
+  let userId = req.params.userId
   routeSpecs.handleBadRequest.getUser(userId)
   .then(_=> {
     return Models.User.find(userId);
@@ -89,7 +89,7 @@ app.delete('/user', (req, res) => {
 //format for 'dateRange' query: yyyymmdd-yyyymmdd
 
 app.get('/workoutSession', (req, res) => {
-  let {userId, date, startDate, endDate} = req.body
+  let {userId, date, startDate, endDate} = req.params
   routeSpecs.handleBadRequest.getWorkoutSession(userId, date, startDate, endDate)
   .then(() => {
     return date ? Models.WorkoutSession.find(userId, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate);
@@ -148,7 +148,7 @@ app.delete('/workoutSession', (req, res) => {
 
 
 app.get('/workout', (req, res) => {
-  let {userId, date, sessionName} = req.body;
+  let {userId, date, sessionName} = req.params;
   routeSpecs.handleBadRequest.getWorkout(userId, date, sessionName)
   .then(_=> {
     Models.Workout.find(userId, date, sessionName)
@@ -190,7 +190,7 @@ app.delete('/workout', (req, res) => {
 })
 
 app.get('/workout/checked', (req, res) => {
-  let {userId, date} = req.body;
+  let {userId, date} = req.params;
   routeSpecs.handleBadRequest.getWorkoutChecked(userId, date)
   .then(_=>{
     Models.Workout.findChecked(Number(userId), Number(date))
@@ -236,7 +236,7 @@ app.delete('/workout', (req, res) => {
 // checked: Boolean
 
 app.get('/food', (req, res) => {
-  let {userId, date, mealName} = req.body;
+  let {userId, date, mealName} = req.params;
   routeSpecs.handleBadRequest.getFood(userId, date, mealName)
   .then(_=> {
     Models.Food.find(userId, date, mealName)
@@ -264,7 +264,7 @@ app.post('/food', (req, res) => {
 })
 
 app.get('/food/checked', (req, res) => {
-  let {userId, date} = req.body;
+  let {userId, date} = req.params;
   routeSpecs.handleBadRequest.getFoodChecked(userId, date)
   .then(_=> {
     Models.Food.findChecked(userId, date)
@@ -331,7 +331,7 @@ app.delete('/food', (req, res) => {
 // date: Number,
 
 app.post('/meal', (req, res) => {
-  let entry = req.body;
+  let entry = req.params;
   routeSpecs.handleBadRequest.postMeal(entry)
   .then(_=> {
     Models.Meal.add(entry)
@@ -345,7 +345,7 @@ app.post('/meal', (req, res) => {
 })
 
 app.get('/meal', (req, res) => {
-  let {userId, date, startDate, endDate} = req.body;
+  let {userId, date, startDate, endDate} = req.params;
   routeSpecs.handleBadRequest.getMeal(userId, date, startDate, endDate)
   .then(_=> {
     return date ? Models.Meal.find(userId, date) : Models.Meal.findRange(userId, startDate, endDate)
@@ -385,7 +385,7 @@ app.delete('/meal', (req, res) => {
 // date: Number,
 
 app.get('/journal', (req, res) => {
-  let {userId, date, startDate, endDate} = req.body;
+  let {userId, date, startDate, endDate} = req.params;
   routeSpecs.handleBadRequest.getJournalEntry(userId, date, startDate, endDate)
   .then(_=> {
     return date ? Models.Journal.find(userId, date) : Models.Journal.findRange(userId, startDate, endDate);
