@@ -22,6 +22,7 @@ const handleBadRequest = {
       resolve();
     })
   },
+
   postWorkoutSession: (entry) => {
     return new Promise ((resolve, reject) => {
       if (entry.userId === undefined
