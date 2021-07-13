@@ -27,7 +27,7 @@ function Exercise (props) {
       <IconContext.Provider value={{color: '#00FFB9', size: '25px'}}>
         {props.excercises.map((excercise, i) => {
           return (
-          <div className="exerciseCard">
+          <div key={i} className="exerciseCard">
             <Wrap onClick={() => {toggle(i)}} key={i}>
               <span>{clicked === i ? <FiMinus /> : <FiPlus />}</span>
               <h1 style={{color: "red"}}>{excercise.excercise}</h1>
