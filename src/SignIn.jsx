@@ -32,7 +32,7 @@ const uiConfig = {
   ],
 };
 
-const SignIn = () => {
+const SignIn = ({setLoggedIn}) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [userUID, setuserUID] = useState(null);
   const [userEmail, setuserEmail] = useState(null);
@@ -47,10 +47,24 @@ const SignIn = () => {
       if (user) {
         setuserUID(user.uid);
         setuserEmail(user.email);
+        setLoggedIn(user.email);
 
         var data = new FormData();
         data.append('username', user.email);
         data.append('secret', user.uid);
+
+        // axios.get('/users', {
+        //   params: {
+        //     email: user.email
+        //   }
+        // }).then((result) => {
+        //   if (result.data.length <= 0) {
+        //      axios.post('/users', {
+
+        //      })
+        //   }
+        // })
+
 
         var config = {
           method: 'post',
