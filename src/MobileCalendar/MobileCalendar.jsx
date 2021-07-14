@@ -18,6 +18,10 @@ export default class MobileCalendar extends React.Component {
     this.openMealWidget = this.openMealWidget.bind(this);
     this.oneLeft = this.oneLeft.bind(this);
     this.oneRight = this.oneRight.bind(this);
+    this.weekTouchStart = this.weekTouchStart.bind(this);
+    this.weekTouchMove = this.weekTouchMove.bind(this);
+    this.calTouchStart = this.calTouchStart.bind(this);
+    this.calTouchMove = this.calTouchMove.bind(this);
 
     this.state = {
       dates: {
@@ -28,6 +32,10 @@ export default class MobileCalendar extends React.Component {
   }
 
   componentDidMount () {
+    this.wxDown = null;
+    this.wyDown = null;
+    this.cxDown = null;
+    this.cyDown = null;
     this.loadDates();
     this.loadSessions();
     this.loadMeals();
@@ -172,18 +180,86 @@ export default class MobileCalendar extends React.Component {
     }
   }
 
+  weekTouchStart(e) {
+    this.wxDown = e.touches[0].clientX;
+    this.wyDown = e.touches[0].clientY;
+  }
+
+  weekTouchMove(e) {
+    if ( ! this.wxDown || ! this.wyDown ) {
+      return;
+    }
+    var xUp = e.touches[0].clientX;
+    var yUp = e.touches[0].clientY;
+    var xDiff = this.wxDown - xUp;
+    var yDiff = this.wyDown - yUp;
+
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 30 ) {
+        /* left swipe */
+          this.cycleRight();
+        } else if ( xDiff < -30) {
+        /* right swipe */
+          this.cycleLeft();
+        }
+    } else {
+        if ( yDiff > 0 ) {
+        /* up swipe */
+        } else {
+        /* down swipe */
+        }
+    }
+    /* reset values */
+    this.wxDown = null;
+    this.wyDown = null;
+  }
+
+  calTouchStart (e) {
+    this.cxDown = e.touches[0].clientX;
+    this.cyDown = e.touches[0].clientY;
+  }
+
+  calTouchMove (e) {
+    if ( ! this.cxDown || ! this.cyDown ) {
+      return;
+    }
+    var xUp = e.touches[0].clientX;
+    var yUp = e.touches[0].clientY;
+    var xDiff = this.cxDown - xUp;
+    var yDiff = this.cyDown - yUp;
+    // console.log( xDiff);
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 30 ) {
+        /* left swipe */
+          this.oneRight();
+        } else if ( xDiff < -30){
+        /* right swipe */
+          this.oneLeft();
+        }
+    } else {
+        if ( yDiff > 0 ) {
+        /* up swipe */
+        } else {
+        /* down swipe */
+        }
+    }
+    /* reset values */
+    this.cxDown = null;
+    this.cyDown = null;
+  }
+
   render () {
     return (
       <div id="mobileCalendarContainer">
-        <div id="mobileDateRow">
+        <div id="mobileDateRow" onTouchStart={this.weekTouchStart} onTouchMove={this.weekTouchMove}>
           <svg style={{cursor: 'pointer', zIndex: 5}} width={30} height={30} onClick={() => {this.cycleLeft()}} data-name="arrow_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#0000ff" d="M51.66 2.65L49 0 2.66 46.34h-.01L0 48.99h.01L0 49l2.65 2.66.01-.01L49 97.99l2.66-2.65L5.31 48.99 51.66 2.65z"/></svg>
           {Object.keys(this.state.dates).map(date =>
-            <DaySelection key={date} date={date} selectDay={this.selectDay}/>
+            <DaySelection key={date} date={date} selectDay={this.selectDay} selected={date === this.state.selectedDate}/>
           )}
           <svg style={{zIndex: 5, cursor: 'pointer'}} width={30} height={30} onClick={() => {this.cycleRight()}} data-name="arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#0000ff" d="M0 95.34l2.65 2.65 46.34-46.34.01.01L51.66 49l-.01-.01h.01L49 46.34h-.01L2.65 0 0 2.65l46.34 46.34L0 95.34z"/></svg>
         </div>
         <h1 id="mobileDateBanner">{this.prettySelectedDate()}</h1>
-        <div id="mobileEventsContainer">
+        <div id="mobileEventsContainer" onTouchStart={this.calTouchStart} onTouchMove={this.calTouchMove}>
           <svg style={{cursor: 'pointer', zIndex: 5}} width={60} height={60} onClick={this.oneLeft} data-name="arrow_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#ff0000" d="M51.66 2.65L49 0 2.66 46.34h-.01L0 48.99h.01L0 49l2.65 2.66.01-.01L49 97.99l2.66-2.65L5.31 48.99 51.66 2.65z"/></svg>
           <div id="mobileEventColumn">
             {this.state.dates[this.state.selectedDate].map(event =>
