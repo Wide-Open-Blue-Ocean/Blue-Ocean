@@ -20,16 +20,19 @@ function Home() {
   //   //   })
   // }, [])
 
+
+
+
   const cardOnClick = () => {
 
   }
 
-  function HomeCard (props) {
+  function WorkoutTile (props) {
     return (
-      <div className="session" onClick={console.log('click')}>
-        <div className="sessionText">
-          {props.title}
-        </div>
+      <div className="workoutTile" onClick={console.log('click')}>
+        {/* <div> */}
+          {'Tile'}
+        {/* </div> */}
       </div>
     )
   }
@@ -37,11 +40,16 @@ function Home() {
   function WorkoutCard (props) {
     return (
       <div className="workoutCard">
-      <div className="workoutSession" onClick={console.log('click')}>
-        <div className="homeSessionText">
+        <div className="workoutSession" onClick={console.log('click')}>
+          <div className="homeSessionText ">
           {`TODAY'S WORKOUTS`}
+          </div>
+
+            <div className="workoutDisplay">
+            <WorkoutTile />
+
+           </div>
         </div>
-      </div>
       </div>
     )
   }
