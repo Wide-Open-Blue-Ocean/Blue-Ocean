@@ -11,14 +11,15 @@ const HoverText = styled.p`
 		color: #000;
 		cursor: pointer;
     text-decoration: underline;
-    text-decoration-color: red;
+    text-decoration-color: #fc1703;
+    text-decoration-thickness: 3px;
 	}`
 
   const Navbar = () => {
     const [isOpen, setOpen] = useState(false);
     return (
       <nav
-        className="navbar  "
+        className="navbar "
         aria-label="main navigation"
         style={{height: '80px', borderRadius: '0 0 20px 20px', boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)'}}
       >
@@ -29,11 +30,10 @@ const HoverText = styled.p`
                 className="navbar-item "
                 activeClassName="is-active"
                 to="/"
-                style={{textDecoration: 'none'}}
+                style={{height: '40px',textDecoration: 'none'}}
               >
-                <HoverText style={{color: 'rgb(73, 73, 73)', fontWeight: "bold", fontSize: "30px"}}>
+                <HoverText style={{ color: 'rgb(73, 73, 73)', fontWeight: "bold", fontSize: "30px"}}>
                 Workout Pal
-
                 </HoverText>
               </NavLink>
               </div>
