@@ -6,8 +6,6 @@ import Card from '../Workout/Card.jsx'
 import WorkoutCard from '../Home/WorkoutCard'
 import MealsCard from '../Home/MealsCard'
 import JournalCard from '../Home/JournalCard'
-// import AddASession from '../Workout/AddASession.jsx'
-// import Exercise from '../Workout/Exercise.jsx'
 
 function Home() {
 
@@ -23,35 +21,6 @@ function Home() {
   //   //     console.log('****', result.data);
   //   //   })
   // }, [])
-
-  const history = useHistory()
-  const handleClick = () => {
-    history.push('/journal')
-  }
-
-  const workoutTileClick = () => {
-    console.log('workoutTileclick');
-    history.push('/workout')
-  }
-
-  const mealTileClick = () => {
-    console.log('mealTileclick');
-    history.push('/meals')
-  }
-
-
-  function JournalCard (props) {
-    return (
-      <div className="journalSession" onClick={() => {handleClick()}}>
-        <div className="homeSessionText">
-            {`TODAY'S JOURNAL`}
-          <div className="journalDisplay">
-            {journal? 'YOU COMPLETED YOUR DAILY JOURNAL' : 'YOU HAVE NOT JOURNALED TODAY'}
-          </div>
-        </div>
-      </div>
-    )
-  }
 
 
   return (

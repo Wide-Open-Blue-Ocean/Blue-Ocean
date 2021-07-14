@@ -28,9 +28,9 @@ const HoverText = styled.p`
                 className="navbar-item "
                 activeClassName="is-active"
                 to="/"
-                style={{textDecoration: 'none'}}
+                style={{height: '40px',textDecoration: 'none'}}
               >
-                <HoverText style={{color: 'rgb(73, 73, 73)', fontWeight: "bold", fontSize: "30px"}}>
+                <HoverText style={{ color: 'rgb(73, 73, 73)', fontWeight: "bold", fontSize: "30px"}}>
                 Workout Pal
                 </HoverText>
               </NavLink>
