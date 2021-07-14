@@ -17,7 +17,7 @@ const HoverText = styled.p`
     const [isOpen, setOpen] = useState(false);
     return (
       <nav
-        className="navbar  "
+        className="navbar "
         aria-label="main navigation"
         style={{borderRadius: '0 0 25px 25px', boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)', height: '80px'}}
       >
@@ -32,7 +32,6 @@ const HoverText = styled.p`
               >
                 <HoverText>
                 Workout Pal
-
                 </HoverText>
               </NavLink>
               </div>

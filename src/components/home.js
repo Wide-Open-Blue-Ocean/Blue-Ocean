@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import SignIn from '.././SignIn';
 import axios from 'axios'
 import Card from '../Workout/Card.jsx'
+import WorkoutCard from '../Home/WorkoutCard'
+import MealsCard from '../Home/MealsCard'
+import JournalCard from '../Home/JournalCard'
 // import AddASession from '../Workout/AddASession.jsx'
 // import Exercise from '../Workout/Exercise.jsx'
 
@@ -20,53 +24,25 @@ function Home() {
   //   //   })
   // }, [])
 
-
-
-
-  const cardOnClick = () => {
-
+  const history = useHistory()
+  const handleClick = () => {
+    history.push('/journal')
   }
 
-  function WorkoutTile (props) {
-    return (
-      <div className="workoutTile" onClick={console.log('click')}>
-        {/* <div> */}
-          {'Tile'}
-        {/* </div> */}
-      </div>
-    )
+  const workoutTileClick = () => {
+    console.log('workoutTileclick');
+    history.push('/workout')
   }
 
-  function WorkoutCard (props) {
-    return (
-      <div className="workoutCard">
-        <div className="workoutSession" onClick={console.log('click')}>
-          <div className="homeSessionText ">
-          {`TODAY'S WORKOUTS`}
-          </div>
-
-            <div className="workoutDisplay">
-            <WorkoutTile />
-
-           </div>
-        </div>
-      </div>
-    )
+  const mealTileClick = () => {
+    console.log('mealTileclick');
+    history.push('/meals')
   }
 
-  function MealsCard (props) {
-    return (
-      <div className="mealSession" onClick={console.log('click')}>
-        <div className="homeSessionText">
-          {`TODAY'S MEALS`}
-        </div>
-      </div>
-    )
-  }
 
   function JournalCard (props) {
     return (
-      <div className="journalSession" onClick={console.log('click')}>
+      <div className="journalSession" onClick={() => {handleClick()}}>
         <div className="homeSessionText">
             {`TODAY'S JOURNAL`}
           <div className="journalDisplay">
@@ -76,6 +52,8 @@ function Home() {
       </div>
     )
   }
+
+
   return (
  <>
     <div>
@@ -84,10 +62,8 @@ function Home() {
         <div className="cardHome">
           <div className="cards">
       <WorkoutCard />
-
-
-      <MealsCard/>
-      <JournalCard journaled={false}/>
+      <MealsCard />
+      <JournalCard journaled={false} />
           {/* {tiles.map((tile, i) => {
             return (
               <HomeCard key={i} title={tile} cardOnClick={cardOnClick}/>)
