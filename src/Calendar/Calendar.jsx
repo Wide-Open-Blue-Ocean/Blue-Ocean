@@ -27,14 +27,23 @@ export default class Calendar extends React.Component {
   }
 
   componentDidMount() {
-    this.loadDates();
-    this.loadSessions();
-    this.loadMeals();
+    this.loadDates(() => {
+      this.loadSessions();
+      this.loadMeals();
+    });
+
   }
 
   loadSessions() {
-    axios.get('/dummySessions')
+    axios.get('/workoutSession', {
+      params: {
+        userId: 0,
+        startDate: Object.keys(this.state.dates)[0],
+        endDate: Object.keys(this.state.dates)[6]
+      }
+    })
       .then((response) => {
+        console.log(response.data);
         var dates = JSON.parse(JSON.stringify(this.state.dates));
         for (var i = 0; i < response.data.length; i++) {
           var session = response.data[i];
@@ -53,7 +62,13 @@ export default class Calendar extends React.Component {
   }
 
   loadMeals() {
-    axios.get('/dummyMeals')
+    axios.get('/meal', {
+      params: {
+        userId: 0,
+        startDate: Object.keys(this.state.dates)[0],
+        endDate: Object.keys(this.state.dates)[6]
+      }
+    })
       .then((response) => {
         var dates = JSON.parse(JSON.stringify(this.state.dates));
         for (var i = 0; i < response.data.length; i++) {
@@ -72,7 +87,7 @@ export default class Calendar extends React.Component {
       });
   }
 
-  loadDates() {
+  loadDates(callback = ()=>{}) {
     var dayofweek = new Date().getDay();
     var currentTime = new Date(Date.now());
     currentTime.setHours(12); //prevents any errors that could be caused by DST
@@ -86,7 +101,7 @@ export default class Calendar extends React.Component {
     }
     this.setState({
       dates: newDateObject,
-    });
+    }, callback);
   }
 
 

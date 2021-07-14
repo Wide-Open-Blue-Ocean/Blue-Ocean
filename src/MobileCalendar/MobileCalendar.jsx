@@ -36,13 +36,20 @@ export default class MobileCalendar extends React.Component {
     this.wyDown = null;
     this.cxDown = null;
     this.cyDown = null;
-    this.loadDates();
-    this.loadSessions();
-    this.loadMeals();
+    this.loadDates(() => {
+      this.loadSessions();
+      this.loadMeals();
+    });
   }
 
   loadSessions() {
-    axios.get('/dummySessions')
+    axios.get('/workoutSession', {
+      params: {
+        userId: 0,
+        startDate: Object.keys(this.state.dates)[0],
+        endDate: Object.keys(this.state.dates)[6]
+      }
+    })
       .then((response) => {
         var dates = JSON.parse(JSON.stringify(this.state.dates));
         for (var i = 0; i < response.data.length; i++) {
@@ -67,7 +74,13 @@ export default class MobileCalendar extends React.Component {
   }
 
   loadMeals() {
-    axios.get('/dummyMeals')
+    axios.get('/meal', {
+      params: {
+        userId: 0,
+        startDate: Object.keys(this.state.dates)[0],
+        endDate: Object.keys(this.state.dates)[6]
+      }
+    })
       .then((response) => {
         var dates = JSON.parse(JSON.stringify(this.state.dates));
         for (var i = 0; i < response.data.length; i++) {
@@ -97,7 +110,7 @@ export default class MobileCalendar extends React.Component {
     return dateObj.toDateString().slice(4, 15);
   }
 
-  loadDates() {
+  loadDates(callback = ()=>{}) {
     var dayofweek = new Date().getDay();
     var currentTime = new Date(Date.now());
     currentTime.setHours(12); //prevents any errors that could be caused by DST
@@ -113,7 +126,7 @@ export default class MobileCalendar extends React.Component {
     this.setState({
       dates: newDateObject,
       selectedDate: today
-    });
+    }, callback);
   }
 
   selectDay (dateString) {
@@ -262,9 +275,15 @@ export default class MobileCalendar extends React.Component {
         <div id="mobileEventsContainer" onTouchStart={this.calTouchStart} onTouchMove={this.calTouchMove}>
           <svg style={{cursor: 'pointer', zIndex: 5}} width={60} height={60} onClick={this.oneLeft} data-name="arrow_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#ff0000" d="M51.66 2.65L49 0 2.66 46.34h-.01L0 48.99h.01L0 49l2.65 2.66.01-.01L49 97.99l2.66-2.65L5.31 48.99 51.66 2.65z"/></svg>
           <div id="mobileEventColumn">
-            {this.state.dates[this.state.selectedDate].map(event =>
-              <Event key={event.timeRange} event={event}/>
-            )}
+            <React.Fragment>
+              {this.state.dates[this.state.selectedDate].map(event =>
+                <Event key={event.timeRange} event={event}/>
+              )}
+              {this.state.dates[this.state.selectedDate].length === 0 &&
+                <h2 id="noEventsBanner">No events today</h2>
+              }
+            </React.Fragment>
+
           </div>
           <svg style={{zIndex: 5, cursor: 'pointer'}} width={60} height={60} onClick={this.oneRight} data-name="arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#ff0000" d="M0 95.34l2.65 2.65 46.34-46.34.01.01L51.66 49l-.01-.01h.01L49 46.34h-.01L2.65 0 0 2.65l46.34 46.34L0 95.34z"/></svg>
         </div>
