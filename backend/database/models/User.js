@@ -5,6 +5,7 @@ const mongoose = require('../index.js');
 const userSchema = mongoose.Schema({
   userId: Number,
   name: String,
+  email: String
 });
 
 let User = mongoose.model('User', userSchema, 'users');

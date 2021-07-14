@@ -35,12 +35,16 @@ const handleBadRequest = {
 
       let result = parameterShouldExist('entry.userId', entry.userId)
       let result2 = parameterShouldExist('entry.name', entry.name)
-      let result3 = shouldBeAType('number', 'entry.userId', entry.userId)
-      let result4 = shouldBeAType('string', 'entry.name', entry.name)
+      let result3 = parameterShouldExist('entry.email', entry.email)
+      let result4 = shouldBeAType('number', 'entry.userId', entry.userId)
+      let result5 = shouldBeAType('string', 'entry.name', entry.name)
+      let result6 = shouldBeAType('string', 'entry.email', entry.email)
       result ? reject(result)
       : result2 ? reject(result2)
       : result3 ? reject(result3)
-      : result4 ? reject(result4) : resolve()
+      : result4 ? reject(result4)
+      : result5 ? reject(result4)
+      : result6 ? reject(result6) : resolve()
     })
   },
 
