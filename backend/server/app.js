@@ -347,16 +347,16 @@ app.post('/meal', (req, res) => {
 
 app.get('/meal', (req, res) => {
   let {userId, date, startDate, endDate} = req.query;
-  routeSpecs.handleBadRequest.getMeal(userId, date, startDate, endDate)
-  .then(_=> {
-    return date ? Models.Meal.find(userId, date) : Models.Meal.findRange(userId, startDate, endDate)
-  })
-  .then(result => {
-    res.status(200).json(result);
-  })
-  .catch(err => {
-    Array.isArray ? res.json(err) : res.sendStatus(500)
-  })
+  // routeSpecs.handleBadRequest.getMeal(userId, date, startDate, endDate)
+  // .then(_=> {
+    // console.log('hy');
+  return date ? Models.Meal.find(userId, date) : Models.Meal.findRange(userId, startDate, endDate)
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      Array.isArray ? res.json(err) : res.sendStatus(500)
+    })
 })
 
 app.delete('/meal', (req, res) => {

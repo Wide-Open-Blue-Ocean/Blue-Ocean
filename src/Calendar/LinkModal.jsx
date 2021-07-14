@@ -1,6 +1,8 @@
 import React from 'react';
-export default function LinkModal(props) {
+import { useHistory } from 'react-router-dom';
 
+export default function LinkModal(props) {
+  const history = useHistory();
   var getCSS = () => {
     return {
       position: 'fixed',
@@ -24,7 +26,8 @@ export default function LinkModal(props) {
 
   var linkToWorkoutSessions = function(e) {
     e.stopPropagation();
-    alert('workout ' + props.modal.date);
+    // alert('workout ' + props.modal.date);
+    history.push('/workout');
     //pass to workout sessions widget props.modal.date
     //may also pass in null for session clicked on
     //
@@ -32,7 +35,8 @@ export default function LinkModal(props) {
 
   var linkToMeals = function(e) {
     e.stopPropagation();
-    alert('meal ' + props.modal.date);
+    // alert('meal ' + props.modal.date);
+    history.push('/meals');
     //pass to workout sessions widget props.modal.date
     //may also pass in null for session clicked on
     //
