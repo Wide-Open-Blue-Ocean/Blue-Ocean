@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 //column is 640 px!
 export default function Event(props) {
+
+  const [mouseIn, hover] = useState(false);
 
   var computeCSS = function() {
     var startHour = parseInt(props.event.timeRange.slice(0, 2));
@@ -13,22 +15,27 @@ export default function Event(props) {
 
     var height = ((endHour * 60 + endMinute) - (startHour * 60 + startMinute)) / 960 * 640;
 
-    var color = props.event.type === 'meal' ? 'green' : 'red';
+    var color = props.event.type === 'meal' ? 'lightgreen' : 'red';
 
-    return {
+    var output = {
       position: 'absolute',
-      height: height,
+      height: mouseIn ? Math.max(40, height) : height,
       top: startPixel,
       width: '100%',
+      // maxWidth: 'fit-content',
       backgroundColor: color,
-      zIndex: 3,
+      zIndex: mouseIn ? 4 : 3,
       borderRadius: 8,
-      border: 'solid 2px black',
+      border: mouseIn ? 'solid 2px fuchsia' :'solid 2px black',
       fontSize: 'small',
       paddingLeft: 4,
       overflow: 'hidden',
       cursor: 'pointer'
     };
+    if (mouseIn) {
+      output.minWidth = 'fit-content';
+    }
+    return output;
   };
 
   var css = computeCSS();
@@ -39,8 +46,8 @@ export default function Event(props) {
   };
 
   return (
-    <div style={css} onClick={eventClick}>
-      {props.event.sessionName}
+    <div style={css} onClick={eventClick} onMouseEnter={() => {hover(true)}} onMouseLeave={() => {hover(false)}}>
+      {props.event.sessionName ? props.event.sessionName : props.event.mealName}
     </div>
   );
 }

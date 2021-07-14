@@ -45,13 +45,14 @@ function AddASession (props) {
     closeModal();
   };
   return (
-    <div>
+    <div className="buttonContainer2">
       <button className="sessionButton" onClick={openModal}>+</button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
+        ariaHideApp={false}
       >
       <button className="sessionButton" style={{ fontSize: '16px', marginLeft: '250px' }} onClick={closeModal}>
       X

@@ -1,0 +1,77 @@
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import axios from 'axios';
+import customStyles from '../customStyles/customStyles.jsx';
+
+function AddAExercise (props) {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [exercise, setExercise] = useState('Exercise');
+  const [description, setDescription] = useState('Description');
+  const [calories, setCalories] = useState('Calories Burned');
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const postExercise = () => {
+    const exercise = { // keys need updating (double check values too)
+      userId: 0,
+      exerciseName: exercise,
+      description: description,
+      calories: calories
+    }
+    axios.post('/workoutSession', exercise) // endpoint needs updating
+    .then(res => console.log(res.data)) // delete later
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    postExercise();
+    closeModal();
+  };
+  return (
+    <div className="buttonContainer1">
+      <button className="sessionButton" onClick={openModal}>+</button>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+        ariaHideApp={false}
+      >
+      <button className="sessionButton" style={{ fontSize: '16px', marginLeft: '330px' }} onClick={closeModal}>
+      X
+      </button>
+      <form className="modalForm" onSubmit={handleSubmit}>
+        <div className="formInput">
+          <input className="inputGeneral"
+            style={{ color: '#3f3f3f' }}
+            type="text"
+            required
+            placeholder={exercise}
+            onChange={e => setExercise(e.target.value)}
+          />
+          <br/>
+          <input className="inputGeneral"
+            style={{ height: '120px', color: '#3f3f3f' }}
+            type="text"
+            required
+            placeholder={description}
+            onChange={e => setDescription(e.target.value)}
+          />
+          <br/>
+          <input className="inputGeneral"
+            style={{ color: '#3f3f3f' }}
+            type="text"
+            required
+            placeholder={calories}
+            onChange={e => setCalories(e.target.value)}
+          />
+        </div>
+        <input className="Add" style={{ marginLeft: '150px' }} type="submit" value="ADD"/>
+      </form>
+      </Modal>
+    </div>
+  )
+}
+export default AddAExercise;

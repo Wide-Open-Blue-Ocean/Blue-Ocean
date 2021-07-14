@@ -40,11 +40,8 @@
   margin-top: 15px;
   background-color: #FEFEFE;
   width: 500px;
-  height: 80px;
   border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  display: flex;
-  justify-content: space-between;
 }
 
 .actions {
@@ -55,12 +52,62 @@
   margin-right: 15px;
 }
 
-.sessionText {
-  margin-top: 10px;
+.sessionContainer {
   margin-left: 15px;
   font-size: 20px;
 }
 
 .eText {
   margin-left: 15px;
+}
+
+.exerciseItem {
+  display: flex;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.symbol1 {
+  margin-top: 7px;
+  margin-right: 30px;
+}
+
+.dropDown {
+  margin-right: 15px;
+  margin-left: 10px;
+}
+
+.excerciseDisplay {
+  margin-right: 15px;
+  margin-left: 10px;
+}
+
+.excerciseItem {
+  background-color: #59B4D1;
+  color: white;
+  margin-right: 10px;
+}
+
+.buttonContainer1 {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.buttonContainer2 {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.sessionText {
+  margin-top: 10px;
+}
+
+.eContainer {
+  display: flex;
+  align-items: center;
+  align-content: flex-end;
 }

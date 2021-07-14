@@ -19,7 +19,7 @@ const HoverText = styled.p`
       <nav
         className="navbar "
         aria-label="main navigation"
-        style={{borderRadius: '0 0 25px 25px', boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)', height: '80px'}}
+        style={{height: '80px', borderRadius: '0 0 20px 20px', boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)'}}
       >
         <div className="container">
           {/* burger */}
@@ -28,9 +28,9 @@ const HoverText = styled.p`
                 className="navbar-item "
                 activeClassName="is-active"
                 to="/"
-                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none', height: '40px'}}
+                style={{textDecoration: 'none'}}
               >
-                <HoverText>
+                <HoverText style={{color: 'rgb(73, 73, 73)', fontWeight: "bold", fontSize: "30px"}}>
                 Workout Pal
                 </HoverText>
               </NavLink>
