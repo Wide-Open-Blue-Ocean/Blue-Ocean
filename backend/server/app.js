@@ -39,7 +39,8 @@ app.get('/user', (req, res) => {
   let userId = req.query.userId
   routeSpecs.handleBadRequest.getUser(userId)
   .then(_=> {
-    return Models.User.find(userId);
+
+    return Models.User.find(Number(userId));
   })
   .then(result => {
     res.status(200).json(result);
@@ -76,7 +77,6 @@ app.delete('/user', (req, res) => {
     Array.isArray(err) ? res.json(err) : res.sendStatus(500);
   })
 })
-
 
 
 /****************************
@@ -152,7 +152,7 @@ app.get('/workout', (req, res) => {
   let {userId, date, sessionName} = req.query;
   routeSpecs.handleBadRequest.getWorkout(userId, date, sessionName)
   .then(_=> {
-    Models.Workout.find(userId, date, sessionName)
+    return Models.Workout.find(userId, date, sessionName)
   })
   .then(result => {
     res.status(200).json(result)
@@ -194,7 +194,7 @@ app.get('/workout/checked', (req, res) => {
   let {userId, date} = req.query;
   routeSpecs.handleBadRequest.getWorkoutChecked(userId, date)
   .then(_=>{
-    Models.Workout.findChecked(Number(userId), Number(date))
+    return Models.Workout.findChecked(Number(userId), Number(date))
   })
   .then(result => {
     res.status(200).json(result);
@@ -240,7 +240,7 @@ app.get('/food', (req, res) => {
   let {userId, date, mealName} = req.query;
   routeSpecs.handleBadRequest.getFood(userId, date, mealName)
   .then(_=> {
-    Models.Food.find(userId, date, mealName)
+    return Models.Food.find(userId, date, mealName)
   })
   .then(results => {
     res.status(200).json(results)
@@ -268,7 +268,7 @@ app.get('/food/checked', (req, res) => {
   let {userId, date} = req.query;
   routeSpecs.handleBadRequest.getFoodChecked(userId, date)
   .then(_=> {
-    Models.Food.findChecked(userId, date)
+    return Models.Food.findChecked(userId, date)
   })
   .then(results => {
     res.status(200).json(results);
