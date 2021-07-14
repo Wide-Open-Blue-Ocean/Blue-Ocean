@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom';
 import SignIn from '.././SignIn';
 import axios from 'axios'
@@ -6,6 +6,8 @@ import Card from '../Workout/Card.jsx'
 import WorkoutCard from '../Home/WorkoutCard'
 import MealsCard from '../Home/MealsCard'
 import JournalCard from '../Home/JournalCard'
+import {GlobalProvider} from '../context/GlobalState'
+// import GlobalContext from '../context/GlobalState'
 
 function Home() {
 
@@ -22,17 +24,25 @@ function Home() {
   //   //   })
   // }, [])
 
+  // const gContext = useContext(GlobalContext);
+
+  // console.log('gContext: ', gContext)
 
   return (
  <>
+
     <div>
       <div className="homeContainer">
       <div className="home">
         <div className="cardHome">
           <div className="cards">
+            {/* <GlobalContext.Provider value={state}> */}
+            <GlobalProvider>
       <WorkoutCard />
+      </GlobalProvider>
       <MealsCard />
       <JournalCard journaled={false} />
+      {/* </GlobalContext.Provider> */}
           {/* {tiles.map((tile, i) => {
             return (
               <HomeCard key={i} title={tile} cardOnClick={cardOnClick}/>)
@@ -42,7 +52,9 @@ function Home() {
         <div className="excercises">
         </div>
       </div>
+
     </div>
+
     </div>
   <SignIn/>
  </>
