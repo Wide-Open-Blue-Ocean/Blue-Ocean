@@ -1,0 +1,108 @@
+
+.homeContainer {
+  display: flex;
+  width: 99%;
+  height: 99%;
+  margin-top: 50px;
+}
+
+.home {
+  display: flex;
+  margin: auto;
+}
+
+.cardHome {
+  border-radius: 15px;
+  width: 750px;
+  height: 650px;
+  background-color: #FDFEFF;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin-right: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.homeCards {
+  margin: 0;
+  height: 0px;
+}
+
+.workoutCard {
+  margin: 0;
+}
+
+.workoutTile {
+  margin: 0;
+  width: 80px;
+  height: 80px;
+  color: #FDFEFF;
+  border-radius: 15px;
+
+
+}
+
+.todaysMealCard {
+  background-color: green;
+}
+
+.todaysJournalCard {
+  background-color: purple;
+}
+
+.workoutSession {
+  margin-top: 15px;
+  background-color: #59B4D1;
+  color: #FDFEFF;
+  text-align: center;
+
+  width: 500px;
+  height: 120px;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.mealSession {
+  margin-top: 15px;
+  background-color: #59D090;
+  text-align: center;
+  color: #FDFEFF;
+  width: 500px;
+  height: 120px;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.journalSession {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+  margin-top: 15px;
+  background-color: #945AD1;
+  color: #FDFEFF;
+  width: 500px;
+  height: 120px;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.journalDisplay {
+  display: flex;
+  margin: 15px 0 5 2;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-color: #FDFEFF;
+  color: #C8C8C8;
+  width: 400px;
+  height: 80px;
+  border-radius: 10px;
+}
+
+.homeSessionText {
+  margin: 10px 0 15px 0;
+  font-size: 20px;
+}

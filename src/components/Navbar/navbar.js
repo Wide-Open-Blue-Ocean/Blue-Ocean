@@ -9,7 +9,8 @@ const HoverText = styled.p`
 		color: #000;
 		cursor: pointer;
     text-decoration: underline;
-    text-decoration-color: red;
+    text-decoration-color: #fc1703;
+    text-decoration-thickness: 3px;
 	}`
 
   const Navbar = () => {
@@ -18,7 +19,7 @@ const HoverText = styled.p`
       <nav
         className="navbar  "
         aria-label="main navigation"
-        style={{borderRadius: '0 0 25px 25px', boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)'}}
+        style={{borderRadius: '0 0 25px 25px', boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)', height: '80px'}}
       >
         <div className="container">
           {/* burger */}
@@ -27,7 +28,7 @@ const HoverText = styled.p`
                 className="navbar-item "
                 activeClassName="is-active"
                 to="/"
-                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none', height: '40px'}}
               >
                 <HoverText>
                 Workout Pal
