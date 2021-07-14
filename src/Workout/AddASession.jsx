@@ -31,10 +31,10 @@ function AddASession (props) {
   const postSession = () => {
     const time = convertTime(startTime, endTime);
     const session = {
-      userId: 0,
+      userId: props.sessionParams.userId,
       sessionName: sessionName,
       timeRange: time,
-      date: 20210712
+      date: props.sessionParams.date
     }
     axios.post('/workoutSession', session)
     .then(res => console.log(res.data)) // delete later

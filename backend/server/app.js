@@ -149,11 +149,12 @@ app.delete('/workoutSession', (req, res) => {
 
 
 app.get('/workout', (req, res) => {
+  console.log(req.query);
   let {userId, date, sessionName} = req.query;
-  routeSpecs.handleBadRequest.getWorkout(userId, date, sessionName)
-  .then(_=> {
+  // routeSpecs.handleBadRequest.getWorkout(userId, date, sessionName)
+  // .then(_=> {
     return Models.Workout.find(userId, date, sessionName)
-  })
+  // })
   .then(result => {
     res.status(200).json(result)
   })
@@ -164,10 +165,10 @@ app.get('/workout', (req, res) => {
 
 app.post('/workout', (req, res) => {
   let entry = req.body;
-  routeSpecs.handleBadRequest.postWorkout(entry)
-  .then(_=>{
+  // routeSpecs.handleBadRequest.postWorkout(entry)
+  // .then(=>{
     Models.Workout.add(entry)
-  })
+  // })
   .then(result => {
     res.sendStatus(201);
   })
