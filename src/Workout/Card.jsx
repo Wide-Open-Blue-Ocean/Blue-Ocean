@@ -1,4 +1,5 @@
 import React from 'react';
+import RemoveSession from './RemoveSession.jsx'
 
 const style = {
 }
@@ -17,6 +18,7 @@ function Card (props) {
             }
           })}
         </div>
+        <RemoveSession sessionName={props.session.sessionName}/>
       </div>
     </div>
   )

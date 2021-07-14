@@ -175,10 +175,10 @@ app.post('/workout', (req, res) => {
 })
 
 app.delete('/workout', (req, res) => {
-  let id = req.body.id;
+  let _id = req.body._id;
   // routeSpecs.handleBadRequest.deleteWorkout(id)
   // .then(_=>{
-    Models.Workout.delete(Number(id))
+    Models.Workout.delete(_id)
   // })
   .then(_=> {
     res.sendStatus(201);

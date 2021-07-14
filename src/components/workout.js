@@ -3,6 +3,7 @@ import axios from 'axios'
 import Card from '../Workout/Card.jsx'
 import AddASession from '../Workout/AddASession.jsx'
 import Exercise from '../Workout/Exercise.jsx'
+import RemoveSession from '../Workout/RemoveSession.jsx'
 
 function Workout (props) {
   const [sessions, setSessions] = useState([])
@@ -35,7 +36,7 @@ function Workout (props) {
           {sessions.map((session, i) => {
             return (<Card exercises={exercises} key={i} session={session} cardOnClick={cardOnClick}/>)
           })}
-          <AddASession sessionParams={sessionParams}/>
+          <AddASession sessionParams={sessionParams} />
           </div>
         </div>
         <div className="exercises">

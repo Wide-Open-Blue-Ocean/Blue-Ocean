@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {IconContext} from 'react-icons';
 import {FiPlus, FiMinus} from 'react-icons/fi';
 import AddAExercise from './AddAExercise.jsx';
+import RemoveExercise from './RemoveExercise.jsx';
 
 const Wrap = styled.div``;
 const Dropdown = styled.div``;
@@ -28,7 +29,7 @@ function Exercise (props) {
                 <div><h2 style={{color: 'rgb(73, 73, 73)'}}>{exercise.exercise.toUpperCase()}</h2></div>
               </div>
               <div className="actionItems" style={{display: 'flex'}}>
-                <div className="remove">remove</div>
+                <div className="remove"><RemoveExercise _id={exercise['_id']}/></div>
               </div>
               </div>
             </Wrap>
