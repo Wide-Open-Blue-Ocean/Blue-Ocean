@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-
+import { useHistory } from 'react-router-dom';
 //column is 640 px!
 export default function Event(props) {
 
+  const history = useHistory();
   const [mouseIn, hover] = useState(false);
 
   var computeCSS = function() {
@@ -15,18 +16,17 @@ export default function Event(props) {
 
     var height = ((endHour * 60 + endMinute) - (startHour * 60 + startMinute)) / 960 * 640;
 
-    var color = props.event.type === 'meal' ? 'lightgreen' : 'red';
+    var color = props.event.type === 'meal' ? 'lightgreen' : 'pink';
 
     var output = {
       position: 'absolute',
       height: mouseIn ? Math.max(40, height) : height,
       top: startPixel,
       width: '100%',
-      // maxWidth: 'fit-content',
       backgroundColor: color,
       zIndex: mouseIn ? 4 : 3,
-      borderRadius: 8,
-      border: mouseIn ? 'solid 2px fuchsia' :'solid 2px black',
+      borderRadius: '7%',
+      border: mouseIn ? 'solid 2px fuchsia' :'solid 1px black',
       fontSize: 'small',
       paddingLeft: 4,
       overflow: 'hidden',
@@ -42,12 +42,17 @@ export default function Event(props) {
 
   const eventClick = (e) => {
     e.stopPropagation();
-    alert('linking to ' + props.event.date + ' ' + props.event.type + ' ' + (props.event.mealName ? props.event.mealName : props.event.sessionName));
+    // alert('linking to ' + props.event.date + ' ' + props.event.type + ' ' + (props.event.mealName ? props.event.mealName : props.event.sessionName));
+    props.setLoadObject(props.event);
+    props.setDate(props.event.date);
+    history.push(props.event.sessionName ? '/workout' : '/meals');
   };
 
   return (
     <div style={css} onClick={eventClick} onMouseEnter={() => {hover(true)}} onMouseLeave={() => {hover(false)}}>
-      {props.event.sessionName ? props.event.sessionName : props.event.mealName}
+      <p className="eventInnerText">
+        {props.event.sessionName ? props.event.sessionName : props.event.mealName}
+      </p>
     </div>
   );
 }

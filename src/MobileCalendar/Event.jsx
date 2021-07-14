@@ -1,8 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 export default function Event(props) {
 
+  const history = useHistory();
   var click = function(e) {
-    alert(props.event.date + ' opening ' + (props.event.sessionName ? 'workout' : 'meal') + ' widget');
+    props.setDate(props.event.date);
+    props.setLoadObject(props.event);
+    history.push(props.event.sessionName ? '/workout' : '/meals');
   };
 
   var prettyTime = function() {

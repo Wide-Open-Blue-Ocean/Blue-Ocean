@@ -43,7 +43,6 @@ export default class Calendar extends React.Component {
       }
     })
       .then((response) => {
-        console.log(response.data);
         var dates = JSON.parse(JSON.stringify(this.state.dates));
         for (var i = 0; i < response.data.length; i++) {
           var session = response.data[i];
@@ -136,6 +135,7 @@ export default class Calendar extends React.Component {
   _onClick(e) {
     if (e.date) { // should only handle events propagated from Column
       // console.log(e.date, e.clientX, e.clientY);
+      this.props.setDate(e.date);
       this.setState({
         modal: {
           x: e.clientX,
@@ -156,21 +156,19 @@ export default class Calendar extends React.Component {
     return (
       <div id="calendarContainer">
         <svg style={{cursor: 'pointer', zIndex: 5}} width={40} height={40} onClick={this.cycleLeft} data-name="arrow_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#ff0000" d="M51.66 2.65L49 0 2.66 46.34h-.01L0 48.99h.01L0 49l2.65 2.66.01-.01L49 97.99l2.66-2.65L5.31 48.99 51.66 2.65z"/></svg>
-
         <div id="calendarWidget">
-
           <div id="dateRow">
-          {Object.keys(this.state.dates).map(date =>
-            <div key={date} className="dateTop">
-              <p>{dateUtils.getWeekday(date)}</p>
-              <p>{date.slice(4, 6) + ' / ' + date.slice(6, 8)}</p>
-            </div>
-          )}
+            {Object.keys(this.state.dates).map(date =>
+              <div key={date} className="dateTop">
+                <p>{dateUtils.getWeekday(date)}</p>
+                <p>{date.slice(4, 6) + ' / ' + date.slice(6, 8)}</p>
+              </div>
+            )}
           </div>
           <div id="calendar" onClick={this._onClick}>
             <Overlay/>
             {Object.keys(this.state.dates).map(key =>
-              <Column events={this.state.dates[key]} key={key} date={key}/>
+              <Column events={this.state.dates[key]} key={key} date={key} setDate={this.props.setDate} setLoadObject={this.props.setLoadObject}/>
             )}
           </div>
           {this.state.modal &&
