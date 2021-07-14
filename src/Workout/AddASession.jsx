@@ -45,7 +45,7 @@ function AddASession (props) {
     closeModal();
   };
   return (
-    <div>
+    <div className="buttonContainer2">
       <button className="sessionButton" onClick={openModal}>+</button>
       <Modal
         isOpen={modalIsOpen}

@@ -30,7 +30,7 @@ function AddAExercise (props) {
     closeModal();
   };
   return (
-    <div>
+    <div className="buttonContainer1">
       <button className="sessionButton" onClick={openModal}>+</button>
       <Modal
         isOpen={modalIsOpen}

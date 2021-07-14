@@ -13,10 +13,6 @@ function Workout (props) {
 
   useEffect(() => {
     setSessions([{ sessionName: 'trainer x hit work out' }, { sessionName: 'yoga' }, { sessionName: 'weights' }])
-    // axios.get('/workoutSession', {params: {userId : 0, date: 20210712}})
-    //   .then((result) => {
-    //     console.log('****', result.data);
-    //   })
   }, [])
 
   const cardOnClick = () => {
@@ -32,7 +28,7 @@ function Workout (props) {
         <div className="cardSession">
           <div className="cards">
           {sessions.map((session, i) => {
-            return (<Card key={i} session={session} cardOnClick={cardOnClick}/>)
+            return (<Card excercises={excercises} key={i} session={session} cardOnClick={cardOnClick}/>)
           })}
           <AddASession />
           </div>
