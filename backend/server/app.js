@@ -203,10 +203,10 @@ app.get('/workout/checked', (req, res) => {
 })
 
 app.put('/workout/checked', (req, res) => {
-  let {id, checked} = req.body;
+  let {_id, checked} = req.body;
   // routeSpecs.handleBadRequest.putWorkoutChecked(id, checked)
   // .then(_=>{
-    Models.Workout.updateCheck(Number(id), checked)
+    Models.Workout.updateCheck(_id, checked)
   // })
   .then(_=> {
     res.sendStatus(201)

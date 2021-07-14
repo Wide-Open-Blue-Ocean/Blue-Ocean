@@ -15,7 +15,6 @@ function AddAExercise (props) {
     setIsOpen(false);
   };
   const postExercise = () => {
-    console.log('****** is this empty???', props.sessionParams);
     const exerciseDetail = {
       userId: props.sessionParams.userId,
       sessionName: props.sessionParams.sessionName,

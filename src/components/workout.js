@@ -23,7 +23,6 @@ function Workout (props) {
     setSessionParams(sessionObject);
     axios.get('/workout', {params: {userId: sessionObject.userId, date: sessionObject.date, sessionName: sessionObject.sessionName}})
     .then(result => {
-      console.log('THIS IS CARD RESULT', result.data);
       setExercises(result.data);
     })
   }
