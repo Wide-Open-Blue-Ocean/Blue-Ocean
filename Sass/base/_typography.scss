@@ -1,3 +1,9 @@
 //global font we decided
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+$roboto: 'Roboto', sans-serif;
 $red: red;
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
