@@ -32,10 +32,10 @@ const uiConfig = {
   ],
 };
 
-const SignIn = ({setLoggedIn}) => {
+const SignIn = ({setLoggedIn, setUserID}) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [userUID, setuserUID] = useState(null);
-  const [userEmail, setuserEmail] = useState(null);
+  // const [userUID, setuserUID] = useState(null);
+  // const [userEmail, setuserEmail] = useState(null);
   // Listening to Firebase Auth state to set the local state.
 
   useEffect(() => {
@@ -45,8 +45,9 @@ const SignIn = ({setLoggedIn}) => {
       setIsSignedIn(!!user);
 
       if (user) {
-        setuserUID(user.uid);
-        setuserEmail(user.email);
+        // setuserUID(user.uid);
+        setUserID(user.uid);
+        // setuserEmail(user.email);
         setLoggedIn(user.email);
 
         var data = new FormData();
@@ -102,18 +103,20 @@ const SignIn = ({setLoggedIn}) => {
       </div>
     )
   }
+  //  (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/>
 
-  return (
-      <div>
-      <h1>My App</h1>
+   return null;
+  // return (
+  //     // <div>
+  //     // <h1>My App</h1>
 
-      <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
-      <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
+  //     // <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+  //     // <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
 
-      { (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/> }
-      </div>
+  //     // { (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/> }
+  //     // </div>
 
-  )
+  // )
 
 }
 
