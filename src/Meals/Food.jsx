@@ -23,10 +23,10 @@ function Food (props) {
         {props.food.map((foodItem, i) => {
           return (
           <div key={i} className="exerciseCard">
-            <Wrap onClick={() => {toggle(i)}} key={i} style={{'display' : 'flex'}}>
+            <Wrap key={i} style={{'display' : 'flex'}}>
               <div className="eContainer">
               <div className="exerciseItem">
-                <div className="symbol1"><span>{clicked === i ? <FiMinus /> : <FiPlus />}</span></div>
+                <div onClick={() => {toggle(i)}} className="symbol1"><span>{clicked === i ? <FiMinus /> : <FiPlus />}</span></div>
                 <div><h2 style={{color: 'rgb(73, 73, 73)'}}>{foodItem.item.toUpperCase()}</h2></div>
               </div>
               <div className="actionItems" style={{display: 'flex'}}>

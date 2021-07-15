@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import customStyles from '../customStyles/customStyles.jsx';
+
 function AddASession (props) {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [sessionName, setSessionName] = useState('Session Name');
-  const [startTime, setStartTime] = useState('HH:MM');
-  const [endTime, setEndTime] = useState('HH:MM');
+  const [sessionName, setSessionName] = useState('');
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
   const openModal = () => {
     setIsOpen(true);
   };
@@ -38,13 +39,15 @@ function AddASession (props) {
     }
     axios.post('/workoutSession', session)
     .then(res => console.log(res.data)) // delete later
+    .then(() => {
+      props.getWorkSessions();
+    })
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     postSession();
     closeModal();
     //update state
-    props.getWorkSessions();
   };
   return (
     <div className="buttonContainer2">
@@ -64,21 +67,21 @@ function AddASession (props) {
           <input className="inputName"
             type="text"
             required
-            placeholder={sessionName}
+            placeholder="Session Name"
             onChange={e => setSessionName(e.target.value)}
           />
           <br/>
           <input className="timeStart"
             type="text"
             required
-            placeholder={startTime}
+            placeholder="HH:MM"
             onChange={e => setStartTime(e.target.value)}
           />
           -
           <input className="timeEnd"
             type="text"
             required
-            placeholder={endTime}
+            placeholder="HH:MM"
             onChange={e => setEndTime(e.target.value)}
           />
           <label className="label">Please use 24 hour format</label>

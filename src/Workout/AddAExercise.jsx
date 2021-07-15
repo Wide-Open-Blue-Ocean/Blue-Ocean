@@ -5,9 +5,9 @@ import customStyles from '../customStyles/customStyles.jsx';
 
 function AddAExercise (props) {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [exercise, setExercise] = useState('Exercise');
-  const [description, setDescription] = useState('Description');
-  const [calories, setCalories] = useState('Calories Burned');
+  const [exercise, setExercise] = useState('');
+  const [description, setDescription] = useState('');
+  const [calories, setCalories] = useState('');
   const openModal = () => {
     setIsOpen(true);
   };
@@ -54,7 +54,7 @@ function AddAExercise (props) {
             style={{ color: '#3f3f3f' }}
             type="text"
             required
-            placeholder={exercise}
+            placeholder="Exercise"
             onChange={e => setExercise(e.target.value)}
           />
           <br/>
@@ -62,7 +62,7 @@ function AddAExercise (props) {
             style={{ height: '120px', color: '#3f3f3f' }}
             type="text"
             required
-            placeholder={description}
+            placeholder="Description"
             onChange={e => setDescription(e.target.value)}
           />
           <br/>
@@ -70,7 +70,7 @@ function AddAExercise (props) {
             style={{ color: '#3f3f3f' }}
             type="text"
             required
-            placeholder={calories}
+            placeholder="Calories Burned"
             onChange={e => setCalories(e.target.value)}
           />
         </div>

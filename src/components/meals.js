@@ -8,7 +8,7 @@ import RemoveMeal from '../Meals/RemoveMeal.jsx'
 function Meals (props) {
   const [meals, setMeals] = useState([])
   const [food, setFood] = useState([])
-  const [mealParams, setMealParams] = useState({userId: 0,  date: 20210712, mealName: 'Breakfast'});
+  const [mealParams, setMealParams] = useState({userId: 0,  date: props.date, mealName: 'Breakfast'});
 
   const getMeals = (() => {
     axios.get('/meal', {params: {userId: mealParams.userId, date: mealParams.date}})
