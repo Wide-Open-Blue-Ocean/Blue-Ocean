@@ -39,10 +39,14 @@ function Meals (props) {
     })
   }
 
+  const uglyDateString = props.date;
+  const dateObj = new Date(uglyDateString.slice(0,4), parseInt(uglyDateString.slice(4, 6)) - 1, uglyDateString.slice(6, 8));
+  const finalDate = dateObj.toDateString();
+
   return (
     <div className="workoutContainer">
       <div className="workout">
-        <div className="cardSession">
+        <div className="cardSession" style={{ fontSize:'30px' }}>{finalDate}
           <div className="cards">
           {meals.map((meal, i) => {
             return (<Card getMeals={getMeals} food={food} key={i} meal={meal} cardOnClick={cardOnClick}/>)
