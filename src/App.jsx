@@ -17,6 +17,7 @@ const App = () => {
   const history = useHistory();
   const [date, setDate] = useState(dateUtils.today());
   const [loadObject, setLoadObject] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(undefined);
 
   //Workout and Meal Planner widgets need to call this function in componentWillUnmount!
   const resetDate = function() {
@@ -26,7 +27,7 @@ const App = () => {
   return (
       <>
         <div>
-          <Navbar />
+          {loggedIn && <Navbar />}
         </div>
         <Switch>
           <>
@@ -55,6 +56,8 @@ const App = () => {
         </Switch>
       </>
   )
+
+
 }
 
 export default App

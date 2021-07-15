@@ -1,10 +1,22 @@
 import React from 'react'
+import EntryList from '../Journal/EntryList.jsx'
 
-function Journal () {
+function Journal (props) {
+  const [entries, setEntries] = React.useState([])
+
+  React.useEffect(() => {
+    setEntries([{}])
+  }, [])
+
   return (
-    <div className="main">
-      <h1>Hello, Journal</h1>
-      <div className="myStyle">This is a Journal</div>
+    <div className="journalContainer">
+      <div className="formContainer">
+        <div className="inputContainer">
+          <input className="mealsEntry" placeholder="HOW WERE YOUR MEALS TODAY"></input>
+          <input className="workoutsEntry" placeholder="HOW WERE YOUR WORKOUTS TODAY"></input>
+        </div>
+        <EntryList/>
+      </div>
     </div>
   )
 }

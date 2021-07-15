@@ -15,14 +15,20 @@ function AddAExercise (props) {
     setIsOpen(false);
   };
   const postExercise = () => {
-    const exercise = { // keys need updating (double check values too)
-      userId: 0,
-      exerciseName: exercise,
+    const exerciseDetail = {
+      userId: props.sessionParams.userId,
+      sessionName: props.sessionParams.sessionName,
+      exercise: exercise,
       description: description,
-      calories: calories
+      calories: calories,
+      date: props.sessionParams.date,
+      checked: false
     }
-    axios.post('/workoutSession', exercise) // endpoint needs updating
-    .then(res => console.log(res.data)) // delete later
+    axios.post('/workout', exerciseDetail)
+    .then(res => console.log(res.data))
+    .then(() => {
+      props.getWorkouts();
+    })
   };
   const handleSubmit = (e) => {
     e.preventDefault();

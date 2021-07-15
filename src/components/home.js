@@ -25,8 +25,18 @@ return (
         </div>
       </div>
     </div>
+<<<<<<< HEAD
     <SignIn/>
   </>
+||||||| 4ce2e55
+    </div>
+  <SignIn/>
+ </>
+=======
+    </div>
+  <SignIn setLoggedIn={setLoggedIn}/>
+ </>
+>>>>>>> main
   )
 }
 
