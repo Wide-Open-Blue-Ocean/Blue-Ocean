@@ -2,30 +2,33 @@ const mongoose = require('../index.js');
 
 //hhmm-hhmm time range
 //yyyymmdd date format allows comparison of dates using numerical comparison operators like >= or <=
-const userSchema = mongoose.Schema({
+const trainerSchema = mongoose.Schema({
   userId: Number,
   name: String,
   email: String,
-  trainerEmail: String
+  clientEmails: [],
+  isTrainer: true
 });
+//need to implement in chat a way to switch which client trainer is chatting with
 
-let User = mongoose.model('User', userSchema, 'users');
+
+let Trainer = mongoose.model('Trainer', userSchema, 'trainers');
 
 
 module.exports.add = (entry) => {
-  var newUser = new User(entry);
-  return newUser.save();
+  var newTrainer = new Trainer(entry);
+  return newTrainer.save();
 };
 
 module.exports.find = (userId) => {
-  return User.find({
+  return Trainer.find({
     userId: userId,
   });
 };
 
 //pass in the mongo created __id property
 module.exports.delete = (_id) => {
-  return User.deleteOne({
+  return Trainer.deleteOne({
     _id: _id
   });
 };

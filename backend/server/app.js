@@ -34,13 +34,12 @@ app.get('/test', (req, res) => {
 //USER
 // userId: Number,
 // name: String,
+// email: String,
+// trainerEmail: String
 
 app.get('/user', (req, res) => {
   let userId = req.query.userId
-  // routeSpecs.handleBadRequest.getUser(userId)
-  // .then(_=> {
     return Models.User.find(Number(userId))
-  // })
   .then(result => {
     res.status(200).json(result);
   })
@@ -51,10 +50,7 @@ app.get('/user', (req, res) => {
 
 app.post('/user', (req, res) => {
   let entry = req.body;
-  // routeSpecs.handleBadRequest.postUser(entry)
-  // .then(_=> {
     Models.User.add(entry)
-  // })
   .then(_=> {
     res.sendStatus(201)
   })
@@ -65,10 +61,7 @@ app.post('/user', (req, res) => {
 
 app.delete('/user', (req, res) => {
   let id = req.body.id
-  // routeSpecs.handleBadRequest.deleteUser(id)
-  // .then(_=> {
     Models.User.delete(id)
-  // })
   .then(_=> {
     res.sendStatus(201)
   })
@@ -77,6 +70,48 @@ app.delete('/user', (req, res) => {
   })
 })
 
+/****************************
+ *
+ *        TRAINER
+ *
+ ****************************/
+//TRAINER
+// userId: Number,
+// name: String,
+// email: String,
+// clientEmails: [] <-- contains email strings
+app.get('/trainer', (req, res) => {
+  let userId = req.query.userId
+    return Models.User.find(Number(userId))
+  .then(result => {
+    res.status(200).json(result);
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  })
+})
+
+app.post('/trainer', (req, res) => {
+  let entry = req.body;
+    Models.User.add(entry)
+  .then(_=> {
+    res.sendStatus(201)
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  })
+})
+
+app.delete('/trainer', (req, res) => {
+  let id = req.body.id
+    Models.User.delete(id)
+  .then(_=> {
+    res.sendStatus(201)
+  })
+  .catch(err => {
+    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
+  })
+})
 
 /****************************
  *
