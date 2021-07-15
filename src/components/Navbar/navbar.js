@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components'
 import 'bulma/css/bulma.min.css';
-
+import firebase from 'firebase/app';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import {auth} from '../../SignIn';
 const HoverText = styled.p`
 	color: #000;
 	:hover {
@@ -121,7 +123,7 @@ const HoverText = styled.p`
                     style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
                   >
                     <HoverText>
-                      Log in
+                    <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
                     </HoverText>
                   </a>
                 </div>

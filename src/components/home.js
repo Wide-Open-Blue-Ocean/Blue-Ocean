@@ -7,7 +7,7 @@ import WorkoutCard from '../Home/WorkoutCard'
 import MealsCard from '../Home/MealsCard'
 import JournalCard from '../Home/JournalCard'
 
-function Home() {
+function Home({setLoggedIn}) {
 
   const [workout, setWorkout] = useState([])
   const [meals, setMeals] = useState([])
@@ -44,7 +44,7 @@ function Home() {
       </div>
     </div>
     </div>
-  <SignIn/>
+  <SignIn setLoggedIn={setLoggedIn}/>
  </>
   )
 }
