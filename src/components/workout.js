@@ -49,7 +49,8 @@ function Workout (props) {
     })
   }
 
-  const uglyDateString = props.date;
+  console.log(props.date);
+  const uglyDateString = '' + props.date;
   const dateObj = new Date(uglyDateString.slice(0,4), parseInt(uglyDateString.slice(4, 6)) - 1, uglyDateString.slice(6, 8));
   const finalDate = dateObj.toDateString();
 
