@@ -15,7 +15,7 @@ const HoverText = styled.p`
     text-decoration-thickness: 3px;
 	}`
 
-  const Navbar = () => {
+  const Navbar = ({setLoggedIn}) => {
     const [isOpen, setOpen] = useState(false);
     return (
       <nav
@@ -116,18 +116,21 @@ const HoverText = styled.p`
             {/* </div> */}
 
             {/* <div className="navbar-end"> */}
-              <div className="navbar-item">
-                <div className="buttons">
-                  <a
-                    className="button is-white"
-                    style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
-                  >
-                    <HoverText>
-                    <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
-                    </HoverText>
-                  </a>
-                </div>
-              </div>
+            <NavLink
+                className="navbar-item"
+                activeClassName="is-active"
+                to="/signin"
+                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+              >
+                <HoverText>
+                <a onClick={
+                      () => {
+                    setLoggedIn(undefined)
+                    firebase.auth().signOut()
+                    }}>Sign-out</a>
+                </HoverText>
+              </NavLink>
+
             </div>
           </div>
         </div>
