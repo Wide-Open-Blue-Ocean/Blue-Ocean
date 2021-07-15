@@ -23,51 +23,63 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(undefined);
   const [userID, setUserID] = useState(undefined);
 
-
   //Workout and Meal Planner widgets need to call this function in componentWillUnmount!
   const resetDate = function() {
     setDate(dateUtils.today());
     setLoadObject(null);
   };
   return (
-      <>
-        <div>
-          {loggedIn && (
-            <div>
-            <Navbar setLoggedIn={setLoggedIn}/> <ChatEngineComponent username={loggedIn} usersecret={userID}/>
-            </div>
-            )}
-        </div>
-        <Switch>
-          {/* <Route exact path='/signin' component={SignIn}/> */}
-          <Route exact path='/signin' >
-            <SignIn/>
-          </Route>
-          <Route exact path='/' >
-            <Home setLoggedIn={setLoggedIn} setUserID={setUserID}/>
-          </Route>
-          <Route exact path='/calendar'>
-            <React.Fragment>
-              {window.screen.width <= 600 &&
-                <MobileCalendar setDate={setDate} setLoadObject={setLoadObject} history={history}/>
-              }
-              {window.screen.width > 600 &&
-                <Calendar setDate={setDate} setLoadObject={setLoadObject}/>
-              }
-            </React.Fragment>
-          </Route>
-          <Route path='/workout'>
-              <Workout date={date} loadObject={loadObject} resetDate={resetDate}/>
-          </Route>
-          <Route path='/meals' >
-            <Meals date={date} loadObject={loadObject} resetDate={resetDate}/>
-          </Route>
-          <Route path='/journal' component={Journal}/>
-          <Route exact path='/' component={Home}/>
+    <>
+      <div>
+        {loggedIn && (
+          <div>
+          <GlobalProvider>
+          <Navbar setLoggedIn={setLoggedIn}/>
+          <ChatEngineComponent username={loggedIn} usersecret={userID}/>
           </GlobalProvider>
-          </>
-        </Switch>
-      </>
+          </div>
+        )}
+      </div>
+      <Switch>
+        {/* <div> */}
+        {/* <Route exact path='/signin' component={SignIn}/> */}
+        <Route exact path='/signin' >
+        <GlobalProvider>
+          <SignIn/>
+        </GlobalProvider>
+        </Route>
+        <Route exact path='/' >
+        <GlobalProvider>
+          <Home setLoggedIn={setLoggedIn} setUserID={setUserID}/>
+        </GlobalProvider>
+        </Route>
+        <Route exact path='/calendar'>
+          <React.Fragment>
+        <GlobalProvider>
+            {window.screen.width <= 600 &&
+              <MobileCalendar setDate={setDate} setLoadObject={setLoadObject} history={history}/>
+            }
+            {window.screen.width > 600 &&
+              <Calendar setDate={setDate} setLoadObject={setLoadObject}/>
+            }
+        </GlobalProvider>
+          </React.Fragment>
+        </Route>
+        <Route path='/workout'>
+        <GlobalProvider>
+            <Workout date={date} loadObject={loadObject} resetDate={resetDate}/>
+        </GlobalProvider>
+        </Route>
+        <Route path='/meals' >
+        <GlobalProvider>
+          <Meals date={date} loadObject={loadObject} resetDate={resetDate}/>
+        </GlobalProvider>
+        </Route>
+        <Route path='/journal' component={Journal}/>
+        <Route exact path='/' component={Home}/>
+      {/* </div> */}
+      </Switch>
+    </>
   )
 }
 

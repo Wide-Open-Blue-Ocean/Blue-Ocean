@@ -29,7 +29,6 @@ return (
           <ChatEngineComponent/>
       </div> */}
     </div>
-    </div>
   <SignIn setLoggedIn={setLoggedIn} setUserID={setUserID}/>
  </>
   )
