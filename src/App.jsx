@@ -29,8 +29,9 @@ const App = () => {
           <Navbar />
         </div>
         <Switch>
+          <>
           <GlobalProvider>
-          <Route path='/' component={Home} exact/>
+          {/* <Route exact path='/' component={Home} /> */}
           <Route exact path='/calendar'>
             <React.Fragment>
               {window.screen.width <= 600 &&
@@ -50,6 +51,7 @@ const App = () => {
           <Route path='/journal' component={Journal}/>
           <Route exact path='/' component={Home}/>
           </GlobalProvider>
+          </>
         </Switch>
       </>
   )
