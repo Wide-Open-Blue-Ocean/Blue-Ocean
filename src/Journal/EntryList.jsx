@@ -17,8 +17,10 @@ const deleteEntry = (id) => {
         <div className="entryListContainer">{props.entries.map((entry, i) => {
             return (
                 <div key={i}>
-                    <div>entry # {i + 1}</div>
-                    <button onClick={() => {deleteEntry(entry._id)}}>delete</button>
+                    <div className="journalTitleRow">
+                      <h3 className="journalH3">Entry # {i + 1}</h3>
+                      <button className="entryButton" onClick={() => {deleteEntry(entry._id)}}>delete</button>
+                    </div>
                     <div>meal entry : {entry.mealEntry}</div>
                     <div>work out entry : {entry.workoutEntry}</div>
                 </div>
