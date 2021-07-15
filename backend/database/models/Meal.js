@@ -3,7 +3,7 @@ const mongoose = require('../index.js');
 //hhmm-hhmm time range
 //yyyymmdd date format allows comparison of dates using numerical comparison operators like >= or <=
 const mealSchema = mongoose.Schema({
-  userId: Number,
+  email: String,
   mealName: String,
   timeRange: String,
   date: Number
@@ -17,17 +17,17 @@ module.exports.add = (entry) => {
   return newMeal.save();
 };
 
-module.exports.find = (userId, date) => {
+module.exports.find = (email, date) => {
   return Meal.find({
-    userId: userId,
+    email: email,
     date: date
   });
 };
 
 //inclusive
-module.exports.findRange = (userId, startDate, endDate) => {
+module.exports.findRange = (email, startDate, endDate) => {
   return Meal.find({
-    userId: userId,
+    email: email,
     date: {
       $gte: startDate,
       $lte: endDate

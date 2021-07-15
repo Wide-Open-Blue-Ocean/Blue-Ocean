@@ -18,7 +18,7 @@ export const GlobalProvider = ({children}) => {
   const loadSession = () => {
     axios.get('/workoutSession', {
       params: {
-        userId: 0,
+        email: 'tommmmmmriddle@gmail.com',
         date: dateUtils.today()
       }
     })
@@ -37,7 +37,7 @@ export const GlobalProvider = ({children}) => {
   const loadMeals = () => {
     axios.get('/meal', {
       params: {
-        userId: 0,
+        email: 'tommmmmmriddle@gmail.com',
         date: dateUtils.today()
       }
     })

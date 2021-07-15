@@ -32,7 +32,7 @@ function AddAMeal (props) {
   const postMeal = () => {
     const time = convertTime(startTime, endTime);
     const meal = {
-      userId: props.mealParams.userId,
+      email: props.mealParams.email,
       mealName: mealName,
       timeRange: time,
       date: props.mealParams.date

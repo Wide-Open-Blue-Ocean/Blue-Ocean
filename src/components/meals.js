@@ -8,24 +8,24 @@ import RemoveMeal from '../Meals/RemoveMeal.jsx'
 function Meals (props) {
   const [meals, setMeals] = useState([])
   const [food, setFood] = useState([])
-  const [mealParams, setMealParams] = useState({userId: 0,  date: props.date, mealName: 'Breakfast'});
+  const [mealParams, setMealParams] = useState({email: 'tommmmmmriddle@gmail.com',  date: props.date, mealName: 'Breakfast'});
 
   const getMeals = (() => {
-    axios.get('/meal', {params: {userId: mealParams.userId, date: mealParams.date}})
+    axios.get('/meal', {params: {email: mealParams.email, date: mealParams.date}})
     .then(result => {
       setMeals(result.data)
     })
   })
 
   useEffect(() => {
-    axios.get('/meal', {params: {userId: mealParams.userId, date: mealParams.date}})
+    axios.get('/meal', {params: {email: mealParams.email, date: mealParams.date}})
     .then(result => {
       setMeals(result.data)
     })
   }, [])
 
   const getFood = (() => {
-    axios.get('/food', {params: {userId: mealParams.userId, date: mealParams.date, mealName: mealParams.mealName}})
+    axios.get('/food', {params: {email: mealParams.email, date: mealParams.date, mealName: mealParams.mealName}})
     .then(result => {
       setFood(result.data);
     })
@@ -33,7 +33,7 @@ function Meals (props) {
 
   const cardOnClick = (mealObject) => {
     setMealParams(mealObject);
-    axios.get('/food', {params: {userId: mealObject.userId, date: mealObject.date, mealName: mealObject.mealName}})
+    axios.get('/food', {params: {email: mealObject.email, date: mealObject.date, mealName: mealObject.mealName}})
     .then(result => {
       setFood(result.data);
     })

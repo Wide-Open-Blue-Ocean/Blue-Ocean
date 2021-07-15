@@ -2,6 +2,7 @@ import React from 'react'
 import EntryList from '../Journal/EntryList.jsx'
 import Entry from '../Journal/Entry.jsx'
 import axios from 'axios'
+import dateUtils from '../utils/dateUtils.js'
 
 function Journal (props) {
   const [entries, setEntries] = React.useState([])
@@ -17,7 +18,7 @@ function Journal (props) {
   }
 
   const getEntries = () => {
-    axios.get('/journal', {params: {userId: 0, date: 20210712}})
+    axios.get('/journal', {params: {email: 'tommmmmmriddle@gmail.com', date: dateUtils.today()}})
     .then((result) => {
       setEntries(result.data)
     })
@@ -31,7 +32,7 @@ function Journal (props) {
   }, [])
 
   const onSubmit = () => {
-    axios.post('/journal', {userId: 0, mealEntry: mealInputs, workoutEntry: workoutInputs, date: 20210712})
+    axios.post('/journal', {email: 'tommmmmmriddle@gmail.com', mealEntry: mealInputs, workoutEntry: workoutInputs, date: dateUtils.today()})
     .then(() => {
       setMealInputs('');
       setWorkoutInputs('');

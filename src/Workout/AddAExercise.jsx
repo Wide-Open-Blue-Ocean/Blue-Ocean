@@ -16,7 +16,7 @@ function AddAExercise (props) {
   };
   const postExercise = () => {
     const exerciseDetail = {
-      userId: props.sessionParams.userId,
+      email: props.sessionParams.email,
       sessionName: props.sessionParams.sessionName,
       exercise: exercise,
       description: description,

@@ -3,7 +3,7 @@ const mongoose = require('../index.js');
 //hhmm-hhmm time range
 //yyyymmdd date format allows comparison of dates using numerical comparison operators like >= or <=
 const workoutSchema = mongoose.Schema({
-  userId: Number,
+  email: String,
   sessionName: String,
   exercise: String,
   description: String,
@@ -20,9 +20,9 @@ module.exports.add = (entry) => {
   return newWorkout.save();
 };
 
-module.exports.find = (userId, date, sessionName) => {
+module.exports.find = (email, date, sessionName) => {
   return Workout.find({
-    userId: userId,
+    email: email,
     date: date,
     sessionName: sessionName
   });
@@ -36,9 +36,9 @@ module.exports.updateCheck = (_id, checked) => {
   });
 };
 
-module.exports.findChecked = (userId, date) => {
+module.exports.findChecked = (email, date) => {
   return Workout.find({
-    userId: userId,
+    email: email,
     date: date,
     checked: true
   });

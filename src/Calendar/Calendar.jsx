@@ -37,7 +37,7 @@ export default class Calendar extends React.Component {
   loadSessions() {
     axios.get('/workoutSession', {
       params: {
-        userId: 0,
+        email: 'tommmmmmriddle@gmail.com',
         startDate: Object.keys(this.state.dates)[0],
         endDate: Object.keys(this.state.dates)[6]
       }
@@ -63,7 +63,7 @@ export default class Calendar extends React.Component {
   loadMeals() {
     axios.get('/meal', {
       params: {
-        userId: 0,
+        email: 'tommmmmmriddle@gmail.com',
         startDate: Object.keys(this.state.dates)[0],
         endDate: Object.keys(this.state.dates)[6]
       }

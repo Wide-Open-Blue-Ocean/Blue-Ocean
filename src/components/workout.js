@@ -8,24 +8,24 @@ import RemoveSession from '../Workout/RemoveSession.jsx'
 function Workout (props) {
   const [sessions, setSessions] = useState([])
   const [exercises, setExercises] = useState([])
-  const [sessionParams, setSessionParams] = useState({userId: 0,  date: props.date, sessionName: 'TRAINER X\'S WEIGHT TRAINING'});
+  const [sessionParams, setSessionParams] = useState({email: 'tommmmmmriddle@gmail.com',  date: props.date, sessionName: 'TRAINER X\'S WEIGHT TRAINING'});
 
   const getWorkSessions = (() => {
-    axios.get('/workoutSession', {params: {userId: sessionParams.userId, date: sessionParams.date}})
+    axios.get('/workoutSession', {params: {email: sessionParams.email, date: sessionParams.date}})
     .then(result => {
       setSessions(result.data)
     })
   })
 
   useEffect(() => {
-    axios.get('/workoutSession', {params: {userId: sessionParams.userId, date: sessionParams.date}})
+    axios.get('/workoutSession', {params: {email: sessionParams.email, date: sessionParams.date}})
     .then(result => {
       setSessions(result.data)
     })
   }, [])
 
   const getWorkouts = (() => {
-    axios.get('/workout', {params: {userId: sessionParams.userId, date: sessionParams.date, sessionName: sessionParams.sessionName}})
+    axios.get('/workout', {params: {email: sessionParams.email, date: sessionParams.date, sessionName: sessionParams.sessionName}})
     .then(result => {
       setExercises(result.data);
     })
@@ -33,7 +33,7 @@ function Workout (props) {
 
   const cardOnClick = (sessionObject) => {
     setSessionParams(sessionObject);
-    axios.get('/workout', {params: {userId: sessionObject.userId, date: sessionObject.date, sessionName: sessionObject.sessionName}})
+    axios.get('/workout', {params: {email: sessionObject.email, date: sessionObject.date, sessionName: sessionObject.sessionName}})
     .then(result => {
       setExercises(result.data);
     })

@@ -16,7 +16,7 @@ function AddAFood (props) {
   };
   const postFood = () => {
     const foodDetail = {
-      userId: props.mealParams.userId,
+      email: props.mealParams.email,
       mealName: props.mealParams.mealName,
       item: foodItem,
       description: description,

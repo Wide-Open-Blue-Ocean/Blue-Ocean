@@ -32,7 +32,7 @@ function AddASession (props) {
   const postSession = () => {
     const time = convertTime(startTime, endTime);
     const session = {
-      userId: props.sessionParams.userId,
+      email: props.sessionParams.email,
       sessionName: sessionName,
       timeRange: time,
       date: props.sessionParams.date

@@ -4,7 +4,7 @@ const mongoose = require('../index.js');
 //yyyymmdd date format allows comparison of dates using numerical comparison operators like >= or <=
 const workoutSessionSchema = mongoose.Schema({
 
-  userId: Number,
+  email: String,
   sessionName: String,
   timeRange: String,
   date: Number
@@ -19,17 +19,17 @@ module.exports.add = (entry) => {
   return newSession.save();
 };
 
-module.exports.find = (userId, date) => {
+module.exports.find = (email, date) => {
   return WorkoutSession.find({
-    userId: userId,
+    email: email,
     date: date
   });
 };
 
 //inclusive
-module.exports.findRange = (userId, startDate, endDate) => {
+module.exports.findRange = (email, startDate, endDate) => {
   return WorkoutSession.find({
-    userId: userId,
+    email: email,
     date: {
       $gte: startDate,
       $lte: endDate

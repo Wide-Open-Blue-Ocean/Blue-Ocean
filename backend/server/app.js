@@ -12,17 +12,17 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/../../dist'));
 
 
-/*
-  While writing your endpoints, please do not remove any of the mongo created
-  _id properties
-**/
-app.get('/test', (req, res) => {
-  // Models.User.add({userId: 0, name: 'Tom Marvolo Riddle'});
-});
 
 //ENDPOINTS
 
+// UTILITY
 
+app.get('/allUsers',(req, res) => {
+  return Models.User.findAll()
+  .then(result => {
+    res.status(200).json(result)
+  })
+})
 
 
 
@@ -31,16 +31,11 @@ app.get('/test', (req, res) => {
  *        USER
  *
  ****************************/
-//USER
-// userId: Number,
-// name: String,
+
 
 app.get('/user', (req, res) => {
-  let userId = req.query.userId
-  // routeSpecs.handleBadRequest.getUser(userId)
-  // .then(_=> {
+  let email = req.query.email
     return Models.User.find(Number(userId))
-  // })
   .then(result => {
     res.status(200).json(result);
   })
@@ -51,10 +46,7 @@ app.get('/user', (req, res) => {
 
 app.post('/user', (req, res) => {
   let entry = req.body;
-  // routeSpecs.handleBadRequest.postUser(entry)
-  // .then(_=> {
     Models.User.add(entry)
-  // })
   .then(_=> {
     res.sendStatus(201)
   })
@@ -65,10 +57,7 @@ app.post('/user', (req, res) => {
 
 app.delete('/user', (req, res) => {
   let id = req.body.id
-  // routeSpecs.handleBadRequest.deleteUser(id)
-  // .then(_=> {
     Models.User.delete(id)
-  // })
   .then(_=> {
     res.sendStatus(201)
   })
@@ -88,9 +77,8 @@ app.delete('/user', (req, res) => {
 //format for 'dateRange' query: yyyymmdd-yyyymmdd
 
 app.get('/workoutSession', (req, res) => {
-  console.log(req.query);
-  let {userId, date, startDate, endDate} = req.query
-  return (date ? Models.WorkoutSession.find(userId, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate))
+  let {email, date, startDate, endDate} = req.query
+  return (date ? Models.WorkoutSession.find(email, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate))
   .then((results) => {
     res.status(200).json(results)
   })
@@ -101,11 +89,8 @@ app.get('/workoutSession', (req, res) => {
 
 app.post('/workoutSession', (req, res) => {
   let entry = req.body
-  // routeSpecs.handleBadRequest.postWorkoutSession(entry)
-  // .then(_ => {
     entry.date = parseInt(entry.date);
     Models.WorkoutSession.add(entry)
-  // })
   .then(result => {
     res.sendStatus(201);
   })
@@ -116,10 +101,7 @@ app.post('/workoutSession', (req, res) => {
 
 app.delete('/workoutSession', (req, res) => {
   let sessionName = req.body.sessionName;
-  // routeSpecs.handleBadRequest.deleteWorkoutSession(sessionName)
-  // .then(_=> {
     Models.WorkoutSession.delete(sessionName)
-  // })
   .then(_=> {
     res.sendStatus(201)
   })
@@ -135,23 +117,10 @@ app.delete('/workoutSession', (req, res) => {
  *
  ****************************/
 
-//  userId: Number,
-//  sessionName: String,
-//  exercise: String,
-//  description: String,
-//  calories: Number,
-//  date: Number,
-//  checked: Boolean
-
 
 app.get('/workout', (req, res) => {
-  console.log('hits the server');
-  console.log(req.query);
-  let {userId, date, sessionName} = req.query;
-  // routeSpecs.handleBadRequest.getWorkout(userId, date, sessionName)
-  // .then(_=> {
-    return Models.Workout.find(userId, date, sessionName)
-  // })
+  let {email, date, sessionName} = req.query;
+    return Models.Workout.find(email, date, sessionName)
   .then(result => {
     res.status(200).json(result)
   })
@@ -162,10 +131,7 @@ app.get('/workout', (req, res) => {
 
 app.post('/workout', (req, res) => {
   let entry = req.body;
-  // routeSpecs.handleBadRequest.postWorkout(entry)
-  // .then(=>{
     Models.Workout.add(entry)
-  // })
   .then(result => {
     res.sendStatus(201);
   })
@@ -176,10 +142,7 @@ app.post('/workout', (req, res) => {
 
 app.delete('/workout', (req, res) => {
   let _id = req.body._id;
-  // routeSpecs.handleBadRequest.deleteWorkout(id)
-  // .then(_=>{
     Models.Workout.delete(_id)
-  // })
   .then(_=> {
     res.sendStatus(201);
   })
@@ -189,11 +152,8 @@ app.delete('/workout', (req, res) => {
 })
 
 app.get('/workout/checked', (req, res) => {
-  let {userId, date} = req.query;
-  // routeSpecs.handleBadRequest.getWorkoutChecked(userId, date)
-  // .then(_=>{
-    return Models.Workout.findChecked(Number(userId), Number(date))
-  // })
+  let {email, date} = req.query;
+    return Models.Workout.findChecked(email, Number(date))
   .then(result => {
     res.status(200).json(result);
   })
@@ -204,10 +164,7 @@ app.get('/workout/checked', (req, res) => {
 
 app.put('/workout/checked', (req, res) => {
   let {_id, checked} = req.body;
-  // routeSpecs.handleBadRequest.putWorkoutChecked(id, checked)
-  // .then(_=>{
     Models.Workout.updateCheck(_id, checked)
-  // })
   .then(_=> {
     res.sendStatus(201)
   })
@@ -232,20 +189,10 @@ app.delete('/workout', (req, res) => {
  *
  ****************************/
 
-// userId: Number,
-// mealName: String,
-// item: String,
-// description: String,
-// calories: Number,
-// date: Number,
-// checked: Boolean
 
 app.get('/food', (req, res) => {
-  let {userId, date, mealName} = req.query;
-  // routeSpecs.handleBadRequest.getFood(userId, date, mealName)
-  // .then(_=> {
-    return Models.Food.find(userId, date, mealName)
-  // })
+  let {email, date, mealName} = req.query;
+    return Models.Food.find(email, date, mealName)
   .then(results => {
     res.status(200).json(results)
   })
@@ -256,10 +203,7 @@ app.get('/food', (req, res) => {
 
 app.post('/food', (req, res) => {
   let entry = req.body;
-  // routeSpecs.handleBadRequest.postFood(entry)
-  // .then(_=> {
     Models.Food.add(entry)
-  // })
   .then(_=> {
     res.sendStatus(201);
   })
@@ -269,11 +213,8 @@ app.post('/food', (req, res) => {
 })
 
 app.get('/food/checked', (req, res) => {
-  let {userId, date} = req.query;
-  // routeSpecs.handleBadRequest.getFoodChecked(userId, date)
-  // .then(_=> {
-    return Models.Food.findChecked(userId, date)
-  // })
+  let {email, date} = req.query;
+    return Models.Food.findChecked(email, date)
   .then(results => {
     res.status(200).json(results);
   })
@@ -284,10 +225,7 @@ app.get('/food/checked', (req, res) => {
 
 app.put('/food/checked', (req, res) => {
   let {_id, checked} = req.body;
-  // routeSpecs.handleBadRequest.putFoodChecked(id, checked)
-  // .then(_=> {
     Models.Food.updateCheck(_id, checked)
-  // })
   .then(_=> {
     res.sendStatus(201)
   })
@@ -298,10 +236,7 @@ app.put('/food/checked', (req, res) => {
 
 app.delete('/food', (req, res) => {
   let _id = req.body._id;
-  // routeSpecs.handleBadRequest.deleteFood(id)
-  // .then(_=> {
     Models.Food.delete(_id)
-  // })
   .then(_=> {
     res.sendStatus(201);
   })
@@ -312,10 +247,7 @@ app.delete('/food', (req, res) => {
 
 app.delete('/food', (req, res) => {
   let mealName = req.body.mealName;
-  // routeSpecs.handleBadRequest.deleteFoodByMeal(mealName)
-  // .then(_=> {
     Models.Food.deleteByMeal(mealName)
-  // })
   .then(_=> {
     res.sendStatus(201);
   })
@@ -330,17 +262,10 @@ app.delete('/food', (req, res) => {
  *
  ****************************/
 
-// userId: Number,
-// mealEntry: String,
-// workoutEntry: String,
-// date: Number,
 
 app.post('/meal', (req, res) => {
   let entry = req.body;
-  // routeSpecs.handleBadRequest.postMeal(entry)
-  // .then(_=> {
     Models.Meal.add(entry)
-  // })
   .then(_=> {
     res.sendStatus(201);
   })
@@ -350,11 +275,8 @@ app.post('/meal', (req, res) => {
 })
 
 app.get('/meal', (req, res) => {
-  let {userId, date, startDate, endDate} = req.query;
-  // routeSpecs.handleBadRequest.getMeal(userId, date, startDate, endDate)
-  // .then(_=> {
-    return (date ? Models.Meal.find(userId, date) : Models.Meal.findRange(userId, startDate, endDate))
-  // })
+  let {email, date, startDate, endDate} = req.query;
+    return (date ? Models.Meal.find(email, date) : Models.Meal.findRange(email, startDate, endDate))
   .then(result => {
     res.status(200).json(result);
   })
@@ -365,10 +287,7 @@ app.get('/meal', (req, res) => {
 
 app.delete('/meal', (req, res) => {
   let mealName = req.body.mealName;
-  // routeSpecs.handleBadRequest.deleteMeal(mealName)
-  // .then(_=> {
     Models.Meal.delete(mealName)
-  // })
   .then(_=> {
     res.sendStatus(201);
   })
@@ -384,17 +303,9 @@ app.delete('/meal', (req, res) => {
  *
  ****************************/
 
-// userId: Number,
-// mealEntry: String,
-// workoutEntry: String,
-// date: Number,
-
 app.get('/journal', (req, res) => {
-  let {userId, date, startDate, endDate} = req.query;
-  // routeSpecs.handleBadRequest.getJournalEntry(userId, date, startDate, endDate)
-  // .then(_=> {
-    return (date ? Models.Journal.find(userId, date) : Models.Journal.findRange(userId, startDate, endDate))
-  // })
+  let {email, date, startDate, endDate} = req.query;
+    return (date ? Models.Journal.find(email, date) : Models.Journal.findRange(email, startDate, endDate))
   .then(result => {
     res.status(200).json(result)
   })
@@ -405,10 +316,7 @@ app.get('/journal', (req, res) => {
 
 app.post('/journal', (req, res) => {
   let entry = req.body
-  // routeSpecs.handleBadRequest.postJournalEntry(entry)
-  // .then(_=> {
     Models.Journal.add(entry)
-  // })
   .then(_=> {
     res.sendStatus(201);
   })
@@ -420,10 +328,7 @@ app.post('/journal', (req, res) => {
 app.delete('/journal', (req, res) => {
   let id = req.body.id
   console.log('****', id);
-  // routeSpecs.handleBadRequest.deleteJournalEntry(id)
-  // .then(_=> {
     Models.Journal.delete(id)
-  // })
   .then(_=> {
     res.sendStatus(201);
   })
