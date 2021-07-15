@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react'
+import Loading from './Loading.jsx'
 import dateUtils from './utils/dateUtils.js';
 import SignIn from './SignIn.jsx'
 import Button from '@material-ui/core/Button'
@@ -18,23 +19,34 @@ const App = () => {
   const [date, setDate] = useState(dateUtils.today());
   const [loadObject, setLoadObject] = useState(null);
   const [loggedIn, setLoggedIn] = useState(undefined);
-  const [loggedInDB, setLoggedInDB] = useState(undefined);
+  const [loggedInDB, setLoggedInDB] = useState('loading');
   //Workout and Meal Planner widgets need to call this function in componentWillUnmount!
   const resetDate = function() {
     setDate(dateUtils.today());
     setLoadObject(null);
   };
 
-
   if (!loggedIn) {
     return (
-      <SignIn  setLoggedIn={setLoggedIn} setLoggedInDB={setLoggedInDB}/>
+      <div>
+        <SignIn  loggedInDB={loggedInDB} setLoggedIn={setLoggedIn} setLoggedInDB={setLoggedInDB}/>
+      </div>
+    )
+  }
+
+  if (loggedInDB === 'loading') {
+    return (
+      <div>
+        <Loading />
+      </div>
     )
   }
 
   if (!loggedInDB) {
     return (
-      <SignInDB />
+      <div>
+        <SignInDB loggedIn={loggedIn} setLoggedIn={setLoggedIn} setLoggedInDB={setLoggedInDB}/>
+      </div>
     )
   }
 
@@ -42,11 +54,11 @@ const App = () => {
   return (
       <>
         <div>
-          {loggedIn && <Navbar />}
+          {loggedIn && <Navbar setLoggedIn={setLoggedIn}/>}
         </div>
         <Switch>
           <Route exact path='/' >
-            <Home setLoggedIn={setLoggedIn}/>
+            <Home />
           </Route>
           <Route exact path='/calendar'>
             <React.Fragment>

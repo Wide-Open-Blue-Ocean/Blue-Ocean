@@ -3,8 +3,6 @@ const mongoose = require('../index.js');
 //hhmm-hhmm time range
 //yyyymmdd date format allows comparison of dates using numerical comparison operators like >= or <=
 const userSchema = mongoose.Schema({
-  userId: Number,
-  name: String,
   email: String,
   palEmail: String,
   isTrainer: Boolean
@@ -18,11 +16,18 @@ module.exports.add = (entry) => {
   return newUser.save();
 };
 
-module.exports.find = (userId) => {
+module.exports.find = (email) => {
   return User.find({
-    userId: userId,
+    email: email,
   });
 };
+module.exports.findAll = () => {
+  return User.find();
+};
+
+module.exports.updatePalEmail = (email, palEmail) => {
+  return User.findOneAndUpdate({email: email}, {palEmail: palEmail})
+}
 
 //pass in the mongo created __id property
 module.exports.delete = (_id) => {

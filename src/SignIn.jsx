@@ -42,7 +42,6 @@ const SignIn = ({setLoggedIn, setLoggedInDB}) => {
   useEffect(() => {
 
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
-      console.log('user data', user);
       setIsSignedIn(!!user);
 
       if (user) {
@@ -54,7 +53,7 @@ const SignIn = ({setLoggedIn, setLoggedInDB}) => {
         data.append('username', user.email);
         data.append('secret', user.uid);
 
-        axios.get('/users', {
+        axios.get('/user', {
           params: {
             email: user.email
           }
@@ -74,7 +73,7 @@ const SignIn = ({setLoggedIn, setLoggedInDB}) => {
         };
 
         axios(config).then(function (response) {
-          window.location.reload();
+          // window.location.reload();
         }).catch(function (error) {
           console.log(error);
         });
@@ -99,27 +98,18 @@ const SignIn = ({setLoggedIn, setLoggedInDB}) => {
     )
   }
 
-  // if (userExistsInDB) {
-    return (
-        <div>
-        <h1>My App</h1>
 
-        <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
-        <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
+  return (
+      <div>
+      <h1>My App</h1>
 
-        { (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/> }
-        </div>
+      <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+      <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
 
-    )
-  // } else {
-  //   return (
-  //     <div>
-  //       yo, are you trainer?
-  //     </div>
-  //   )
-  // }
+      { (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/> }
+      </div>
 
-
+  )
 
 }
 
