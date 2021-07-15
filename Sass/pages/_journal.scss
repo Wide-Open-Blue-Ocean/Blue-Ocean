@@ -1,0 +1,58 @@
+
+.myStyle {
+  background-color: blue;
+}
+
+.journalContainer {
+  display: flex;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+}
+
+.journalParent {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+#formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 70%;
+  width: 50%;
+}
+
+#formButton {
+  align-self: flex-end;
+  margin-right: 5%;
+}
+
+.inputForJournal {
+  height: 40%;
+  margin: 2%;
+  border: solid 2px black;
+  width: 80%;
+}
+
+.entryListContainer {
+  width: 50%;
+}
+
+.journalTitleRow {
+  display: flex;
+  align-items: center;
+}
+
+.entryButton {
+  margin-left: 4%;
+}
+
+.journalH3 {
+  margin: 0%;
+}
+

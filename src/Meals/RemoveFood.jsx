@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 const style = {
 }
@@ -17,7 +18,7 @@ function RemoveFood (props) {
   }
 
   return (
-    <button onClick={handleDelete}>delete</button>
+    <CancelIcon onClick={handleDelete}>delete</CancelIcon>
   )
 }
 

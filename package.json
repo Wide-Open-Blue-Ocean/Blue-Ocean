@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@material-ui/core": "^4.11.4",
+    "@material-ui/core": "^4.12.1",
     "@material-ui/icons": "^4.11.2",
     "@popperjs/core": "^2.9.2",
     "axios": "^0.21.1",
@@ -29,7 +29,7 @@
     "mongoose": "^5.13.2",
     "popper.js": "^1.16.1",
     "react": "^17.0.2",
-    "react-chat-engine": "1.8.13",
+    "react-chat-engine": "^1.8.13",
     "react-dom": "^17.0.2",
     "react-firebaseui": "^5.0.2",
     "react-icons": "^4.2.0",

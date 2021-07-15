@@ -7,7 +7,7 @@ import Calendar from './Calendar/calendar.jsx'
 import MobileCalendar from './MobileCalendar/MobileCalendar.jsx'
 import Workout from './components/workout'
 import Meals from './components/meals'
-import Journal from './components/journal'
+import Journal from './Journal/journal.js'
 import Navbar from './components/Navbar/navbar'
 import SignIn from './SignIn'
 import ChatEngineComponent from './ChatEngine'
@@ -38,17 +38,21 @@ const App = () => {
 
   return (
     <>
-    <div className='open-chat' onClick={() => setChatOpen(!chatOpen)}>chat</div>
       <div>
         {loggedIn && (
           <div>
           <GlobalProvider>
-          <Navbar setLoggedIn={setLoggedIn}/>
-            <div className='chatEngine-wrap'>
-            {chatOpen &&
-              <ChatEngineComponent username={loggedIn} usersecret={userID}/>
-            }
+            <div className='open-chat' onClick={() => setChatOpen(!chatOpen)}>
+              <p class={chatOpen ? "closeButtonText" : "openButtonText"}>{chatOpen ? 'Close' : 'Chat'}</p>
             </div>
+          <Navbar setLoggedIn={setLoggedIn}/>
+            {chatOpen &&
+              <div id="chatEngineContainer" onClick={() => {setChatOpen(false)}}>
+                <div className='chatEngine-wrap' onClick={(e) => {e.stopPropagation()}}>
+                  <ChatEngineComponent username={loggedIn} usersecret={userID}/>
+                </div>
+              </div>
+            }
           </GlobalProvider>
           </div>
         )}
