@@ -9,7 +9,7 @@ export default function Column(props) {
   return (
     <div className="calendarColumn" onClick={_click}>
       {props.events.map(event =>
-        <Event key={event.sessionName + event.date} event={event} setDate={props.setDate} setLoadObject={props.setLoadObject}/>
+        <Event key={(event.sessionName ? event.sessionName : event.mealName) + event.date} event={event} setDate={props.setDate} setLoadObject={props.setLoadObject}/>
       )}
     </div>
   );
