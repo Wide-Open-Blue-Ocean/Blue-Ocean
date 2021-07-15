@@ -30,9 +30,8 @@ function Exercise (props) {
                 <div><h2 style={{color: 'rgb(73, 73, 73)'}}>{exercise.exercise.toUpperCase()}</h2></div>
               </div>
               <div className="actionItems" style={{display: 'flex'}}>
-                {console.log('***************', exercise)}
-                <div><WorkoutCheck _id={exercise._id} checked={exercise.checked} /></div>
-                <div className="remove"><RemoveExercise _id={exercise['_id']}/></div>
+                <div><WorkoutCheck getWorkouts={props.getWorkouts} _id={exercise._id} checked={exercise.checked} /></div>
+                <div className="remove"><RemoveExercise getWorkouts={props.getWorkouts} _id={exercise['_id']}/></div>
               </div>
               </div>
             </Wrap>
@@ -51,7 +50,7 @@ function Exercise (props) {
           )
         })}
       </IconContext.Provider>
-      <AddAExercise sessionParams={props.sessionParams}/>
+      <AddAExercise getWorkouts={props.getWorkouts} sessionParams={props.sessionParams}/>
     </div>
   )
 }

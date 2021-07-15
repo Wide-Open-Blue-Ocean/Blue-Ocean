@@ -8,6 +8,9 @@ function WorkoutCheck (props) {
       checked: value
     }
     axios.put('/workout/checked', putBody)
+    .then(() => {
+      props.getWorkouts()
+    })
   }
 
   if (props.checked === false) {
