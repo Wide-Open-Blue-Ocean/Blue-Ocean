@@ -9,8 +9,6 @@ function Workout (props) {
   const [sessions, setSessions] = useState([])
   const [exercises, setExercises] = useState([])
   const [sessionParams, setSessionParams] = useState({userId: 0,  date: 20210712, sessionName: 'TRAINER X\'S WEIGHT TRAINING'});
-  // const [workoutParams, setWorkoutParams] = useState([])
-
 
   const getWorkSessions = (() => {
     axios.get('/workoutSession', {params: {userId: sessionParams.userId, date: sessionParams.date}})
@@ -24,11 +22,9 @@ function Workout (props) {
     .then(result => {
       setSessions(result.data)
     })
-    // setSessions([{ sessionName: 'trainer x hit work out' }, { sessionName: 'yoga' }, { sessionName: 'weights' }])
   }, [])
 
   const getWorkouts = (() => {
-    console.log('*******', sessionParams);
     axios.get('/workout', {params: {userId: sessionParams.userId, date: sessionParams.date, sessionName: sessionParams.sessionName}})
     .then(result => {
       setExercises(result.data);
@@ -41,7 +37,6 @@ function Workout (props) {
     .then(result => {
       setExercises(result.data);
     })
-    console.log('sessions params gets set', sessionParams);
   }
 
   return (
