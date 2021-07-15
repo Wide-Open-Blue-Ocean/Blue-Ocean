@@ -11,6 +11,21 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/../../dist'));
 
+//images
+app.use('/images/img1', express.static(__dirname + '/../../images/img1.jpeg'));
+app.use('/images/img2', express.static(__dirname + '/../../images/img2.jpg'));
+app.use('/images/img3', express.static(__dirname + '/../../images/img3.jpg'));
+app.use('/images/img4', express.static(__dirname + '/../../images/img4.jpg'));
+app.use('/images/img5', express.static(__dirname + '/../../images/img5.jpg'));
+app.use('/images/img6', express.static(__dirname + '/../../images/img6.jpg'));
+app.use('/images/img7', express.static(__dirname + '/../../images/img7.jpg'));
+app.use('/images/img8', express.static(__dirname + '/../../images/img8.jpg'));
+
+app.use('/images/food1', express.static(__dirname + '/../../images/food1.jpg'));
+app.use('/images/food2', express.static(__dirname + '/../../images/food2.jpg'));
+app.use('/images/food3', express.static(__dirname + '/../../images/food3.jpg'));
+app.use('/images/food4', express.static(__dirname + '/../../images/food4.jpg'));
+app.use('/images/food5', express.static(__dirname + '/../../images/food5.jpg'));
 
 /*
   While writing your endpoints, please do not remove any of the mongo created
@@ -88,7 +103,6 @@ app.delete('/user', (req, res) => {
 //format for 'dateRange' query: yyyymmdd-yyyymmdd
 
 app.get('/workoutSession', (req, res) => {
-  console.log(req.query);
   let {userId, date, startDate, endDate} = req.query
   return (date ? Models.WorkoutSession.find(userId, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate))
   .then((results) => {
@@ -145,8 +159,6 @@ app.delete('/workoutSession', (req, res) => {
 
 
 app.get('/workout', (req, res) => {
-  console.log('hits the server');
-  console.log(req.query);
   let {userId, date, sessionName} = req.query;
   // routeSpecs.handleBadRequest.getWorkout(userId, date, sessionName)
   // .then(_=> {
@@ -419,7 +431,6 @@ app.post('/journal', (req, res) => {
 
 app.delete('/journal', (req, res) => {
   let id = req.body.id
-  console.log('****', id);
   // routeSpecs.handleBadRequest.deleteJournalEntry(id)
   // .then(_=> {
     Models.Journal.delete(id)

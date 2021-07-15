@@ -22,10 +22,10 @@ function AddAMeal (props) {
   };
   const convertTime = (start, end) => {
     if (Number(start.slice(0, 2)) > 20 || Number(end.slice(0, 2)) > 20) {
-      return `This is not a healthy time to eat`;
+      return {};
     }
     if (Number(start.slice(0, 2)) < 5 || Number(end.slice(0, 2)) < 5) {
-      return `This is not a healthy time to eat`;
+      return {};
     }
     return `${newStart(start)}-${newEnd(end)}`
   };
@@ -38,16 +38,18 @@ function AddAMeal (props) {
       date: props.mealParams.date
     }
     axios.post('/meal', meal)
-    .then(res => console.log(res.data)) // delete later
     .then(() => {
       props.getMeals();
+    })
+    .catch((err) => {
+      const newWindow = window.open("", null, "height=200, width=400, top=-200, left=-500")
+      newWindow.document.write("Meals must be booked between 5:00am - 8:59pm");
     })
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     postMeal();
     closeModal();
-    //update state
   };
   return (
     <div className="buttonContainer2">
