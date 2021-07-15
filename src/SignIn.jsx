@@ -103,7 +103,10 @@ const SignIn = ({setLoggedIn}) => {
     )
   }
    (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/>
-  return null;
+
+   return null;
+
+   
   // return (
   //     // <div>
   //     // <h1>My App</h1>

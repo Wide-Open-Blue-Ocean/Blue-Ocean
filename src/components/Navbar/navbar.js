@@ -116,22 +116,21 @@ const HoverText = styled.p`
             {/* </div> */}
 
             {/* <div className="navbar-end"> */}
-              <div className="navbar-item">
-                <div className="buttons">
-                  <a
-                    className="button is-white"
-                    style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
-                  >
-                    <HoverText>
-                    <a onClick={
+            <NavLink
+                className="navbar-item"
+                activeClassName="is-active"
+                to="/Signin"
+                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+              >
+                <HoverText>
+                <a onClick={
                       () => {
                     setLoggedIn(undefined)
                     firebase.auth().signOut()
                     }}>Sign-out</a>
-                    </HoverText>
-                  </a>
-                </div>
-              </div>
+                </HoverText>
+              </NavLink>
+             
             </div>
           </div>
         </div>
