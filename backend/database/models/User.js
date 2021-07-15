@@ -6,7 +6,8 @@ const userSchema = mongoose.Schema({
   userId: Number,
   name: String,
   email: String,
-  trainerEmail: String
+  trainerEmail: String,
+  isTrainer: Boolean
 });
 
 let User = mongoose.model('User', userSchema, 'users');

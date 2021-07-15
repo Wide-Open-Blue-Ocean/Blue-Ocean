@@ -7,12 +7,12 @@ const trainerSchema = mongoose.Schema({
   name: String,
   email: String,
   clientEmails: [],
-  isTrainer: true
+  isTrainer: Boolean
 });
 //need to implement in chat a way to switch which client trainer is chatting with
 
 
-let Trainer = mongoose.model('Trainer', userSchema, 'trainers');
+let Trainer = mongoose.model('Trainer', trainerSchema, 'trainers');
 
 
 module.exports.add = (entry) => {
