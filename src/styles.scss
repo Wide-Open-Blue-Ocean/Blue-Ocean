@@ -43,18 +43,39 @@ h1 {
 .open-chat {
   position: fixed;
   top: 90%;
-  left: 90%;
+  left: 93%;
   width: 5%;
   height: 5%;
   z-index: 20;
-  border: solid 1px black;
+  border: solid 2px black;
+  border-radius: 10%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
+.open-chat:hover {
+  border: solid 2px orange;
+}
+.openButtonText {
+  margin: 0;
+}
+.closeButtonText {
+  margin: 0;
+  color: red;
+}
+#chatEngineContainer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
 .chatEngine-wrap {
+  border: solid 2px black;
   z-index: 10 !important;
   width: 80%;
   font-family:Arial, Helvetica, sans-serif;
-  position: absolute !important;
+  position: fixed !important;
   bottom: 0 !important;
   right: 0 !important;
 }

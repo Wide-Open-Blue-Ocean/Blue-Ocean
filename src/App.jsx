@@ -31,17 +31,21 @@ const App = () => {
   };
   return (
     <>
-    <div className='open-chat' onClick={() => setChatOpen(!chatOpen)}>chat</div>
+    <div className='open-chat' onClick={() => setChatOpen(!chatOpen)}>
+      <p class={chatOpen ? "closeButtonText" : "openButtonText"}>{chatOpen ? 'Close' : 'Chat'}</p>
+    </div>
       <div>
         {loggedIn && (
           <div>
           <GlobalProvider>
           <Navbar setLoggedIn={setLoggedIn}/>
-            <div className='chatEngine-wrap'>
             {chatOpen &&
-              <ChatEngineComponent username={loggedIn} usersecret={userID}/>
+              <div id="chatEngineContainer" onClick={() => {setChatOpen(false)}}>
+                <div className='chatEngine-wrap' onClick={(e) => {e.stopPropagation()}}>
+                  <ChatEngineComponent username={loggedIn} usersecret={userID}/>
+                </div>
+              </div>
             }
-            </div>
           </GlobalProvider>
           </div>
         )}
