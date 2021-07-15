@@ -6,8 +6,7 @@ import Card from '../Workout/Card.jsx'
 import WorkoutCard from '../Home/WorkoutCard'
 import MealsCard from '../Home/MealsCard'
 import JournalCard from '../Home/JournalCard'
-import {GlobalProvider} from '../context/GlobalState'
-// import GlobalContext from '../context/GlobalState'
+import { GlobalProvider, GlobalWorkoutContext, GlobalMealContext } from '../context/GlobalState'
 
 function Home() {
 
@@ -16,46 +15,26 @@ function Home() {
   const [journal, setJournal] = useState(false)
   const [tiles, setTiles] = useState([`Today's Workout`, `Today's Meals`, `Journal`])
 
-  // useEffect(() => {
-  //   setSessions([{ sessionName: 'trainer x hit work out' }, { sessionName: 'yoga' }, { sessionName: 'weights' }])
-  //   // axios.get('/workoutSession', {params: {userId : 0, date: 20210712}})
-  //   //   .then((result) => {
-  //   //     console.log('****', result.data);
-  //   //   })
-  // }, [])
-
-  // const gContext = useContext(GlobalContext);
-
-  // console.log('gContext: ', gContext)
+  const wContext = useContext(GlobalWorkoutContext);
+  const mContext = useContext(GlobalMealContext);
 
   return (
  <>
-
-    <div>
-      <div className="homeContainer">
-      <div className="home">
-        <div className="cardHome">
-          <div className="cards">
-            {/* <GlobalContext.Provider value={state}> */}
-            <GlobalProvider>
-      <WorkoutCard />
-      </GlobalProvider>
-      <MealsCard />
-      <JournalCard journaled={false} />
-      {/* </GlobalContext.Provider> */}
-          {/* {tiles.map((tile, i) => {
-            return (
-              <HomeCard key={i} title={tile} cardOnClick={cardOnClick}/>)
-          })} */}
+   <div>
+     <div className="homeContainer">
+       <div className="home">
+         <div className="cardHome">
+           <div className="cards">
+             <GlobalProvider>
+               <WorkoutCard sessions={wContext}/>
+               <MealsCard meals={mContext}/>
+               <JournalCard journaled={false} />
+             </GlobalProvider>
           </div>
-        </div>
-        <div className="excercises">
-        </div>
-      </div>
-
-    </div>
-
-    </div>
+         </div>
+       </div>
+     </div>
+   </div>
   <SignIn/>
  </>
   )

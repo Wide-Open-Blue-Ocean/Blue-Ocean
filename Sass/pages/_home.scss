@@ -35,6 +35,10 @@
 
 .workoutTile {
   display: flex;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-wrap;
+  font-size: 12px;
   margin: 0;
   width: 70px;
   height: 70px;
@@ -49,7 +53,11 @@
 
 .mealTile {
   display: flex;
-  margin: 0;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-wrap;
+  font-size: 12px;
+  font-size-adjust: inherit;
   width: 70px;
   height: 70px;
   flex-direction: column;

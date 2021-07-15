@@ -92,7 +92,7 @@ app.get('/workoutSession', (req, res) => {
   let {userId, date, startDate, endDate} = req.query
   // routeSpecs.handleBadRequest.getWorkoutSession(userId, date, startDate, endDate)
   // .then(() => {
-    return date ? Models.WorkoutSession.find(userId, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate)
+    return (date ? Models.WorkoutSession.find(userId, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate))
   // })
   .then((results) => {
     res.status(200).json(results)
@@ -354,7 +354,7 @@ app.get('/meal', (req, res) => {
   let {userId, date, startDate, endDate} = req.query;
   // routeSpecs.handleBadRequest.getMeal(userId, date, startDate, endDate)
   // .then(_=> {
-    return date ? Models.Meal.find(userId, date) : Models.Meal.findRange(userId, startDate, endDate)
+    return (date ? Models.Meal.find(userId, date) : Models.Meal.findRange(userId, startDate, endDate))
   // })
   .then(result => {
     res.status(200).json(result);

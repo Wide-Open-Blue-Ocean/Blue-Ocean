@@ -11,6 +11,8 @@ import Journal from './components/journal'
 import Navbar from './components/Navbar/navbar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {useHistory} from 'react-router-dom'
+import { GlobalProvider } from './context/GlobalState'
+
 const App = () => {
   const history = useHistory();
   const [date, setDate] = useState(dateUtils.today());
@@ -27,6 +29,7 @@ const App = () => {
           <Navbar />
         </div>
         <Switch>
+          <GlobalProvider>
           <Route path='/' component={Home} exact/>
           <Route exact path='/calendar'>
             <React.Fragment>
@@ -46,6 +49,7 @@ const App = () => {
           </Route>
           <Route path='/journal' component={Journal}/>
           <Route exact path='/' component={Home}/>
+          </GlobalProvider>
         </Switch>
       </>
   )
