@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import styled from 'styled-components'
 import 'bulma/css/bulma.min.css';
 import firebase from 'firebase/app';
@@ -59,7 +59,6 @@ const HoverText = styled.p`
               activeClassName="is-active"
               to="/"
               style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
-
               >
                 <HoverText>
                   Home
@@ -71,7 +70,6 @@ const HoverText = styled.p`
                 activeClassName="is-active"
                 to="/Calendar"
                 style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
-
               >
                 <HoverText>
                   Calendar
@@ -83,8 +81,6 @@ const HoverText = styled.p`
                 activeClassName="is-active"
                 to="/Workout"
                 style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
-
-
               >
                 <HoverText>
                   Workout
@@ -96,7 +92,6 @@ const HoverText = styled.p`
                 activeClassName="is-active"
                 to="/Meals"
                 style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
-
               >
                 <HoverText>
                   Meals
@@ -122,12 +117,13 @@ const HoverText = styled.p`
                 to="/signin"
                 style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
               >
-                <HoverText>
-                <a onClick={
+                <HoverText
+                  role='link'
+                  onClick={
                       () => {
                     setLoggedIn(undefined)
                     firebase.auth().signOut()
-                    }}>Sign-out</a>
+                    }}>Sign-out
                 </HoverText>
               </NavLink>
 

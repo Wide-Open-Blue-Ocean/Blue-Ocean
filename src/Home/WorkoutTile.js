@@ -1,22 +1,32 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom';
+import { GlobalContext, GlobalWorkoutContext } from '../context/GlobalState'
+
 
 function WorkoutTile (props) {
 
   const history = useHistory();
+  const workouts = useContext(GlobalWorkoutContext)
 
   const workoutTileClick = () => {
-    console.log('workoutTileclick');
     history.push('/workout')
-
   }
 
-  return (
-    <div className="workoutTile" onClick={() => workoutTileClick()}>
-      {/* <div> */}
-        {'WTile'}
-      {/* </div> */}
+  const todaysWorkouts = workouts.map((item, index) => {
+    return (
+    <div
+      key={index}
+      className="workoutTile"
+      onClick={() => workoutTileClick()}
+    >
+      {item}
     </div>
+  )})
+
+  return (
+    <>
+      {todaysWorkouts}
+    </>
   )
 }
 
