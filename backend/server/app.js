@@ -283,10 +283,10 @@ app.get('/food/checked', (req, res) => {
 })
 
 app.put('/food/checked', (req, res) => {
-  let {id, checked} = req.body;
+  let {_id, checked} = req.body;
   // routeSpecs.handleBadRequest.putFoodChecked(id, checked)
   // .then(_=> {
-    Models.Food.updateCheck(id, checked)
+    Models.Food.updateCheck(_id, checked)
   // })
   .then(_=> {
     res.sendStatus(201)
@@ -297,10 +297,10 @@ app.put('/food/checked', (req, res) => {
 })
 
 app.delete('/food', (req, res) => {
-  let id = req.body.id;
+  let _id = req.body._id;
   // routeSpecs.handleBadRequest.deleteFood(id)
   // .then(_=> {
-    Models.Food.delete(id)
+    Models.Food.delete(_id)
   // })
   .then(_=> {
     res.sendStatus(201);
@@ -336,7 +336,7 @@ app.delete('/food', (req, res) => {
 // date: Number,
 
 app.post('/meal', (req, res) => {
-  let entry = req.params;
+  let entry = req.body;
   // routeSpecs.handleBadRequest.postMeal(entry)
   // .then(_=> {
     Models.Meal.add(entry)

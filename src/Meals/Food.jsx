@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import {IconContext} from 'react-icons';
 import {FiPlus, FiMinus} from 'react-icons/fi';
-import AddAExercise from './AddAExercise.jsx';
-import RemoveExercise from './RemoveExercise.jsx';
-import WorkoutCheck from './WorkoutCheck.jsx';
+import AddAFood from './AddAFood.jsx';
+import RemoveFood from './RemoveFood.jsx';
+import FoodCheck from './FoodCheck.jsx';
 
 const Wrap = styled.div``;
 const Dropdown = styled.div``;
 
-function Exercise (props) {
+function Food (props) {
   const [clicked, setClicked] = useState(false);
   const toggle = (i) => {
     if (clicked === i) {
@@ -20,18 +20,18 @@ function Exercise (props) {
   return (
     <div>
       <IconContext.Provider value={{color: 'rgb(73, 73, 73)', size: '25px', fontWeight: 'bold'}}>
-        {props.exercises.map((exercise, i) => {
+        {props.food.map((foodItem, i) => {
           return (
           <div key={i} className="exerciseCard">
             <Wrap key={i} style={{'display' : 'flex'}}>
               <div className="eContainer">
               <div className="exerciseItem">
                 <div onClick={() => {toggle(i)}} className="symbol1"><span>{clicked === i ? <FiMinus /> : <FiPlus />}</span></div>
-                <div><h2 style={{color: 'rgb(73, 73, 73)'}}>{exercise.exercise.toUpperCase()}</h2></div>
+                <div><h2 style={{color: 'rgb(73, 73, 73)'}}>{foodItem.item.toUpperCase()}</h2></div>
               </div>
               <div className="actionItems" style={{display: 'flex'}}>
-                <div><WorkoutCheck getWorkouts={props.getWorkouts} _id={exercise._id} checked={exercise.checked} /></div>
-                <div className="remove"><RemoveExercise getWorkouts={props.getWorkouts} _id={exercise['_id']}/></div>
+                <div><FoodCheck getFood={props.getFood} _id={foodItem._id} checked={foodItem.checked} /></div>
+                <div className="remove"><RemoveFood getFood={props.getFood} _id={foodItem['_id']}/></div>
               </div>
               </div>
             </Wrap>
@@ -40,8 +40,8 @@ function Exercise (props) {
             <Dropdown>
               <div className="dropDown">
                 <hr/>
-                <p>Description: {exercise.description}</p>
-                <p>Calories burned: {exercise.calories}</p>
+                <p>Description: {foodItem.description}</p>
+                <p>Calories: {foodItem.calories}</p>
               </div>
             </Dropdown>
             ) : null}
@@ -50,9 +50,9 @@ function Exercise (props) {
           )
         })}
       </IconContext.Provider>
-      <AddAExercise getWorkouts={props.getWorkouts} sessionParams={props.sessionParams}/>
+      <AddAFood getFood={props.getFood} mealParams={props.mealParams}/>
     </div>
   )
 }
 
-export default Exercise;
+export default Food;

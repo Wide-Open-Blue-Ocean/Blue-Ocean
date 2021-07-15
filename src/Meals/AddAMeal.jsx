@@ -3,9 +3,9 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import customStyles from '../customStyles/customStyles.jsx';
 
-function AddASession (props) {
+function AddAMeal (props) {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [sessionName, setSessionName] = useState('');
+  const [mealName, setMealName] = useState('');
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const openModal = () => {
@@ -22,30 +22,30 @@ function AddASession (props) {
   };
   const convertTime = (start, end) => {
     if (Number(start.slice(0, 2)) > 20 || Number(end.slice(0, 2)) > 20) {
-      return `This is not a healthy time to work out`;
+      return `This is not a healthy time to eat`;
     }
     if (Number(start.slice(0, 2)) < 5 || Number(end.slice(0, 2)) < 5) {
-      return `This is not a healthy time to work out`;
+      return `This is not a healthy time to eat`;
     }
     return `${newStart(start)}-${newEnd(end)}`
   };
-  const postSession = () => {
+  const postMeal = () => {
     const time = convertTime(startTime, endTime);
-    const session = {
-      userId: props.sessionParams.userId,
-      sessionName: sessionName,
+    const meal = {
+      userId: props.mealParams.userId,
+      mealName: mealName,
       timeRange: time,
-      date: props.sessionParams.date
+      date: props.mealParams.date
     }
-    axios.post('/workoutSession', session)
+    axios.post('/meal', meal)
     .then(res => console.log(res.data)) // delete later
     .then(() => {
-      props.getWorkSessions();
+      props.getMeals();
     })
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    postSession();
+    postMeal();
     closeModal();
     //update state
   };
@@ -67,21 +67,21 @@ function AddASession (props) {
           <input className="inputName"
             type="text"
             required
-            placeholder="Session Name"
-            onChange={e => setSessionName(e.target.value)}
+            placeholder='Meal Name'
+            onChange={e => setMealName(e.target.value)}
           />
           <br/>
           <input className="timeStart"
             type="text"
             required
-            placeholder="HH:MM"
+            placeholder='HH:MM'
             onChange={e => setStartTime(e.target.value)}
           />
           -
           <input className="timeEnd"
             type="text"
             required
-            placeholder="HH:MM"
+            placeholder='HH:MM'
             onChange={e => setEndTime(e.target.value)}
           />
           <label className="label">Please use 24 hour format</label>
@@ -92,4 +92,4 @@ function AddASession (props) {
    </div>
   )
 }
-export default AddASession;
+export default AddAMeal;
