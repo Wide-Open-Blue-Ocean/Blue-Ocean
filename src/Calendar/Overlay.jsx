@@ -9,7 +9,7 @@ export default function Overlay(props) {
       border: 'solid 1px #DDDDDD',
       borderLeft: 'none',
       // paddingLeft: 10,
-      fontSize: 'small',
+      // fontSize: 'small',
     };
   };
 
