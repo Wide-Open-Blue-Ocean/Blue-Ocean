@@ -3,7 +3,6 @@ import Event from './Event.jsx';
 export default function Column(props) {
 
   const _click = (e) => {
-    props.setDate(props.date);
     e.date = props.date; //utilizing click event propogation
   };
 
