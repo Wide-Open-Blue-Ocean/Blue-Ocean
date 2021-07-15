@@ -407,7 +407,7 @@ app.post('/journal', (req, res) => {
   let entry = req.body
   // routeSpecs.handleBadRequest.postJournalEntry(entry)
   // .then(_=> {
-    Models.Journal.find(entry)
+    Models.Journal.add(entry)
   // })
   .then(_=> {
     res.sendStatus(201);
