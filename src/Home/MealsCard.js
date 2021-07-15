@@ -13,12 +13,16 @@ function MealsCard (props) {
   }
 
   return (
-    <div className="mealSession" >
-      <div className="homeSessionText">
-        {`TODAY'S MEALS`}
-      </div>
-      <div className="workoutDisplay">
-        <MealTile />
+    <div className="mealCard">
+      <div className="mealSession" >
+        <div className="homeSessionText">
+          {`TODAY'S MEALS`}
+        </div>
+        <div className="mealTileContainer">
+        <div className="mealDisplay">
+          <MealTile />
+        </div>
+        </div>
       </div>
     </div>
   )

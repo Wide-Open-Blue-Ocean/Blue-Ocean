@@ -15,16 +15,18 @@ return (
   <>
     <div>
       <div className="homeContainer">
-        <div className="home">
+        {/* <div className="home"> */}
           <div className="cardHome">
-            <div className="cards">
+            <div className="homeWorkoutCard">
               <WorkoutCard />
+              </div>
+              <div className="homeMealCard">
               <MealsCard />
-              <JournalCard journaled={false} />
+              </div>
+              {/* <JournalCard journaled={false} /> */}
            </div>
-          </div>
+          {/* </div> */}
         </div>
-      </div>
       {/* <div className='chat-engine'>
           <ChatEngineComponent/>
       </div> */}

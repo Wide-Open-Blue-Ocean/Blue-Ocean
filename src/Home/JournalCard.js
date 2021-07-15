@@ -11,6 +11,7 @@ function JournalCard (props) {
   }
 
   return (
+    <div className="workoutCard">
     <div className="journalSession" onClick={() => {handleClick()}}>
       <div className="homeSessionText">
           {`TODAY'S JOURNAL`}
@@ -19,6 +20,7 @@ function JournalCard (props) {
         </div>
       </div>
     </div>
+  </div>
   )
 }
 

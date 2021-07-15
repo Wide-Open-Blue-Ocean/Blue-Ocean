@@ -25,7 +25,7 @@ function WorkoutTile (props) {
 
   return (
     <>
-      {todaysWorkouts}
+      {todaysWorkouts.slice(0, 2)}
     </>
   )
 }

@@ -17,6 +17,9 @@ const HoverText = styled.p`
 
   const Navbar = ({setLoggedIn}) => {
     const [isOpen, setOpen] = useState(false);
+
+
+    console.log('loggedIN?:', setLoggedIn)
     return (
       <nav
         className="navbar "

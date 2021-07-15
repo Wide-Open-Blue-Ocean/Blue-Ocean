@@ -10,8 +10,13 @@ function WorkoutCard (props) {
         <div className="homeSessionText" >
         {`TODAY'S WORKOUTS`}
         </div>
+        <div className="workoutTileContainer">
           <div className="workoutDisplay">
           <WorkoutTile />
+         </div>
+          <div className="workoutDisplay">
+          <WorkoutTile />
+         </div>
          </div>
       </div>
     </div>
