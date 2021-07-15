@@ -119,7 +119,7 @@ const HoverText = styled.p`
             <NavLink
                 className="navbar-item"
                 activeClassName="is-active"
-                to="/Signin"
+                to="/signin"
                 style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
               >
                 <HoverText>
@@ -130,7 +130,7 @@ const HoverText = styled.p`
                     }}>Sign-out</a>
                 </HoverText>
               </NavLink>
-             
+
             </div>
           </div>
         </div>
