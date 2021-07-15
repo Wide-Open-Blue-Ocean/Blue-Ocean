@@ -22,10 +22,10 @@ function AddASession (props) {
   };
   const convertTime = (start, end) => {
     if (Number(start.slice(0, 2)) > 20 || Number(end.slice(0, 2)) > 20) {
-      return `This is not a healthy time to work out`;
+      return {};
     }
     if (Number(start.slice(0, 2)) < 5 || Number(end.slice(0, 2)) < 5) {
-      return `This is not a healthy time to work out`;
+      return {};
     }
     return `${newStart(start)}-${newEnd(end)}`
   };
@@ -38,16 +38,18 @@ function AddASession (props) {
       date: props.sessionParams.date
     }
     axios.post('/workoutSession', session)
-    .then(res => console.log(res.data)) // delete later
     .then(() => {
       props.getWorkSessions();
+    })
+    .catch((err) => {
+      const newWindow = window.open("", null, "height=200, width=400, top=-200, left=-500")
+      newWindow.document.write("Sessions must be booked between 5:00am - 8:59pm");
     })
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     postSession();
     closeModal();
-    //update state
   };
   return (
     <div className="buttonContainer2">

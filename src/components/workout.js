@@ -37,14 +37,16 @@ function Workout (props) {
     .then(result => {
       setExercises(result.data);
     })
-
-    console.log('sessions params gets set', sessionParams);
   }
+
+  const uglyDateString = props.date;
+  const dateObj = new Date(uglyDateString.slice(0,4), parseInt(uglyDateString.slice(4, 6)) - 1, uglyDateString.slice(6, 8));
+  const finalDate = dateObj.toDateString();
 
   return (
     <div className="workoutContainer">
       <div className="workout">
-        <div className="cardSession">
+        <div className="cardSession" style={{ fontSize:'30px' }}>{finalDate}
           <div className="cards">
           {sessions.map((session, i) => {
             return (<Card getWorkSessions={getWorkSessions} exercises={exercises} key={i} session={session} cardOnClick={cardOnClick}/>)
