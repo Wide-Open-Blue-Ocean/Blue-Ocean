@@ -1,7 +1,8 @@
 import React from 'react'
-import EntryList from '../Journal/EntryList.jsx'
-import Entry from '../Journal/Entry.jsx'
+import EntryList from './EntryList.jsx'
+import Form from './Form.jsx'
 import axios from 'axios'
+import dateUtils from '../utils/dateUtils.js'
 
 function Journal (props) {
   const [entries, setEntries] = React.useState([])
@@ -17,8 +18,11 @@ function Journal (props) {
   }
 
   const getEntries = () => {
-    axios.get('/journal', {params: {userId: 0, date: 20210712}})
+    var today = dateUtils.today()
+    var past = dateUtils.getFutureOrPast(today, -31)
+    axios.get('/journal', {params: {userId: 0, startDate: past, endDate: today}})
     .then((result) => {
+      console.log(result.data)
       setEntries(result.data)
     })
     .catch((err) => {
@@ -31,7 +35,8 @@ function Journal (props) {
   }, [])
 
   const onSubmit = () => {
-    axios.post('/journal', {userId: 0, mealEntry: mealInputs, workoutEntry: workoutInputs, date: 20210712})
+    var today = dateUtils.today()
+    axios.post('/journal', {userId: 0, mealEntry: mealInputs, workoutEntry: workoutInputs, date: today})
     .then(() => {
       setMealInputs('');
       setWorkoutInputs('');
@@ -45,12 +50,10 @@ function Journal (props) {
   return (
     <div className="journalParent">
       <div className="journalContainer">
-        <div style={{marginTop: '30px', marginLeft: '30px'}}>
-          <Entry onSubmitEntry={onSubmit} mealInputs={mealInputs} workoutInputs={workoutInputs} workoutOnChange={workoutOnChange} mealOnChange={mealOnChange}  />
-        </div>
-        <div style={{marginTop: '30px', marginLeft: '30px'}}>
-        <EntryList getEntries={getEntries} entries={entries}/>
-        </div>
+        <>
+          <Form onSubmitEntry={onSubmit} mealInputs={mealInputs} workoutInputs={workoutInputs} workoutOnChange={workoutOnChange} mealOnChange={mealOnChange}  />
+          <EntryList getEntries={getEntries} entries={entries}/>
+        </>
       </div>
     </div>
   )
