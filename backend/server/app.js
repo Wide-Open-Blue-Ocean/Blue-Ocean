@@ -21,6 +21,12 @@ app.use('/images/img6', express.static(__dirname + '/../../images/img6.jpg'));
 app.use('/images/img7', express.static(__dirname + '/../../images/img7.jpg'));
 app.use('/images/img8', express.static(__dirname + '/../../images/img8.jpg'));
 
+app.use('/images/food1', express.static(__dirname + '/../../images/food1.jpg'));
+app.use('/images/food2', express.static(__dirname + '/../../images/food2.jpg'));
+app.use('/images/food3', express.static(__dirname + '/../../images/food3.jpg'));
+app.use('/images/food4', express.static(__dirname + '/../../images/food4.jpg'));
+app.use('/images/food5', express.static(__dirname + '/../../images/food5.jpg'));
+
 /*
   While writing your endpoints, please do not remove any of the mongo created
   _id properties

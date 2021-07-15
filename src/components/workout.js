@@ -18,6 +18,7 @@ function Workout (props) {
   const [sessions, setSessions] = useState([])
   const [exercises, setExercises] = useState([])
   const [sessionParams, setSessionParams] = useState({userId: 0,  date: props.date, sessionName: 'TRAINER X\'S WEIGHT TRAINING'});
+  const [clicked, setClicked] = useState(undefined);
 
   const getWorkSessions = (() => {
     axios.get('/workoutSession', {params: {userId: sessionParams.userId, date: sessionParams.date}})
@@ -55,25 +56,28 @@ function Workout (props) {
   return (
     <div className="workoutContainer">
       <div className="workout">
-        <div className="cardSession">
+        <div className="cardSession" style={{ fontSize:'30px' }}>{finalDate}
           {/* <div className="cards"> */}
           {/* {sessions.map((session, i) => {
             return (<Card getWorkSessions={getWorkSessions} exercises={exercises} key={i} session={session} cardOnClick={cardOnClick}/>)
           })} */}
           <ImageList sx={{ width: 1200, height: 450 }}>
               {sessions.map((session, i) => (
-              <ImageListItem key={i} onClick={() => {cardOnClick(session)}}>
-                <img srcSet={`${itemData[i].img}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />
+                <ImageListItem key={i}>
+                {(i < itemData.length) ?
+                  (<img srcSet={`${itemData[i].img}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />)
+                  : (<img srcSet={`${itemData[0].img}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />)}
               <ImageListItemBar title={session.sessionName} subtitle={session.sessionName}
               actionIcon={
-              <IconButton sx={{ color: 'red' }} aria-label={`info about ${session.sessionName}`}>
-              <InfoIcon />
+              <IconButton onClick={() => {cardOnClick(session); setClicked(i)}} sx={{ color: 'red' }} aria-label={`info about ${session.sessionName}`}>
+              {(clicked === i) ?
+              (<InfoIcon style={{color: 'yellow'}} className="Info"/>)
+              : (<InfoIcon style={{color: 'white'}} className="Info"/>)}
               {/* <DeleteForeverIcon /> */}
               </IconButton>
             }/>
           </ImageListItem>))}
           </ImageList>
-
           <AddASession getWorkSessions={getWorkSessions} sessionParams={sessionParams} />
           {/* </div> */}
         </div>
@@ -90,7 +94,7 @@ export default Workout
 
 const itemData = [
   {
-    img: '/images/img1',
+    img: '/images/img8',
     title: 'Breakfast',
     author: '@bkristastucchio',
     rows: 2,
@@ -131,12 +135,5 @@ const itemData = [
     img: '/images/img7',
     title: 'Fern',
     author: '@katie_wasserman',
-  },
-  {
-    img: '/images/img8',
-    title: 'Mushrooms',
-    author: '@silverdalex',
-    rows: 2,
-    cols: 2,
   }
 ];
