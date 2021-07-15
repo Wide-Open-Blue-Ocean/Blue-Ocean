@@ -43,6 +43,8 @@ function AddASession (props) {
     e.preventDefault();
     postSession();
     closeModal();
+    //update state
+    props.getWorkSessions();
   };
   return (
     <div className="buttonContainer2">

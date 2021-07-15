@@ -52,6 +52,6 @@ module.exports.delete = (_id) => {
 
 module.exports.deleteBySession = (sessionName) => {
   return Workout.deleteMany({
-    sessionName: session
+    sessionName: sessionName
   });
 };

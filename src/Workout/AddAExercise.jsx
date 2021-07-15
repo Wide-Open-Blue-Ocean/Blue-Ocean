@@ -15,7 +15,6 @@ function AddAExercise (props) {
     setIsOpen(false);
   };
   const postExercise = () => {
-    console.log('****** is this empty???', props.sessionParams);
     const exerciseDetail = {
       userId: props.sessionParams.userId,
       sessionName: props.sessionParams.sessionName,
@@ -26,7 +25,10 @@ function AddAExercise (props) {
       checked: false
     }
     axios.post('/workout', exerciseDetail)
-    .then(res => console.log(res.data)) // delete later
+    .then(res => console.log(res.data))
+    .then(() => {
+      props.getWorkouts();
+    })
   };
   const handleSubmit = (e) => {
     e.preventDefault();
