@@ -4,10 +4,6 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import axios from 'axios';
 import ChatEngineComponent from './ChatEngine';
 
-// const config = {
-
-// };
-// firebase.initializeApp(config);
 
 export const auth = firebase.initializeApp({
   apiKey: "AIzaSyDCFYRW6rFX51Y1tvAZNlyfsk6GId7OXuM",
@@ -45,27 +41,12 @@ const SignIn = ({setLoggedIn, setUserID}) => {
       setIsSignedIn(!!user);
 
       if (user) {
-        // setuserUID(user.uid);
         setUserID(user.uid);
-        // setuserEmail(user.email);
         setLoggedIn(user.email);
 
         var data = new FormData();
         data.append('username', user.email);
         data.append('secret', user.uid);
-
-        // axios.get('/users', {
-        //   params: {
-        //     email: user.email
-        //   }
-        // }).then((result) => {
-        //   if (result.data.length <= 0) {
-        //      axios.post('/users', {
-
-        //      })
-        //   }
-        // })
-
 
         var config = {
           method: 'post',
@@ -97,26 +78,16 @@ const SignIn = ({setLoggedIn, setUserID}) => {
 
         <div id='login-page'>
         <div id="login-card">
-        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+        <h3 style={{fontFamily: 'system-ui'}}>Welcome To Dino-sore!</h3>
+        <StyledFirebaseAuth style={{marginTop: '10px'}} uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
         </div>
       </div>
       </div>
     )
   }
-  //  (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/>
 
    return null;
-  // return (
-  //     // <div>
-  //     // <h1>My App</h1>
 
-  //     // <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
-  //     // <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
-
-  //     // { (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/> }
-  //     // </div>
-
-  // )
 
 }
 
