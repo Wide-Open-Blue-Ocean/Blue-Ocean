@@ -88,12 +88,9 @@ app.delete('/user', (req, res) => {
 //format for 'dateRange' query: yyyymmdd-yyyymmdd
 
 app.get('/workoutSession', (req, res) => {
-
+  console.log(req.query);
   let {userId, date, startDate, endDate} = req.query
-  // routeSpecs.handleBadRequest.getWorkoutSession(userId, date, startDate, endDate)
-  // .then(() => {
-    return date ? Models.WorkoutSession.find(userId, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate)
-  // })
+  return (date ? Models.WorkoutSession.find(userId, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate))
   .then((results) => {
     res.status(200).json(results)
   })
@@ -148,6 +145,8 @@ app.delete('/workoutSession', (req, res) => {
 
 
 app.get('/workout', (req, res) => {
+  console.log('hits the server');
+  console.log(req.query);
   let {userId, date, sessionName} = req.query;
   // routeSpecs.handleBadRequest.getWorkout(userId, date, sessionName)
   // .then(_=> {
@@ -164,7 +163,7 @@ app.get('/workout', (req, res) => {
 app.post('/workout', (req, res) => {
   let entry = req.body;
   // routeSpecs.handleBadRequest.postWorkout(entry)
-  // .then(_=>{
+  // .then(=>{
     Models.Workout.add(entry)
   // })
   .then(result => {
@@ -176,10 +175,10 @@ app.post('/workout', (req, res) => {
 })
 
 app.delete('/workout', (req, res) => {
-  let id = req.body.id;
+  let _id = req.body._id;
   // routeSpecs.handleBadRequest.deleteWorkout(id)
   // .then(_=>{
-    Models.Workout.delete(Number(id))
+    Models.Workout.delete(_id)
   // })
   .then(_=> {
     res.sendStatus(201);
@@ -204,10 +203,10 @@ app.get('/workout/checked', (req, res) => {
 })
 
 app.put('/workout/checked', (req, res) => {
-  let {id, checked} = req.body;
+  let {_id, checked} = req.body;
   // routeSpecs.handleBadRequest.putWorkoutChecked(id, checked)
   // .then(_=>{
-    Models.Workout.updateCheck(Number(id), checked)
+    Models.Workout.updateCheck(_id, checked)
   // })
   .then(_=> {
     res.sendStatus(201)
@@ -354,7 +353,7 @@ app.get('/meal', (req, res) => {
   let {userId, date, startDate, endDate} = req.query;
   // routeSpecs.handleBadRequest.getMeal(userId, date, startDate, endDate)
   // .then(_=> {
-    return date ? Models.Meal.find(userId, date) : Models.Meal.findRange(userId, startDate, endDate)
+    return (date ? Models.Meal.find(userId, date) : Models.Meal.findRange(userId, startDate, endDate))
   // })
   .then(result => {
     res.status(200).json(result);
@@ -394,7 +393,7 @@ app.get('/journal', (req, res) => {
   let {userId, date, startDate, endDate} = req.query;
   // routeSpecs.handleBadRequest.getJournalEntry(userId, date, startDate, endDate)
   // .then(_=> {
-    return date ? Models.Journal.find(userId, date) : Models.Journal.findRange(userId, startDate, endDate)
+    return (date ? Models.Journal.find(userId, date) : Models.Journal.findRange(userId, startDate, endDate))
   // })
   .then(result => {
     res.status(200).json(result)

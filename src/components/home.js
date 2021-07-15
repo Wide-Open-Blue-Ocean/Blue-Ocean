@@ -6,8 +6,8 @@ import Card from '../Workout/Card.jsx'
 import WorkoutCard from '../Home/WorkoutCard'
 import MealsCard from '../Home/MealsCard'
 import JournalCard from '../Home/JournalCard'
-
-function Home() {
+import ChatEngineComponent from '../ChatEngine'
+function Home({setLoggedIn, setUserID}) {
 
   const [workout, setWorkout] = useState([])
   const [meals, setMeals] = useState([])
@@ -42,9 +42,12 @@ function Home() {
         <div className="excercises">
         </div>
       </div>
+      {/* <div className='chat-engine'>
+          <ChatEngineComponent/>
+      </div> */}
     </div>
     </div>
-  <SignIn/>
+  <SignIn setLoggedIn={setLoggedIn} setUserID={setUserID}/>
  </>
   )
 }

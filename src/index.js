@@ -9,6 +9,6 @@ import "./styles.scss";
 var mountNode = document.getElementById("app");
 ReactDOM.render(
   <Router>
-    <App  />
+    <App />
   </Router>, mountNode
 );

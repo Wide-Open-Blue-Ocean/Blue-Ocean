@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components'
 import 'bulma/css/bulma.min.css';
-
+import firebase from 'firebase/app';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import {auth} from '../../SignIn';
 const HoverText = styled.p`
 	color: #000;
 	:hover {
@@ -13,7 +15,7 @@ const HoverText = styled.p`
     text-decoration-thickness: 3px;
 	}`
 
-  const Navbar = () => {
+  const Navbar = ({setLoggedIn}) => {
     const [isOpen, setOpen] = useState(false);
     return (
       <nav
@@ -114,18 +116,21 @@ const HoverText = styled.p`
             {/* </div> */}
 
             {/* <div className="navbar-end"> */}
-              <div className="navbar-item">
-                <div className="buttons">
-                  <a
-                    className="button is-white"
-                    style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
-                  >
-                    <HoverText>
-                      Log in
-                    </HoverText>
-                  </a>
-                </div>
-              </div>
+            <NavLink
+                className="navbar-item"
+                activeClassName="is-active"
+                to="/signin"
+                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+              >
+                <HoverText>
+                <a onClick={
+                      () => {
+                    setLoggedIn(undefined)
+                    firebase.auth().signOut()
+                    }}>Sign-out</a>
+                </HoverText>
+              </NavLink>
+
             </div>
           </div>
         </div>
