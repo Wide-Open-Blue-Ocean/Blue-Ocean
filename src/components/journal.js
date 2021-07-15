@@ -16,7 +16,7 @@ function Journal (props) {
     setWorkoutInputs(e.target.value);
   }
 
-  React.useEffect(() => {
+  const getEntries = () => {
     axios.get('/journal', {params: {userId: 0, date: 20210712}})
     .then((result) => {
       setEntries(result.data)
@@ -24,12 +24,18 @@ function Journal (props) {
     .catch((err) => {
       console.log(err)
     })
+  }
+
+  React.useEffect(() => {
+    getEntries();
   }, [])
 
   const onSubmit = () => {
     axios.post('/journal', {userId: 0, mealEntry: mealInputs, workoutEntry: workoutInputs, date: 20210712})
     .then(() => {
-      console.log('Created successfully')
+      setMealInputs('');
+      setWorkoutInputs('');
+      getEntries();
     })
     .catch((err) => {
       console.log(err)
@@ -41,7 +47,7 @@ function Journal (props) {
       <div className="formContainer">
         <Entry onSubmitEntry={onSubmit} mealInputs={mealInputs} workoutInputs={workoutInputs} workoutOnChange={workoutOnChange} mealOnChange={mealOnChange}  />
       </div>
-      <EntryList entries={entries}/>
+      <EntryList getEntries={getEntries} entries={entries}/>
     </div>
   )
 }

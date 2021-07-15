@@ -419,6 +419,7 @@ app.post('/journal', (req, res) => {
 
 app.delete('/journal', (req, res) => {
   let id = req.body.id
+  console.log('****', id);
   // routeSpecs.handleBadRequest.deleteJournalEntry(id)
   // .then(_=> {
     Models.Journal.delete(id)
