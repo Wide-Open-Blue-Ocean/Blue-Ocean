@@ -16,7 +16,7 @@ export default function Event(props) {
 
     var height = ((endHour * 60 + endMinute) - (startHour * 60 + startMinute)) / 960 * 640;
 
-    var color = props.event.type === 'meal' ? 'lightgreen' : 'pink';
+    var color = props.event.type === 'meal' ? '#EB6123' : '#F6BF26';
 
     var output = {
       position: 'absolute',
@@ -29,7 +29,9 @@ export default function Event(props) {
       fontSize: 'small',
       paddingLeft: 4,
       overflow: 'hidden',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      color: 'white',
+      fontSize: '12px'
     };
     if (mouseIn) {
       output.minWidth = 'fit-content';

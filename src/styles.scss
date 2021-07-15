@@ -2,6 +2,8 @@
 @import '../Sass/utilities/functions';
 @import '../Sass/utilities/mixins';
 
+@import '../Sass/base/typography';
+
 @import '../Sass/vendors/bootstrap';
 
 @import '../Sass/themes/theme';
@@ -34,9 +36,34 @@ h1 {
 
 #body {
   background-color: #E1E8ED;
-  font-family: 'Roboto', sans-serif;
+  // font-family: 'Roboto', sans-serif;
+  // font-family: $noto-serif;
 }
 
+.open-chat {
+  position: fixed;
+  top: 90%;
+  left: 90%;
+  width: 5%;
+  height: 5%;
+  z-index: 20;
+  border: solid 1px black;
+}
 
+.chatEngine-wrap {
+  z-index: 10 !important;
+  width: 80%;
+  font-family:Arial, Helvetica, sans-serif;
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+}
+
+// .ce-chat-title-text, .ce-chat-subtitle-text {
+//   visibility: hidden !important;
+// }
+// .ce-chats-container {
+//   background-color: cyan !important;
+// }
 
 html {background-color: #E1E8ED}

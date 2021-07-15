@@ -78,7 +78,7 @@ const SignIn = ({setLoggedIn, setUserID}) => {
         };
 
         axios(config).then(function (response) {
-          window.location.reload();
+          // window.location.reload();
         }).catch(function (error) {
           console.log(error);
         });

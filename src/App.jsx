@@ -22,6 +22,7 @@ const App = () => {
   // tracks email
   const [loggedIn, setLoggedIn] = useState(undefined);
   const [userID, setUserID] = useState(undefined);
+  const [chatOpen, setChatOpen] = useState(false);
 
   //Workout and Meal Planner widgets need to call this function in componentWillUnmount!
   const resetDate = function() {
@@ -30,12 +31,17 @@ const App = () => {
   };
   return (
     <>
+    <div className='open-chat' onClick={() => setChatOpen(!chatOpen)}>chat</div>
       <div>
         {loggedIn && (
           <div>
           <GlobalProvider>
           <Navbar setLoggedIn={setLoggedIn}/>
-          <ChatEngineComponent username={loggedIn} usersecret={userID}/>
+            <div className='chatEngine-wrap'>
+            {chatOpen &&
+              <ChatEngineComponent username={loggedIn} usersecret={userID}/>
+            }
+            </div>
           </GlobalProvider>
           </div>
         )}

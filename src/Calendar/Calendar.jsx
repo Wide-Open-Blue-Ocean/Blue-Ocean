@@ -155,7 +155,7 @@ export default class Calendar extends React.Component {
   render() {
     return (
       <div id="calendarContainer">
-        <svg style={{cursor: 'pointer', zIndex: 5}} width={40} height={40} onClick={this.cycleLeft} data-name="arrow_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#ff0000" d="M51.66 2.65L49 0 2.66 46.34h-.01L0 48.99h.01L0 49l2.65 2.66.01-.01L49 97.99l2.66-2.65L5.31 48.99 51.66 2.65z"/></svg>
+        <svg style={{cursor: 'pointer', zIndex: 5}} width={40} height={40} onClick={this.cycleLeft} data-name="arrow_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#000000" d="M51.66 2.65L49 0 2.66 46.34h-.01L0 48.99h.01L0 49l2.65 2.66.01-.01L49 97.99l2.66-2.65L5.31 48.99 51.66 2.65z"/></svg>
         <div id="calendarWidget">
           <div id="dateRow">
             {Object.keys(this.state.dates).map(date =>
@@ -175,7 +175,7 @@ export default class Calendar extends React.Component {
             <LinkModal modal={this.state.modal} closeModal={this.closeModal}/>
           }
         </div>
-        <svg style={{ zIndex: 5, cursor: 'pointer'}} width={40} height={40} onClick={this.cycleRight} data-name="arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#ff0000" d="M0 95.34l2.65 2.65 46.34-46.34.01.01L51.66 49l-.01-.01h.01L49 46.34h-.01L2.65 0 0 2.65l46.34 46.34L0 95.34z"/></svg>
+        <svg style={{ zIndex: 5, cursor: 'pointer'}} width={40} height={40} onClick={this.cycleRight} data-name="arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.65 97.99"><path fill="#000000" d="M0 95.34l2.65 2.65 46.34-46.34.01.01L51.66 49l-.01-.01h.01L49 46.34h-.01L2.65 0 0 2.65l46.34 46.34L0 95.34z"/></svg>
       </div>
     );
   }
