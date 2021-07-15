@@ -1,6 +1,6 @@
 import React from 'react'
-import EntryList from '../Journal/EntryList.jsx'
-import Entry from '../Journal/Entry.jsx'
+import EntryList from './EntryList.jsx'
+import Form from './Form.jsx'
 import axios from 'axios'
 import dateUtils from '../utils/dateUtils.js'
 
@@ -18,8 +18,15 @@ function Journal (props) {
   }
 
   const getEntries = () => {
+<<<<<<< HEAD:src/components/journal.js
     axios.get('/journal', {params: {email: 'tommmmmmriddle@gmail.com', date: dateUtils.today()}})
+=======
+    var today = dateUtils.today()
+    var past = dateUtils.getFutureOrPast(today, -31)
+    axios.get('/journal', {params: {userId: 0, startDate: past, endDate: today}})
+>>>>>>> main:src/Journal/journal.js
     .then((result) => {
+      console.log(result.data)
       setEntries(result.data)
     })
     .catch((err) => {
@@ -32,7 +39,12 @@ function Journal (props) {
   }, [])
 
   const onSubmit = () => {
+<<<<<<< HEAD:src/components/journal.js
     axios.post('/journal', {email: 'tommmmmmriddle@gmail.com', mealEntry: mealInputs, workoutEntry: workoutInputs, date: dateUtils.today()})
+=======
+    var today = dateUtils.today()
+    axios.post('/journal', {userId: 0, mealEntry: mealInputs, workoutEntry: workoutInputs, date: today})
+>>>>>>> main:src/Journal/journal.js
     .then(() => {
       setMealInputs('');
       setWorkoutInputs('');
@@ -46,12 +58,10 @@ function Journal (props) {
   return (
     <div className="journalParent">
       <div className="journalContainer">
-        <div style={{marginTop: '30px', marginLeft: '30px'}}>
-          <Entry onSubmitEntry={onSubmit} mealInputs={mealInputs} workoutInputs={workoutInputs} workoutOnChange={workoutOnChange} mealOnChange={mealOnChange}  />
-        </div>
-        <div style={{marginTop: '30px', marginLeft: '30px'}}>
-        <EntryList getEntries={getEntries} entries={entries}/>
-        </div>
+        <>
+          <Form onSubmitEntry={onSubmit} mealInputs={mealInputs} workoutInputs={workoutInputs} workoutOnChange={workoutOnChange} mealOnChange={mealOnChange}  />
+          <EntryList getEntries={getEntries} entries={entries}/>
+        </>
       </div>
     </div>
   )
