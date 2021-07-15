@@ -160,8 +160,8 @@ export default class Calendar extends React.Component {
           <div id="dateRow">
             {Object.keys(this.state.dates).map(date =>
               <div key={date} className="dateTop">
-                <p>{dateUtils.getWeekday(date)}</p>
-                <p>{date.slice(4, 6) + ' / ' + date.slice(6, 8)}</p>
+                <p className="calendarHeaderText">{dateUtils.getWeekday(date)}</p>
+                <p className="calendarHeaderText">{date.slice(4, 6) + ' / ' + date.slice(6, 8)}</p>
               </div>
             )}
           </div>

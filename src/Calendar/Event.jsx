@@ -25,7 +25,6 @@ export default function Event(props) {
       width: '100%',
       backgroundColor: color,
       zIndex: mouseIn ? 4 : 3,
-      borderRadius: '7%',
       border: mouseIn ? 'solid 2px fuchsia' :'solid 1px black',
       fontSize: 'small',
       paddingLeft: 4,
