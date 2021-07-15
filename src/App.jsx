@@ -9,6 +9,7 @@ import Workout from './components/workout'
 import Meals from './components/meals'
 import Journal from './components/journal'
 import Navbar from './components/Navbar/navbar'
+import SignIn from './SignIn'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {useHistory} from 'react-router-dom'
 const App = () => {
@@ -25,9 +26,10 @@ const App = () => {
   return (
       <>
         <div>
-          {loggedIn && <Navbar />}
+          {loggedIn && <Navbar setLoggedIn={setLoggedIn}/>}
         </div>
         <Switch>
+          <Route exact path='/signin' component={SignIn}/>
           <Route exact path='/' >
             <Home setLoggedIn={setLoggedIn}/>
           </Route>

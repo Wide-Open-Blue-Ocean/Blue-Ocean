@@ -102,18 +102,19 @@ const SignIn = ({setLoggedIn}) => {
       </div>
     )
   }
+   (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/>
+  return null;
+  // return (
+  //     // <div>
+  //     // <h1>My App</h1>
 
-  return (
-      <div>
-      <h1>My App</h1>
+  //     // <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+  //     // <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
 
-      <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
-      <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
+  //     // { (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/> }
+  //     // </div>
 
-      { (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/> }
-      </div>
-
-  )
+  // )
 
 }
 
