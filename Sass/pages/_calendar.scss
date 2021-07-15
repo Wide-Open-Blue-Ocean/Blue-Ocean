@@ -1,3 +1,14 @@
+@import '../base/typography';
+
+
+// use noto-serif font-family for the time, and inside the calendar..
+  // colors:  for each block of time use calendar-orange from variables file.
+  // use white font color for the text inside the block of time
+// make the font-size smaller ex: inside the calendar try 12px, the time 18px and the top make it 20~ px.
+
+// make all block a rectangle, currently there is some wedges or curves on the edges.
+// consider using material-ui for the modal window.
+
 #calendarContainer {
   display: flex;
   flex-direction: row;
