@@ -26,6 +26,8 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  font-family: noto-serif;
+  font-size: 18px;
 }
 .calendarColumn {
   position: relative;
@@ -42,6 +44,8 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  font-family: Helvetica;
+  font-size: 20px;
 }
 .dateTop {
   display: flex;

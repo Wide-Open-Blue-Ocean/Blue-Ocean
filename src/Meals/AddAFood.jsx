@@ -3,9 +3,9 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import customStyles from '../customStyles/customStyles.jsx';
 
-function AddAExercise (props) {
+function AddAFood (props) {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [exercise, setExercise] = useState('');
+  const [foodItem, setFoodItem] = useState('');
   const [description, setDescription] = useState('');
   const [calories, setCalories] = useState('');
   const openModal = () => {
@@ -14,25 +14,25 @@ function AddAExercise (props) {
   const closeModal = () => {
     setIsOpen(false);
   };
-  const postExercise = () => {
-    const exerciseDetail = {
-      userId: props.sessionParams.userId,
-      sessionName: props.sessionParams.sessionName,
-      exercise: exercise,
+  const postFood = () => {
+    const foodDetail = {
+      userId: props.mealParams.userId,
+      mealName: props.mealParams.mealName,
+      item: foodItem,
       description: description,
       calories: calories,
-      date: props.sessionParams.date,
+      date: props.mealParams.date,
       checked: false
     }
-    axios.post('/workout', exerciseDetail)
+    axios.post('/food', foodDetail)
     .then(res => console.log(res.data))
     .then(() => {
-      props.getWorkouts();
+      props.getFood();
     })
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    postExercise();
+    postFood();
     closeModal();
   };
   return (
@@ -54,15 +54,15 @@ function AddAExercise (props) {
             style={{ color: '#3f3f3f' }}
             type="text"
             required
-            placeholder="Exercise"
-            onChange={e => setExercise(e.target.value)}
+            placeholder='Type'
+            onChange={e => setFoodItem(e.target.value)}
           />
           <br/>
           <input className="inputGeneral"
             style={{ height: '120px', color: '#3f3f3f' }}
             type="text"
             required
-            placeholder="Description"
+            placeholder='Description'
             onChange={e => setDescription(e.target.value)}
           />
           <br/>
@@ -70,7 +70,7 @@ function AddAExercise (props) {
             style={{ color: '#3f3f3f' }}
             type="text"
             required
-            placeholder="Calories Burned"
+            placeholder='Calories'
             onChange={e => setCalories(e.target.value)}
           />
         </div>
@@ -80,4 +80,4 @@ function AddAExercise (props) {
     </div>
   )
 }
-export default AddAExercise;
+export default AddAFood;

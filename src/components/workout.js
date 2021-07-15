@@ -8,9 +8,7 @@ import RemoveSession from '../Workout/RemoveSession.jsx'
 function Workout (props) {
   const [sessions, setSessions] = useState([])
   const [exercises, setExercises] = useState([])
-  const [sessionParams, setSessionParams] = useState({userId: 0,  date: 20210712, sessionName: 'TRAINER X\'S WEIGHT TRAINING'});
-  // const [workoutParams, setWorkoutParams] = useState([])
-
+  const [sessionParams, setSessionParams] = useState({userId: 0,  date: props.date, sessionName: 'TRAINER X\'S WEIGHT TRAINING'});
 
   const getWorkSessions = (() => {
     axios.get('/workoutSession', {params: {userId: sessionParams.userId, date: sessionParams.date}})
@@ -24,7 +22,6 @@ function Workout (props) {
     .then(result => {
       setSessions(result.data)
     })
-    // setSessions([{ sessionName: 'trainer x hit work out' }, { sessionName: 'yoga' }, { sessionName: 'weights' }])
   }, [])
 
   const getWorkouts = (() => {
