@@ -1,5 +1,8 @@
+@import '../utilities/variables';
+
+
 #login-page {
-  background-image: linear-gradient(#40a9ff, #096dd9);
+  background-image: linear-gradient($meteorite, $portage);
   position: absolute;
   top: 0px;
   bottom: 0px;

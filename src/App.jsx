@@ -15,6 +15,7 @@ const App = () => {
   const history = useHistory();
   const [date, setDate] = useState(dateUtils.today());
   const [loadObject, setLoadObject] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(undefined);
 
   //Workout and Meal Planner widgets need to call this function in componentWillUnmount!
   const resetDate = function() {
@@ -24,10 +25,12 @@ const App = () => {
   return (
       <>
         <div>
-          <Navbar />
+          {loggedIn && <Navbar />}
         </div>
         <Switch>
-          <Route path='/' component={Home} exact/>
+          <Route exact path='/' >
+            <Home setLoggedIn={setLoggedIn}/>
+          </Route>
           <Route exact path='/calendar'>
             <React.Fragment>
               {window.screen.width <= 600 &&
@@ -49,6 +52,8 @@ const App = () => {
         </Switch>
       </>
   )
+
+
 }
 
 export default App
