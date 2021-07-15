@@ -43,11 +43,15 @@ function Journal (props) {
   }
 
   return (
-    <div className="journalContainer">
-      <div className="formContainer">
-        <Entry onSubmitEntry={onSubmit} mealInputs={mealInputs} workoutInputs={workoutInputs} workoutOnChange={workoutOnChange} mealOnChange={mealOnChange}  />
+    <div className="journalParent">
+      <div className="journalContainer">
+        <div style={{marginTop: '30px', marginLeft: '30px'}}>
+          <Entry onSubmitEntry={onSubmit} mealInputs={mealInputs} workoutInputs={workoutInputs} workoutOnChange={workoutOnChange} mealOnChange={mealOnChange}  />
+        </div>
+        <div style={{marginTop: '30px', marginLeft: '30px'}}>
+        <EntryList getEntries={getEntries} entries={entries}/>
+        </div>
       </div>
-      <EntryList getEntries={getEntries} entries={entries}/>
     </div>
   )
 }
