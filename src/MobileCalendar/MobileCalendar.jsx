@@ -166,11 +166,14 @@ export default class MobileCalendar extends React.Component {
   }
 
   openWorkoutWidget () {
-    alert(this.state.selectedDate + ' opening workout widget');
+    this.props.setDate(this.state.selectedDate);
+    this.props.history.push('/workout');
+    // alert(this.state.selectedDate + ' opening workout widget');
   }
 
   openMealWidget () {
-    alert(this.state.selectedDate + ' opening meal widget');
+    this.props.setDate(this.state.selectedDate);
+    this.props.history.push('/meals');
   }
 
   oneLeft() {
@@ -277,7 +280,7 @@ export default class MobileCalendar extends React.Component {
           <div id="mobileEventColumn">
             <React.Fragment>
               {this.state.dates[this.state.selectedDate].map(event =>
-                <Event key={event.timeRange} event={event}/>
+                <Event key={event.timeRange} event={event} setDate={this.props.setDate} setLoadObject={this.props.setLoadObject}/>
               )}
               {this.state.dates[this.state.selectedDate].length === 0 &&
                 <h2 id="noEventsBanner">No events today</h2>

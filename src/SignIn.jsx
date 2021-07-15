@@ -4,36 +4,40 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import axios from 'axios';
 import ChatEngineComponent from './ChatEngine';
 
-const config = {
+// const config = {
+
+// };
+// firebase.initializeApp(config);
+
+export const auth = firebase.initializeApp({
   apiKey: "AIzaSyDCFYRW6rFX51Y1tvAZNlyfsk6GId7OXuM",
   authDomain: "my-blue-ocean.firebaseapp.com",
   projectId: "my-blue-ocean",
   storageBucket: "my-blue-ocean.appspot.com",
   messagingSenderId: "926790538030",
   appId: "1:926790538030:web:61671ab94de4ef48fe20bf"
-};
-firebase.initializeApp(config);
-
-
+})
 
 const uiConfig = {
   // Popup signin rather than redirect .
   signInFlow: 'popup',
-  callbacks: {
-    // Avoid redirects after sign-in
-    signInSuccessWithAuthResult: () => false,
-  },
+  signInSuccessUrl: '/',
+  // callbacks: {
+  //   // Avoid redirects after sign-in
+  //   signInSuccessWithAuthResult: () => false,
+  // },
   // display Google and Facebook as auth providers.
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
   ],
 };
 
-const SignIn = () => {
+const SignIn = ({setLoggedIn}) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [userUID, setuserUID] = useState(null);
   const [userEmail, setuserEmail] = useState(null);
   // Listening to Firebase Auth state to set the local state.
+
   useEffect(() => {
 
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
@@ -43,11 +47,24 @@ const SignIn = () => {
       if (user) {
         setuserUID(user.uid);
         setuserEmail(user.email);
-
+        setLoggedIn(user.email);
 
         var data = new FormData();
         data.append('username', user.email);
         data.append('secret', user.uid);
+
+        // axios.get('/users', {
+        //   params: {
+        //     email: user.email
+        //   }
+        // }).then((result) => {
+        //   if (result.data.length <= 0) {
+        //      axios.post('/users', {
+
+        //      })
+        //   }
+        // })
+
 
         var config = {
           method: 'post',
@@ -76,9 +93,12 @@ const SignIn = () => {
   if (!isSignedIn) {
     return (
       <div>
-        <h1>My App</h1>
-        <p>Please sign-in:</p>
+
+        <div id='login-page'>
+        <div id="login-card">
         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+        </div>
+      </div>
       </div>
     )
   }
@@ -86,6 +106,7 @@ const SignIn = () => {
   return (
       <div>
       <h1>My App</h1>
+
       <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
       <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
 
