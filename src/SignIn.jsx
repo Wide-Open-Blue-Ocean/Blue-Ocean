@@ -32,10 +32,11 @@ const uiConfig = {
   ],
 };
 
-const SignIn = ({setLoggedIn}) => {
+const SignIn = ({setLoggedIn, setLoggedInDB}) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [userUID, setuserUID] = useState(null);
   const [userEmail, setuserEmail] = useState(null);
+  let userExistsInDB;
   // Listening to Firebase Auth state to set the local state.
 
   useEffect(() => {
@@ -53,18 +54,14 @@ const SignIn = ({setLoggedIn}) => {
         data.append('username', user.email);
         data.append('secret', user.uid);
 
-        // axios.get('/users', {
-        //   params: {
-        //     email: user.email
-        //   }
-        // }).then((result) => {
-        //   if (result.data.length <= 0) {
-        //      axios.post('/users', {
-
-        //      })
-        //   }
-        // })
-
+        axios.get('/users', {
+          params: {
+            email: user.email
+          }
+        })
+        .then((result) => {
+          result.data.length === 0 ? setLoggedInDB(false) : setLoggedInDB(true)
+        })
 
         var config = {
           method: 'post',
@@ -84,7 +81,6 @@ const SignIn = ({setLoggedIn}) => {
       }
     })
 
-
     // un-registers Firebase observer when component unmount
     return () => unregisterAuthObserver();
 
@@ -103,17 +99,27 @@ const SignIn = ({setLoggedIn}) => {
     )
   }
 
-  return (
-      <div>
-      <h1>My App</h1>
+  // if (userExistsInDB) {
+    return (
+        <div>
+        <h1>My App</h1>
 
-      <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
-      <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
+        <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+        <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
 
-      { (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/> }
-      </div>
+        { (userEmail && userUID) && <ChatEngineComponent username={userEmail} usersecret={userUID}/> }
+        </div>
 
-  )
+    )
+  // } else {
+  //   return (
+  //     <div>
+  //       yo, are you trainer?
+  //     </div>
+  //   )
+  // }
+
+
 
 }
 

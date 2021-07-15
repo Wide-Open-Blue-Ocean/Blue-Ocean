@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
   userId: Number,
   name: String,
   email: String,
-  trainerEmail: String,
+  palEmail: String,
   isTrainer: Boolean
 });
 

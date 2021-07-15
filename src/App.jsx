@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react'
 import dateUtils from './utils/dateUtils.js';
+import SignIn from './SignIn.jsx'
 import Button from '@material-ui/core/Button'
 import { Route, Switch } from 'react-router-dom'
 import Home from './components/home'
@@ -11,17 +12,33 @@ import Journal from './components/journal'
 import Navbar from './components/Navbar/navbar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {useHistory} from 'react-router-dom'
+import SignInDB from './SignInDB.jsx'
 const App = () => {
   const history = useHistory();
   const [date, setDate] = useState(dateUtils.today());
   const [loadObject, setLoadObject] = useState(null);
   const [loggedIn, setLoggedIn] = useState(undefined);
-
+  const [loggedInDB, setLoggedInDB] = useState(undefined);
   //Workout and Meal Planner widgets need to call this function in componentWillUnmount!
   const resetDate = function() {
     setDate(dateUtils.today());
     setLoadObject(null);
   };
+
+
+  if (!loggedIn) {
+    return (
+      <SignIn  setLoggedIn={setLoggedIn} setLoggedInDB={setLoggedInDB}/>
+    )
+  }
+
+  if (!loggedInDB) {
+    return (
+      <SignInDB />
+    )
+  }
+
+
   return (
       <>
         <div>

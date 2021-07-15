@@ -44,7 +44,7 @@ function Home({setLoggedIn}) {
       </div>
     </div>
     </div>
-  <SignIn setLoggedIn={setLoggedIn}/>
+  {/* <SignIn setLoggedIn={setLoggedIn}/> */}
  </>
   )
 }

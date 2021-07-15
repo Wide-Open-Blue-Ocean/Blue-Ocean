@@ -35,7 +35,8 @@ app.get('/test', (req, res) => {
 // userId: Number,
 // name: String,
 // email: String,
-// trainerEmail: String
+// palEmail: String
+// isTrainer: Boolean
 
 app.get('/user', (req, res) => {
   let userId = req.query.userId
@@ -70,48 +71,7 @@ app.delete('/user', (req, res) => {
   })
 })
 
-/****************************
- *
- *        TRAINER
- *
- ****************************/
-//TRAINER
-// userId: Number,
-// name: String,
-// email: String,
-// clientEmails: [] <-- contains email strings
-app.get('/trainer', (req, res) => {
-  let userId = req.query.userId
-    return Models.User.find(Number(userId))
-  .then(result => {
-    res.status(200).json(result);
-  })
-  .catch(err => {
-    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
-  })
-})
 
-app.post('/trainer', (req, res) => {
-  let entry = req.body;
-    Models.User.add(entry)
-  .then(_=> {
-    res.sendStatus(201)
-  })
-  .catch(err => {
-    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
-  })
-})
-
-app.delete('/trainer', (req, res) => {
-  let id = req.body.id
-    Models.User.delete(id)
-  .then(_=> {
-    res.sendStatus(201)
-  })
-  .catch(err => {
-    Array.isArray(err) ? res.json(err) : res.sendStatus(500);
-  })
-})
 
 /****************************
  *
@@ -123,9 +83,12 @@ app.delete('/trainer', (req, res) => {
 //format for 'dateRange' query: yyyymmdd-yyyymmdd
 
 app.get('/workoutSession', (req, res) => {
-  console.log(req.query);
+
   let {userId, date, startDate, endDate} = req.query
-  return (date ? Models.WorkoutSession.find(userId, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate))
+  // routeSpecs.handleBadRequest.getWorkoutSession(userId, date, startDate, endDate)
+  // .then(() => {
+    return date ? Models.WorkoutSession.find(userId, date) :  Models.WorkoutSession.findRange(userId, startDate, endDate)
+  // })
   .then((results) => {
     res.status(200).json(results)
   })
@@ -180,8 +143,6 @@ app.delete('/workoutSession', (req, res) => {
 
 
 app.get('/workout', (req, res) => {
-  console.log('hits the server');
-  console.log(req.query);
   let {userId, date, sessionName} = req.query;
   // routeSpecs.handleBadRequest.getWorkout(userId, date, sessionName)
   // .then(_=> {
@@ -198,7 +159,7 @@ app.get('/workout', (req, res) => {
 app.post('/workout', (req, res) => {
   let entry = req.body;
   // routeSpecs.handleBadRequest.postWorkout(entry)
-  // .then(=>{
+  // .then(_=>{
     Models.Workout.add(entry)
   // })
   .then(result => {
@@ -210,10 +171,10 @@ app.post('/workout', (req, res) => {
 })
 
 app.delete('/workout', (req, res) => {
-  let _id = req.body._id;
+  let id = req.body.id;
   // routeSpecs.handleBadRequest.deleteWorkout(id)
   // .then(_=>{
-    Models.Workout.delete(_id)
+    Models.Workout.delete(Number(id))
   // })
   .then(_=> {
     res.sendStatus(201);
@@ -238,10 +199,10 @@ app.get('/workout/checked', (req, res) => {
 })
 
 app.put('/workout/checked', (req, res) => {
-  let {_id, checked} = req.body;
+  let {id, checked} = req.body;
   // routeSpecs.handleBadRequest.putWorkoutChecked(id, checked)
   // .then(_=>{
-    Models.Workout.updateCheck(_id, checked)
+    Models.Workout.updateCheck(Number(id), checked)
   // })
   .then(_=> {
     res.sendStatus(201)
@@ -388,7 +349,7 @@ app.get('/meal', (req, res) => {
   let {userId, date, startDate, endDate} = req.query;
   // routeSpecs.handleBadRequest.getMeal(userId, date, startDate, endDate)
   // .then(_=> {
-    return (date ? Models.Meal.find(userId, date) : Models.Meal.findRange(userId, startDate, endDate))
+    return date ? Models.Meal.find(userId, date) : Models.Meal.findRange(userId, startDate, endDate)
   // })
   .then(result => {
     res.status(200).json(result);
@@ -428,7 +389,7 @@ app.get('/journal', (req, res) => {
   let {userId, date, startDate, endDate} = req.query;
   // routeSpecs.handleBadRequest.getJournalEntry(userId, date, startDate, endDate)
   // .then(_=> {
-    return (date ? Models.Journal.find(userId, date) : Models.Journal.findRange(userId, startDate, endDate))
+    return date ? Models.Journal.find(userId, date) : Models.Journal.findRange(userId, startDate, endDate)
   // })
   .then(result => {
     res.status(200).json(result)
