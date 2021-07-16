@@ -41,7 +41,14 @@
 
 .entryListContainer {
   width: 50%;
+  margin: 0.5%;
 }
+
+.journalEntry {
+  margin-top: 5%;
+  // margin-top: 20px; 
+}
+
 
 .journalTitleRow {
   display: flex;
@@ -54,5 +61,28 @@
 
 .journalH3 {
   margin: 0%;
+  font-size: 15px;
+  opacity: 70%;
 }
 
+.workoutIcon {
+  height: 4%;
+  width: 4%;
+  margin-right: 3%;
+  margin-top: 2%;
+}
+
+.mealIcon {
+  height: 4%;
+  width: 4%;
+  margin-right: 3%;
+  margin-top: 2%;
+}
+
+.mealEntry {
+  margin-top: 2%;
+}
+
+.workoutentry {
+  margin-top: 2%;
+}

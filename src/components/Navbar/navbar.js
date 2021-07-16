@@ -5,6 +5,13 @@ import 'bulma/css/bulma.min.css';
 import firebase from 'firebase/app';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import {auth} from '../../SignIn';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import HomeIcon from '@material-ui/icons/Home';
+import TodayIcon from '@material-ui/icons/Today';
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+import FastfoodIcon from '@material-ui/icons/Fastfood';
+import NoteIcon from '@material-ui/icons/Note';
+
 const HoverText = styled.p`
 	color: #000;
 	:hover {
@@ -33,7 +40,8 @@ const HoverText = styled.p`
                 style={{height: '40px',textDecoration: 'none'}}
               >
                 <HoverText style={{ color: 'rgb(73, 73, 73)', fontWeight: "bold", fontSize: "30px"}}>
-                Workout Pal
+                <div class='background-img'></div>
+                Dino-sore
                 </HoverText>
               </NavLink>
               </div>
@@ -58,10 +66,10 @@ const HoverText = styled.p`
               className="navbar-item"
               activeClassName="is-active"
               to="/"
-              style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+              style={{ color: 'black', textDecoration: 'none'}}
               >
                 <HoverText>
-                  Home
+                  <HomeIcon/>
                 </HoverText>
               </NavLink>
 
@@ -69,10 +77,10 @@ const HoverText = styled.p`
                 className="navbar-item"
                 activeClassName="is-active"
                 to="/Calendar"
-                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+                style={{ color: 'black', textDecoration: 'none'}}
               >
                 <HoverText>
-                  Calendar
+                  <TodayIcon/>
                 </HoverText>
               </NavLink>
 
@@ -80,10 +88,10 @@ const HoverText = styled.p`
                 className="navbar-item"
                 activeClassName="is-active"
                 to="/Workout"
-                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+                style={{ color: 'black', textDecoration: 'none'}}
               >
                 <HoverText>
-                  Workout
+                  <FitnessCenterIcon/>
                 </HoverText>
               </NavLink>
 
@@ -91,10 +99,10 @@ const HoverText = styled.p`
                 className="navbar-item"
                 activeClassName="is-active"
                 to="/Meals"
-                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+                style={{ color: 'black', textDecoration: 'none'}}
               >
                 <HoverText>
-                  Meals
+                  <FastfoodIcon/>
                 </HoverText>
               </NavLink>
 
@@ -102,10 +110,10 @@ const HoverText = styled.p`
                 className="navbar-item"
                 activeClassName="is-active"
                 to="/Journal"
-                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+                style={{ color: 'black', textDecoration: 'none'}}
               >
                 <HoverText>
-                 Journal
+                <NoteIcon/>
                 </HoverText>
               </NavLink>
             {/* </div> */}
@@ -115,7 +123,7 @@ const HoverText = styled.p`
                 className="navbar-item"
                 activeClassName="is-active"
                 to="/signin"
-                style={{backgroundColor: 'white', color: 'black', textDecoration: 'none'}}
+                style={{ color: 'black', textDecoration: 'none'}}
               >
                 <HoverText
                   role='link'
@@ -123,7 +131,7 @@ const HoverText = styled.p`
                       () => {
                     setLoggedIn(undefined)
                     firebase.auth().signOut()
-                    }}>Sign-out
+                    }}><ExitToAppIcon/>
                 </HoverText>
               </NavLink>
 

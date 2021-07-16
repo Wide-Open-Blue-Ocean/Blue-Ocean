@@ -5,9 +5,10 @@
   height: 99%;
   margin-top: 50px;
 }
+
 .chat-engine {
   display: flex;
-  
+
 }
 
 .home {
@@ -40,7 +41,7 @@
 .workoutTile {
   display: flex;
   overflow-wrap: break-word;
-  word-break: break-all;
+  word-break: normal;
   white-space: pre-wrap;
   font-size: 12px;
   margin: 0 5px 0 5px;
@@ -90,7 +91,7 @@
 
 .workoutSession {
   margin-top: 15px;
-  background-color: #59B4D1;
+  background-color: lightgrey;
   color: #FDFEFF;
   text-align: center;
 
@@ -102,7 +103,7 @@
 
 .mealSession {
   margin-top: 15px;
-  background-color: #59D090;
+  background-color: lightgrey;
   text-align: center;
   color: #FDFEFF;
   width: 500px;
