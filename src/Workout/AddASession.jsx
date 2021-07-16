@@ -21,6 +21,9 @@ function AddASession (props) {
     return time.slice(0, 2) + time.slice(3, 5)
   };
   const convertTime = (start, end) => {
+    if (start.length !== 5 || end.length !== 5) {
+      return {};
+    }
     if (Number(start.slice(0, 2)) > 20 || Number(end.slice(0, 2)) > 20) {
       return {};
     }
@@ -42,7 +45,7 @@ function AddASession (props) {
       props.getWorkSessions();
     })
     .catch((err) => {
-      const newWindow = window.open("", null, "height=200, width=400, top=-200, left=-500")
+      const newWindow = window.open("", null, "height=200, width=400")
       newWindow.document.write("Sessions must be booked between 5:00am - 8:59pm");
     })
   };

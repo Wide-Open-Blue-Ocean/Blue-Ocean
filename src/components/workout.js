@@ -21,16 +21,19 @@ function Workout (props) {
   const [sessionParams, setSessionParams] = useState({userId: 0,  date: props.date, sessionName: 'TRAINER X\'S WEIGHT TRAINING'});
   const [clicked, setClicked] = useState(undefined);
 
-  // const handleDelete = () => {
-  //   // console.log(props.sessionName);
-  //   axios.delete('/workoutSession', {data: {sessionName: props.sessionName}})
-  //   .then((result) => {
-  //     props.getWorkSessions();
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   })
-  // }
+  let customStyles = {
+    scroll: {
+    }
+  }
+
+  if (sessions.length > 6) {
+    customStyles = {
+      scroll: {
+        height: "600px",
+        overflow: "auto"
+      }
+    }
+  }
 
   const getWorkSessions = (() => {
     axios.get('/workoutSession', {params: {userId: sessionParams.userId, date: sessionParams.date}})
@@ -65,7 +68,6 @@ function Workout (props) {
   const dateObj = new Date(uglyDateString.slice(0,4), parseInt(uglyDateString.slice(4, 6)) - 1, uglyDateString.slice(6, 8));
   const finalDate = dateObj.toDateString();
 
-
   const handleDelete = (sessionName) => {
     axios.delete('/workoutSession', {data: {sessionName: sessionName}})
     .then((result) => {
@@ -84,7 +86,7 @@ function Workout (props) {
           {/* {sessions.map((session, i) => {
             return (<Card getWorkSessions={getWorkSessions} exercises={exercises} key={i} session={session} cardOnClick={cardOnClick}/>)
           })} */}
-          <ImageList sx={{ width: 1200, height: 450 }}>
+          <ImageList className="scroll" style={customStyles.scroll} sx={{ width: 1200, height: 450 }}>
               {sessions.map((session, i) => (
               <ImageListItem className="test" key={i}>
                 {(i < itemData.length) ?
@@ -92,12 +94,12 @@ function Workout (props) {
                   : (<img srcSet={`${itemData[0].img}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />)}
               <ImageListItemBar style={{border: 'solid 1px rgb(128,128,128)'}} title={session.sessionName} subtitle={session.timeRange}
               actionIcon={
-              <IconButton onClick={() => {cardOnClick(session); setClicked(i)}} sx={{ color: 'red' }} aria-label={`info about ${session.sessionName}`}>
+              <IconButton className="Info" onClick={() => {cardOnClick(session); setClicked(i)}} sx={{ color: 'red' }} aria-label={`info about ${session.sessionName}`}>
               {(clicked === i) ?
               (<InfoIcon style={{color: 'yellow'}} className="Info"/>)
               : (<InfoIcon style={{color: 'white'}} className="Info"/>)}
               {/* <DeleteForeverIcon /> */}
-              {/* <CancelIcon style={{marginBottom: '250px', color: 'red'}}/> */}
+              <CancelIcon className="cancel" onClick={() => handleDelete(session.sessionName)} style={{marginBottom: '250px'}}/>
               </IconButton>}/>
               </ImageListItem>))}
           </ImageList>

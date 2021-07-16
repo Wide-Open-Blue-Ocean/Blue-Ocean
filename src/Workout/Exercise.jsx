@@ -50,7 +50,7 @@ function Exercise (props) {
       {props.exercises.map((exercise, i) => {
         return (
           <Accordion
-          style={{border: 'solid 2px black'}}
+          style={{border: 'solid 2px black', width: '400px'}}
             defaultExpanded="true">
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
