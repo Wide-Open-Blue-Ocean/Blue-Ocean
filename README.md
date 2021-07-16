@@ -38,7 +38,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#stack">Built With</a></li>
-    <li><a href="#welcome-page">Welcome Page</a></li>
+    <li><a href="#Welcome & Chat">Welcome Page</a></li>
     <li><a href="#feed">Feed</a></li>
     <li><a href="#view-logs-dashboard">Dashboard</a></li>
     <li><a href="#add-a-dive-log">Add a Dive Log</a></li>
