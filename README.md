@@ -176,11 +176,10 @@
 ## Calendar
 **Features:**
 
-  * *Log List*: Displays a list of logs, and allows the user to click a log to be displayed in the section to the right.
-  * *Tag List*: Displays a list of all tags associated with a user's logs, and allows the user to click and select a tag to filter the log list by the currently selected tags.
-  * *Log Display*: Displays the currently selected log data(defaults to the most recent.) The data is split into categories, and all media attached to the log is displayed in an image slider at the bottom.
-  * *User Information*: Displays a greeting to the user, the amount of dives a user has logged, and the total cumulative time that a user has spent under water.
-  * *No Logs Feature*: If a user has not created any logs, the view logs dashboard will consist solely of the user information box, and a button that allows the user to start logging.
+  * *Add New Modal*: Clicking whitespace opens a modal that links to the workout/meal planner for the day clicked on
+  * *Events*: Event elements links to workout/meal planners. For shorter time blocks, mouse hover expands the box for readability.
+  * *Mobile Display Calendar*: Simplified mobile layout for calendar
+
 
 <!--  ![](https://media.giphy.com/media/m6f12JhYnV7OkQf0r0/giphy.gif)
  -->
