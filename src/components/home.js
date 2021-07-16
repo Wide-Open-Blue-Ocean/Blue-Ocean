@@ -7,6 +7,8 @@ import WorkoutCard from '../Home/WorkoutCard'
 import MealsCard from '../Home/MealsCard'
 import JournalCard from '../Home/JournalCard'
 import ChatEngineComponent from '../ChatEngine'
+import ImgMediaCard from './card.js'
+
 function Home({setLoggedIn, setUserID}) {
 
   const [journal, setJournal] = useState(false)
@@ -16,18 +18,14 @@ return (
     <div>
       <div className="homeContainer">
         <div className="home">
-          <div className="cardHome">
-            <div className="cards">
+            <div className="homeWorkoutCard">
               <WorkoutCard />
+              </div>
+              <div className="homeMealCard">
               <MealsCard />
-              <JournalCard journaled={false} />
+              </div>
            </div>
-          </div>
         </div>
-      </div>
-      {/* <div className='chat-engine'>
-          <ChatEngineComponent/>
-      </div> */}
     </div>
   <SignIn setLoggedIn={setLoggedIn} setUserID={setUserID}/>
  </>
