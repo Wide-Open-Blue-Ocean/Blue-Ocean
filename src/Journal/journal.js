@@ -22,7 +22,7 @@ function Journal (props) {
     var past = dateUtils.getFutureOrPast(today, -31)
     axios.get('/journal', {params: {userId: 0, startDate: past, endDate: today}})
     .then((result) => {
-      console.log(result.data)
+      console.log('data we need', result.data)
       setEntries(result.data)
     })
     .catch((err) => {
