@@ -2,7 +2,7 @@
   <h1 align="center">Welcome to<strong> DINO-SORE</strong>!</h1>
 
   <p align="left">
-    Goodbye memorizing what trainer plan for Workout & Nutrition, hello <strong>diverr</strong>!
+    Goodbye memorizing what trainer plan for Workout & Nutrition, hello <strong> DINO-SORE</strong>!
     <br /><br />
     Paper dive logs are difficult to keep track of. Which dives have all my shark photos? Where are all my Australia dives? What equipment did I wear when the water was 48º?
     <br /><br />
