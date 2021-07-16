@@ -78,6 +78,14 @@ function Workout (props) {
     })
   }
 
+  const editTime = (time) => {
+    let newTime = time.split('');
+    // 1230-1330 --> 12:30-13:30
+    newTime.splice(2,0,':')
+    newTime.splice(8,0,':')
+    return newTime.join('');
+  }
+
   return (
     <div className="workoutContainer">
       <div className="workout">
@@ -92,7 +100,7 @@ function Workout (props) {
                 {(i < itemData.length) ?
                   (<img srcSet={`${itemData[i].img}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />)
                   : (<img srcSet={`${itemData[0].img}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />)}
-              <ImageListItemBar style={{border: 'solid 1px rgb(128,128,128)'}} title={session.sessionName} subtitle={session.timeRange}
+              <ImageListItemBar style={{border: 'solid 1px rgb(128,128,128)'}} title={session.sessionName} subtitle={editTime(session.timeRange)}
               actionIcon={
               <IconButton className="Info" onClick={() => {cardOnClick(session); setClicked(i)}} sx={{ color: 'red' }} aria-label={`info about ${session.sessionName}`}>
               {(clicked === i) ?
