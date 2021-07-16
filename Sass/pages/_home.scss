@@ -1,85 +1,47 @@
 
 .homeContainer {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 99%;
   height: 99%;
-  margin: 5% 0;
+  margin-top: 50px;
 }
 
-.cardHome {
+.chat-engine {
   display: flex;
-  flex-direction: column;
-  border-radius: 15px;
-  width: 100vw;
-  height: 100vh;
-  background-color: #FDFEFF;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  // margin-right: 0px;
-  align-items: center;
-  justify-content: space-evenly;
 }
 
 // .home {
 //   display: flex;
-//   // width: 70%;
 //   margin: auto;
 // }
 
-.homeWorkoutCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  // margin: 0;
-  // height: 100%;
-  width: 100%;
-}
 
-.workoutCard {
-  display: flex;
-  flex-direction: column;
-  // margin: 0;
-  height: 100%;
-  width: 100%;
-}
-
-// .workoutSession {
-//   display: flex;
-//   // flex-wrap: wrap;
-//   // justify-content: center;
-//   align-items: center;
-//   // margin-top: 15px;
-//   background-color: #59B4D1;
-//   color: #FDFEFF;
-//   text-align: center;
-//   height: 100%;
+// .cardHome {
 //   border-radius: 15px;
+//   width: 750px;
+//   height: 100%;
+//   background-color: #FDFEFF;
 //   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+//   margin-right: 100px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: space-evenly;
 // }
 
-.homeSessionText {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  // margin: 10px 0 0 0;
-  // padding: 20px 0 0 0;
-  font-size: 20px;
-}
+// .homeCards {
+//   margin: 0;
+//   height: 0px;
+// }
 
-.workoutTileContainer {
-  display: flex;
-  flex-direction: column;
-  // flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  background-color: #59B4D1;
-  color: #FDFEFF;
-  text-align: center;
-  // height: 100%;
-  width: 100%;
-
+.homeWorkoutCard {
+  margin: 0 0 20px;
+  height: 50%;
+  border: 2px solid #282828;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: 8px;
 }
 
 .workoutDisplay {
@@ -87,18 +49,17 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  // height: 100%;
 }
 
 .workoutTile {
   display: flex;
-  margin: 1em 3em 1em 3em;
   overflow-wrap: break-word;
-  word-break: normal;
+  word-break: break-all;
   white-space: pre-wrap;
-  font-size: 1em;
-  width: 50%;
-  height: 100%;
+  font-size: 12px;
+  margin: 0 5px 0 5px;
+  width: 70px;
+  height: 70px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -108,33 +69,69 @@
   border-radius: 8px;
 }
 
-.homeMealCard {
-  // display: flex;
-  // flex-direction: row;
-  // // margin: 0;
-  // height: 90%;
-  // width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  // margin: 0;
-  // height: 100%;
-  width: 100%;
+.workoutCardBorder {
+  margin: 0 5px 5px 5px;
 }
 
 .mealCard {
-  margin: 0;
+  margin: 0 0 20px 0;
   height: 50%;
-  width: 100%;
+  border: 2px solid #282828;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: 8px;
 }
 
-// .mealSession {
+.mealDisplay {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.mealTile {
+  // display: flex;
+  // overflow-wrap: break-word;
+  // word-break: break-all;
+  // white-space: pre-wrap;
+  // font-size: 12px;
+  // font-size-adjust: inherit;
+  // width: 70px;
+  // height: 70px;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+
+  // text-align: center;
+  // background-color: #FDFEFF;
+  // color: 	#282828;
+  // border-radius: 8px;
+}
+
+.mealCardBorder {
+  margin: 0 5px 5px 5px;
+
+}
+
+
+
+
+
+// .todaysMealCard {
+//   background-color: green;
+// }
+
+// .todaysJournalCard {
+//   background-color: purple;
+// }
+
+// .workoutSession {
 //   margin-top: 15px;
-//   background-color: #59D090;
-//   text-align: center;
+//   background-color: #59B4D1;
 //   color: #FDFEFF;
-//   height: 100%;
+//   text-align: center;
+
+//   width: 500px;
+//   height: 120px;
 //   border-radius: 15px;
 //   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 // }
@@ -144,57 +141,11 @@
   background-color: #59D090;
   text-align: center;
   color: #FDFEFF;
-  height: 100%;
+  width: 500px;
+  height: 120px;
   border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
-
-.mealTileContainer {
-  display: flex;
-  flex-direction: column;
-  // flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  background-color: #59D090;
-  color: #FDFEFF;
-  text-align: center;
-  // height: 100%;
-  width: 100%;
-
-}
-
-.mealDisplay {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  // height: 100%;
-}
-
-.mealTile {
-  display: flex;
-  box-sizing: border-box;
-  margin: 2em 1em 1em 1em;
-  overflow-wrap: break-word;
-  word-break: break-all;
-  white-space: pre-wrap;
-  font-size: 1em;
-  font-size-adjust: inherit;
-  width: 60%;
-  height: 70px;
-  max-height: inherit;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  // text-align: center;
-  background-color: #FDFEFF;
-  color: 	#282828;
-  border-radius: 8px;
-}
-
-
-
-
 
 .journalSession {
   display: flex;
@@ -205,28 +156,29 @@
   margin-top: 15px;
   background-color: #945AD1;
   color: #FDFEFF;
-  height: 170px;
+  width: 500px;
+  height: 120px;
   border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .journalDisplay {
   display: flex;
-  margin: 25px 0 15px 2px;
-  padding: 5px 0 10px 0;
+  margin: 15px 0 5 2;
   align-items: center;
   text-align: center;
   justify-content: center;
   background-color: #FDFEFF;
   color: #C8C8C8;
-  width: 500px;
-  height: 70px;
+  width: 400px;
+  height: 80px;
   border-radius: 10px;
 }
 
+.homeSessionText {
 
-
-.chat-engine {
-  display: flex;
-
+  align-items: center;
+  text-align: center;
+  margin: 10px 0 15px 0;
+  font-size: 20px;
 }
