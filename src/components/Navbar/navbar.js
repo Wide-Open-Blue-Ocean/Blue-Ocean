@@ -11,6 +11,7 @@ import TodayIcon from '@material-ui/icons/Today';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import NoteIcon from '@material-ui/icons/Note';
+
 const HoverText = styled.p`
 	color: #000;
 	:hover {
@@ -39,7 +40,8 @@ const HoverText = styled.p`
                 style={{height: '40px',textDecoration: 'none'}}
               >
                 <HoverText style={{ color: 'rgb(73, 73, 73)', fontWeight: "bold", fontSize: "30px"}}>
-                Workout Pal
+                <div class='background-img'></div>
+                Dino-sore
                 </HoverText>
               </NavLink>
               </div>
