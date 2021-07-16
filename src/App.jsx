@@ -32,7 +32,7 @@ const App = () => {
   return (
     <>
     <div className='open-chat' onClick={() => setChatOpen(!chatOpen)}>
-      <p class={chatOpen ? "closeButtonText" : "openButtonText"}>{chatOpen ? 'Close' : 'Chat'}</p>
+      <p className={chatOpen ? "closeButtonText" : "openButtonText"}>{chatOpen ? 'Close' : 'Chat'}</p>
     </div>
       <div>
         {loggedIn && (
