@@ -39,7 +39,7 @@
   <ol>
     <li><a href="#stack">Built With</a></li>
     <li><a href="#welcome-page">Welcome Page</a></li>
-    <li><a href="#feed">Feed</a></li>
+    <li><a href="#Navigation">Navigation</a></li>
     <li><a href="#view-logs-dashboard">Dashboard</a></li>
     <li><a href="#add-a-dive-log">Add a Dive Log</a></li>
     <li><a href="#back-end">Back End</a></li>
