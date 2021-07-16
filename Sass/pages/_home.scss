@@ -1,146 +1,199 @@
 
 .homeContainer {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 99%;
   height: 99%;
   margin-top: 50px;
 }
 
-.chat-engine {
-  display: flex;
-
-}
-
-.home {
-  display: flex;
-  margin: auto;
-}
-
-.cardHome {
-  border-radius: 15px;
-  width: 750px;
-  height: 650px;
-  background-color: #FDFEFF;
+.homeWorkoutCard {
+  margin: 0 0 20px;
+  height: 50%;
+  border: 2px solid #282828;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  margin-right: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.homeCards {
-  margin: 0;
-  height: 0px;
-}
-
-.workoutCard {
-  margin: 0;
-}
-
-.workoutTile {
-  display: flex;
-  overflow-wrap: break-word;
-  word-break: normal;
-  white-space: pre-wrap;
-  font-size: 12px;
-  margin: 0 5px 0 5px;
-  width: 70px;
-  height: 70px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  // text-align: center;
-  background-color: #FDFEFF;
-  color: 	#282828;
   border-radius: 8px;
+
 }
 
-.mealTile {
-  display: flex;
-  overflow-wrap: break-word;
-  word-break: break-all;
-  white-space: pre-wrap;
-  font-size: 12px;
-  font-size-adjust: inherit;
-  width: 70px;
-  height: 70px;
-  flex-direction: column;
-  justify-content: center;
+.workoutText {
+
   align-items: center;
-  // text-align: center;
-  background-color: #FDFEFF;
-  color: 	#282828;
-  border-radius: 8px;
+  text-align: center;
+  margin: 10px 0 15px 0;
+  font-size: 20px;
 }
 
 .workoutDisplay {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+//   background-color: #59B4D1;
 }
 
-.todaysMealCard {
-  background-color: green;
+.workoutCardBorder {
+  margin: 0 5px 5px 5px;
 }
 
-.todaysJournalCard {
-  background-color: purple;
-}
-
-.workoutSession {
-  margin-top: 15px;
-  background-color: lightgrey;
-  color: #FDFEFF;
-  text-align: center;
-
-  width: 500px;
-  height: 120px;
-  border-radius: 15px;
+.mealCard {
+  margin: 0 0 20px 0;
+  height: 50%;
+  border: 2px solid #282828;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: 8px;
 }
 
-.mealSession {
-  margin-top: 15px;
-  background-color: lightgrey;
-  text-align: center;
-  color: #FDFEFF;
-  width: 500px;
-  height: 120px;
-  border-radius: 15px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
-
-.journalSession {
+.mealDisplay {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: row;
-  text-align: center;
-  margin-top: 15px;
-  background-color: #945AD1;
-  color: #FDFEFF;
-  width: 500px;
-  height: 120px;
-  border-radius: 15px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  justify-content: center;
+  align-items: center;
 }
 
-.journalDisplay {
-  display: flex;
-  margin: 15px 0 5 2;
+.mealText {
+
   align-items: center;
   text-align: center;
-  justify-content: center;
-  background-color: #FDFEFF;
-  color: #C8C8C8;
-  width: 400px;
-  height: 80px;
-  border-radius: 10px;
-}
-
-.homeSessionText {
   margin: 10px 0 15px 0;
   font-size: 20px;
 }
+
+
+.mealCardBorder {
+  margin: 0 5px 5px 5px;
+
+}
+
+.chat-engine {
+  display: flex;
+}
+
+// .home {
+//   display: flex;
+//   margin: auto;
+// }
+
+// .cardHome {
+//   border-radius: 15px;
+//   width: 750px;
+//   height: 100%;
+//   background-color: #FDFEFF;
+//   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+//   margin-right: 100px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: space-evenly;
+// }
+
+// .homeCards {
+//   margin: 0;
+//   height: 0px;
+// }
+
+// .workoutTile {
+//   display: flex;
+//   overflow-wrap: break-word;
+//   word-break: break-all;
+//   white-space: pre-wrap;
+//   font-size: 12px;
+//   margin: 0 5px 0 5px;
+//   width: 70px;
+//   height: 70px;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   // text-align: center;
+//   background-color: #FDFEFF;
+//   color: 	#282828;
+//   border-radius: 8px;
+// }
+
+
+// .mealTile {
+  // display: flex;
+  // overflow-wrap: break-word;
+  // word-break: break-all;
+  // white-space: pre-wrap;
+  // font-size: 12px;
+  // font-size-adjust: inherit;
+  // width: 70px;
+  // height: 70px;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+
+  // text-align: center;
+  // background-color: #FDFEFF;
+  // color: 	#282828;
+  // border-radius: 8px;
+// }
+
+// .todaysMealCard {
+//   background-color: green;
+// }
+
+// .todaysJournalCard {
+//   background-color: purple;
+// }
+
+// .workoutSession {
+//   margin-top: 15px;
+//   background-color: #59B4D1;
+//   color: #FDFEFF;
+//   text-align: center;
+
+//   width: 500px;
+//   height: 120px;
+//   border-radius: 15px;
+//   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+// }
+
+// .mealSession {
+//   margin-top: 15px;
+//   background-color: #59D090;
+//   text-align: center;
+//   color: #FDFEFF;
+//   width: 500px;
+//   height: 120px;
+//   border-radius: 15px;
+//   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+// }
+
+// .journalSession {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction: row;
+//   text-align: center;
+//   margin-top: 15px;
+//   background-color: #945AD1;
+//   color: #FDFEFF;
+//   width: 500px;
+//   height: 120px;
+//   border-radius: 15px;
+//   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+// }
+
+// .journalDisplay {
+//   display: flex;
+//   margin: 15px 0 5 2;
+//   align-items: center;
+//   text-align: center;
+//   justify-content: center;
+//   background-color: #FDFEFF;
+//   color: #C8C8C8;
+//   width: 400px;
+//   height: 80px;
+//   border-radius: 10px;
+// }
+
+// .homeSessionText {
+
+//   align-items: center;
+//   text-align: center;
+//   margin: 10px 0 15px 0;
+//   font-size: 20px;
+// }

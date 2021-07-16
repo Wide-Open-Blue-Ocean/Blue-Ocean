@@ -50,7 +50,7 @@ function Food (props) {
       {props.food.map((foodItem, i) => {
         return (
           <Accordion
-          style={{border: 'solid 2px black'}}
+          style={{border: 'solid 2px black', width: '400px'}}
           defaultExpanded="true">
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}

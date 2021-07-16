@@ -20,6 +20,20 @@ function Meals (props) {
   const [mealParams, setMealParams] = useState({userId: 0,  date: props.date, mealName: 'Breakfast'});
   const [clicked, setClicked] = useState(undefined);
 
+  let customStyles = {
+    scroll: {
+    }
+  }
+
+  if (meals.length > 6) {
+    customStyles = {
+      scroll: {
+        height: "600px",
+        overflow: "auto"
+      }
+    }
+  }
+
   const getMeals = (() => {
     axios.get('/meal', {params: {userId: mealParams.userId, date: mealParams.date}})
     .then(result => {
@@ -70,24 +84,32 @@ function Meals (props) {
     })
   }
 
+  const editTime = (time) => {
+    let newTime = time.split('');
+    // 1230-1330 --> 12:30-13:30
+    newTime.splice(2,0,':')
+    newTime.splice(8,0,':')
+    return newTime.join('');
+  }
+
   return (
     <div className="workoutContainer">
       <div className="workout">
         <div className="cardSession" style={{ fontSize:'30px' }}>{finalDate}
-          <ImageList sx={{ width: 1200, height: 450 }}>
+          <ImageList className="scroll" style={customStyles.scroll} sx={{ width: 1200, height: 450 }}>
             {meals.map((meal, i) => (
           <ImageListItem className="test" key={i}>
           {(i < itemData.length) ?
             (<img srcSet={`${itemData[i].img}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />)
             : (<img srcSet={`${itemData[0].img}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />)}
-          <ImageListItemBar style={{border: 'solid 1px rgb(128,128,128)'}}  title={meal.mealName} subtitle={meal.timeRange}
+          <ImageListItemBar style={{border: 'solid 1px rgb(128,128,128)'}}  title={meal.mealName} subtitle={editTime(meal.timeRange)}
           actionIcon={
-            <IconButton onClick={() => {cardOnClick(meal); setClicked(i)}} sx={{ color: 'red' }} aria-label={`info about ${meal.mealName}`}>
+            <IconButton className="Info" onClick={() => {cardOnClick(meal); setClicked(i)}} sx={{ color: 'red' }} aria-label={`info about ${meal.mealName}`}>
             {(clicked === i) ?
             (<InfoIcon style={{color: 'yellow'}} className="Info"/>)
             : (<InfoIcon style={{color: 'white'}} className="Info"/>)}
             {/* <DeleteForeverIcon /> */}
-            {/* <CancelIcon style={{marginBottom: '250px', color: 'red'}}/> */}
+            <CancelIcon className="cancel" onClick={() => handleDelete(meal.mealName)} style={{marginBottom: '250px'}}/>
             </IconButton>
           }/>
           </ImageListItem>))}

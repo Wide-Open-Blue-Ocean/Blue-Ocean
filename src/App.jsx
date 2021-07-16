@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import dateUtils from './utils/dateUtils.js';
 import Button from '@material-ui/core/Button'
 import { Route, Switch } from 'react-router-dom'
@@ -29,6 +29,13 @@ const App = () => {
     setDate(dateUtils.today());
     setLoadObject(null);
   };
+
+  useEffect(() => {
+    localStorage.setItem('loggedIn', loggedIn)
+  }, [loggedIn])
+
+  console.log('localStorage:', localStorage);
+
   return (
     <>
       <div>
@@ -58,7 +65,7 @@ const App = () => {
           <SignIn/>
         </GlobalProvider>
         </Route>
-        <Route exact path='/' >
+        <Route exact path='/'>
         <GlobalProvider>
           <Home setLoggedIn={setLoggedIn} setUserID={setUserID}/>
         </GlobalProvider>
@@ -77,7 +84,7 @@ const App = () => {
         </Route>
         <Route path='/workout'>
         <GlobalProvider>
-            <Workout date={date} loadObject={loadObject} resetDate={resetDate}/>
+            <Workout date={date} loadObject={loadObject} resetDate={resetDate} setLoggedIn={setLoggedIn} setUserID={setUserID}/>
         </GlobalProvider>
         </Route>
         <Route path='/meals' >
