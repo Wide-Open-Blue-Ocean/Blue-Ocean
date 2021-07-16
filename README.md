@@ -40,8 +40,10 @@
     <li><a href="#stack">Built With</a></li>
     <li><a href="#welcome-page">Welcome Page</a></li>
     <li><a href="#Navigation">Navigation</a></li>
-    <li><a href="#view-logs-dashboard">Dashboard</a></li>
-    <li><a href="#add-a-dive-log">Add a Dive Log</a></li>
+    <li><a href="#Calendar">Calendar</a></li>
+    <li><a href="#Workout">Workout</a></li>
+    <li><a href="#Meal">Meal</a></li>
+    <li><a href="#Journal">Journal</a></li>
     <li><a href="#back-end">Back End</a></li>
     <li>
      <a href="#workflow">Workflow</a>
