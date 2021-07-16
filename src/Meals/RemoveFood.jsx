@@ -18,7 +18,7 @@ function RemoveFood (props) {
   }
 
   return (
-    <CancelIcon onClick={handleDelete}>delete</CancelIcon>
+    <CancelIcon className="cancel" onClick={handleDelete}>delete</CancelIcon>
   )
 }
 

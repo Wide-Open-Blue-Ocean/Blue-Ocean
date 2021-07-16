@@ -15,3 +15,14 @@
   border: solid 2px orange;
   background-color: rgb(243, 243, 243);
 }
+
+.cancel {
+  color: rgb(182, 32, 32);
+}
+.cancel:hover {
+  cursor: pointer;
+  color: rgb(228, 74, 74);
+}
+.Info {
+  margin-right: -24px;
+}
