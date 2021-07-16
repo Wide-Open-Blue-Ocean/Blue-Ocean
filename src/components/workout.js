@@ -86,11 +86,11 @@ function Workout (props) {
           })} */}
           <ImageList sx={{ width: 1200, height: 450 }}>
               {sessions.map((session, i) => (
-                <ImageListItem key={i}>
+              <ImageListItem className="test" key={i}>
                 {(i < itemData.length) ?
                   (<img srcSet={`${itemData[i].img}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />)
                   : (<img srcSet={`${itemData[0].img}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />)}
-              <ImageListItemBar title={session.sessionName} subtitle={session.sessionName}
+              <ImageListItemBar style={{border: 'solid 1px rgb(128,128,128)'}} title={session.sessionName} subtitle={session.timeRange}
               actionIcon={
               <IconButton onClick={() => {cardOnClick(session); setClicked(i)}} sx={{ color: 'red' }} aria-label={`info about ${session.sessionName}`}>
               {(clicked === i) ?
@@ -98,9 +98,8 @@ function Workout (props) {
               : (<InfoIcon style={{color: 'white'}} className="Info"/>)}
               {/* <DeleteForeverIcon /> */}
               {/* <CancelIcon style={{marginBottom: '250px', color: 'red'}}/> */}
-              </IconButton>
-            }/>
-          </ImageListItem>))}
+              </IconButton>}/>
+              </ImageListItem>))}
           </ImageList>
           <AddASession getWorkSessions={getWorkSessions} sessionParams={sessionParams} />
           {/* </div> */}
