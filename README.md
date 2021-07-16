@@ -206,6 +206,17 @@
  -->
 <hr />
 
+## Journal
+**Features:**
+
+  * *Data Collection Fields*: combination of 31 different text fields, radio buttons, and checkboxes
+  * *Add Tags*: ability to include tags to make logs and photos searchable
+  * *Add Media*: ability to add photos with each dive log and share on the feed
+
+<!--   ![](https://media.giphy.com/media/Rie2JbmhgDfqBidFZq/giphy.gif)
+ -->
+<hr />
+
 # Back End - API & Database
 
 **Back End Features:**
