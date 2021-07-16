@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">Welcome to<strong>DINO-SORE</strong>!</h1>
+  <h1 align="center">Welcome to<strong> DINO-SORE</strong>!</h1>
 
   <p align="left">
     Goodbye memorizing what trainer plan for Workout & Nutrition, hello <strong>diverr</strong>!
