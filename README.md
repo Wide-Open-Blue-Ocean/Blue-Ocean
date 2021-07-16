@@ -38,7 +38,8 @@
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#stack">Built With</a></li>
-     <a href="#workflow">Workflow</a>
+    <li><a href="#workflow">Workflow</a></li>
+    <li><a href="#feature">Features</a></li>
      <ul>
     <li><a href="#welcome-page">Welcome Page</a></li>
     <li><a href="#Navigation">Navigation</a></li>
