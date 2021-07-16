@@ -18,11 +18,9 @@ function Journal (props) {
   }
 
   const getEntries = () => {
-    var today = dateUtils.today()
-    var past = dateUtils.getFutureOrPast(today, -31)
-    axios.get('/journal', {params: {userId: 0, startDate: past, endDate: today}})
+    axios.get('/journal', {params: {email: 'tommmmmmriddle@gmail.com', date: dateUtils.today()}})
     .then((result) => {
-      console.log('data we need', result.data)
+      console.log(result.data)
       setEntries(result.data)
     })
     .catch((err) => {
@@ -35,8 +33,7 @@ function Journal (props) {
   }, [])
 
   const onSubmit = () => {
-    var today = dateUtils.today()
-    axios.post('/journal', {userId: 0, mealEntry: mealInputs, workoutEntry: workoutInputs, date: today})
+    axios.post('/journal', {email: 'tommmmmmriddle@gmail.com', mealEntry: mealInputs, workoutEntry: workoutInputs, date: dateUtils.today()})
     .then(() => {
       setMealInputs('');
       setWorkoutInputs('');

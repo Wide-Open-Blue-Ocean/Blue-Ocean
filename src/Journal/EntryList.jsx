@@ -39,16 +39,21 @@ const dateFormatter = (date) => {
 }
 
     return (
-        <div className="entryListContainer">{props.entries.map((entry, i) => {
+        <div className="entryListContainer" >{props.entries.map((entry, i) => {
             return (
                 <div className="journalEntry" key={i}>
                     <hr></hr>
                     <div className="journalTitleRow">
                       <h3 className="journalH3">{`${dateUtils.getWeekday(entry.date.toString())} • ${dateFormatter(entry.date.toString())}`}</h3>
-                      <button className="entryButton" onClick={() => {deleteEntry(entry._id)}}>delete</button>
+                      <button className="entryDeleteButton" onClick={() => {deleteEntry(entry._id)}}>X</button>
                     </div>
-                    <div className="mealEntry"><img className="mealIcon"src="./journalAssets/mealIcon.png"></img>  {entry.mealEntry}</div>
-                    <div className="workoutEntry"><img className="workoutIcon"src="./journalAssets/workoutIcon.png"></img>  {entry.workoutEntry}</div>
+                    <div className="mealEntryWrapper">
+                       <div className="mealEntry"><img className="mealIcon"src="./journalAssets/mealIcon.png"></img>  {entry.mealEntry}</div>
+                    </div>
+                    <div className="workoutEntryWrapper">
+                      <div className="workoutEntry"><img className="workoutIcon"src="./journalAssets/workoutIcon.png"></img>  {entry.workoutEntry}</div>
+                    </div>
+
                 </div>
             )
         })}</div>
