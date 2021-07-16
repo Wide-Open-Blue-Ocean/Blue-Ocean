@@ -143,7 +143,7 @@
 
 # Front End
 
-## Welcome & Chat
+## Welcome Page
   The site theme was inspired by a photo of a manta ray where sunlight hit the top of the water, and loses permeation of that sunlight as you descend deeper underwater. So, our palette consisted of a range of blues, from an almost white, light blue, to pure black with a touch of blue.
 
 **Features:**
