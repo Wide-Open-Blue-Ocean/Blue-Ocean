@@ -14,9 +14,11 @@
   border: 2px solid #282828;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   border-radius: 8px;
+
 }
 
 .workoutText {
+
   align-items: center;
   text-align: center;
   margin: 10px 0 15px 0;
@@ -28,6 +30,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+//   background-color: #59B4D1;
 }
 
 .workoutCardBorder {
@@ -66,10 +69,6 @@
 .chat-engine {
   display: flex;
 }
-
-
-
-
 
 // .home {
 //   display: flex;

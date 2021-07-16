@@ -12,6 +12,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 function Meals (props) {
   const [meals, setMeals] = useState([])
@@ -31,6 +32,13 @@ function Meals (props) {
     .then(result => {
       setMeals(result.data)
     })
+    // .then(() => {
+    //   axios.get('/food', {params: {userId: meals[0].userId, date: meals[0].date, mealName: meals[0].mealName}})
+    //   .then(result => {
+    //     console.log('***newwww', result);
+    //     setFood(result.data);
+    //   })
+    // })
   }, [])
 
   const getFood = (() => {
@@ -52,28 +60,38 @@ function Meals (props) {
   const dateObj = new Date(uglyDateString.slice(0,4), parseInt(uglyDateString.slice(4, 6)) - 1, uglyDateString.slice(6, 8));
   const finalDate = dateObj.toDateString();
 
+  const handleDelete = (mealName) => {
+    axios.delete('/Meal', {data: {mealName: mealName}})
+    .then((result) => {
+      getMeals();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
   return (
     <div className="workoutContainer">
       <div className="workout">
         <div className="cardSession" style={{ fontSize:'30px' }}>{finalDate}
           <ImageList sx={{ width: 1200, height: 450 }}>
             {meals.map((meal, i) => (
-          <ImageListItem key={i}>
+          <ImageListItem className="test" key={i}>
           {(i < itemData.length) ?
             (<img srcSet={`${itemData[i].img}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />)
             : (<img srcSet={`${itemData[0].img}?w=248&fit=crop&auto=format&dpr=2 2x`} loading="lazy" />)}
-          <ImageListItemBar title={meal.mealName} subtitle={meal.mealName}
+          <ImageListItemBar style={{border: 'solid 1px rgb(128,128,128)'}}  title={meal.mealName} subtitle={meal.timeRange}
           actionIcon={
             <IconButton onClick={() => {cardOnClick(meal); setClicked(i)}} sx={{ color: 'red' }} aria-label={`info about ${meal.mealName}`}>
             {(clicked === i) ?
             (<InfoIcon style={{color: 'yellow'}} className="Info"/>)
             : (<InfoIcon style={{color: 'white'}} className="Info"/>)}
             {/* <DeleteForeverIcon /> */}
+            {/* <CancelIcon style={{marginBottom: '250px', color: 'red'}}/> */}
             </IconButton>
           }/>
           </ImageListItem>))}
           </ImageList>
-
           <AddAMeal getMeals={getMeals} mealParams={mealParams} />
         </div>
         <div className="exercises">
