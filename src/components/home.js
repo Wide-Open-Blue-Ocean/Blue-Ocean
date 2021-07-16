@@ -18,21 +18,14 @@ return (
     <div>
       <div className="homeContainer">
         <div className="home">
-          {/* <div className="cardHome"> */}
             <div className="homeWorkoutCard">
               <WorkoutCard />
               </div>
               <div className="homeMealCard">
               <MealsCard />
               </div>
-              {/* <JournalCard journaled={false} /> */}
            </div>
-           {/* <ImgMediaCard/> */}
-          {/* </div> */}
         </div>
-      {/* <div className='chat-engine'>
-          <ChatEngineComponent/>
-      </div> */}
     </div>
   <SignIn setLoggedIn={setLoggedIn} setUserID={setUserID}/>
  </>

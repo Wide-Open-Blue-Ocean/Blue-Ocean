@@ -14,35 +14,15 @@ function MealsCard (props) {
 
   return (
     <div className="mealCard">
-      {/* <div className="mealSession" > */}
-        <div className="homeSessionText">
+        <div className="mealText">
           {`TODAY'S MEALS`}
         </div>
-        {/* <div className="mealTileContainer"> */}
         <div className="mealDisplay">
           <MealTile />
         </div>
-        {/* </div> */}
-      {/* </div> */}
     </div>
   )
 }
 
 export default MealsCard;
 
-// <div className="workoutCard">
-//       {/* <ImgMediaCard/> */}
-//       {/* <div className="workoutSession"> */}
-//         <div className="homeSessionText" >
-//         {`TODAY'S WORKOUTS`}
-//         </div>
-//         {/* <div className="workoutTileContainer"> */}
-//           <div className="workoutDisplay">
-//           <WorkoutTile />
-//          </div>
-//           {/* <div className="workoutDisplay">
-//           <WorkoutTile />
-//          </div> */}
-//          {/* </div> */}
-//       </div>
-//     // </div>

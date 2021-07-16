@@ -12,50 +12,12 @@ import { CardMedia } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    maxHeight: 400,
   },
 });
-
-// export default function ImgMediaCard() {
-//   const classes = useStyles();
-
-//   return (
-//     <Card className={classes.root}>
-//       <CardActionArea>
-//         <CardMedia
-//           component="img"
-//           alt="Contemplative Reptile"
-//           height="140"
-//           image="/images/img2"
-//           title="Contemplative Reptile"
-//         />
-//         <CardContent>
-//           <Typography gutterBottom variant="h5" component="h2">
-//             Lizard
-//           </Typography>
-//           <Typography variant="body2" color="textSecondary" component="p">
-//             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-//             across all continents except Antarctica
-//           </Typography>
-//         </CardContent>
-//       </CardActionArea>
-//       <CardActions>
-//         <Button size="small" color="primary">
-//           Share
-//         </Button>
-//         <Button size="small" color="primary">
-//           Learn More
-//         </Button>
-//       </CardActions>
-//     </Card>
-//   );
-// }
-
-
-
 
 const WorkoutTile = (props) => {
   const classes = useStyles();
@@ -80,24 +42,22 @@ const WorkoutTile = (props) => {
             component="img"
             alt="Workout"
             height="140"
-            image="/images/img2"
+            image={workoutImg[index].img}
             title={item}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="h5" align='center' component="h2">
               {item}
             </Typography>
-            <Typography variant="body3" color="textSecondary" component="p">
-              Description Here
+            <Typography variant="body3" color="textSecondary"  component="p">
+
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            {/* Share */}
           </Button>
           <Button size="small" color="primary">
-            {/* Learn More */}
           </Button>
         </CardActions>
       </Card>
@@ -110,81 +70,50 @@ const WorkoutTile = (props) => {
   )
 }
 
-
-
-
-
-
-
-// function WorkoutTile (props) {
-
-//   const history = useHistory();
-//   const workouts = useContext(GlobalWorkoutContext)
-
-//   const workoutTileClick = () => {
-//     history.push('/workout')
-//   }
-
-//   const todaysWorkouts = workouts.map((item, index) => {
-//     return (
-//     <div
-//       key={index}
-//       className="workoutTile"
-//       onClick={() => workoutTileClick()}
-//     >
-//       {item}
-//     </div>
-//   )})
-
-//   return (
-//     <>
-//       {todaysWorkouts.slice(0, 2)}
-//     </>
-//   )
-// }
-
 export default WorkoutTile;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function WorkoutTile (props) {
-
-//   const history = useHistory();
-//   const workouts = useContext(GlobalWorkoutContext)
-
-//   const workoutTileClick = () => {
-//     history.push('/workout')
-//   }
-
-//   const todaysWorkouts = workouts.map((item, index) => {
-//     return (
-//     <div
-//       key={index}
-//       className="workoutTile"
-//       onClick={() => workoutTileClick()}
-//     >
-//       {item}
-//     </div>
-//   )})
-
-//   return (
-//     <>
-//       {todaysWorkouts.slice(0, 2)}
-//     </>
-//   )
-// }
-
-// export default WorkoutTile;
+const workoutImg = [
+  {
+    img: '/images/img8',
+    title: 'Breakfast',
+    author: '@bkristastucchio',
+    rows: 2,
+    cols: 2,
+    featured: true,
+  },
+  {
+    img: '/images/img2',
+    title: 'Camera',
+    author: '@helloimnik',
+  },
+  {
+    img: '/images/img3',
+    title: 'Coffee',
+    author: '@nolanissac',
+    cols: 2,
+  },
+  {
+    img: '/images/img4',
+    title: 'Hats',
+    author: '@hjrc33',
+    cols: 2,
+  },
+  {
+    img: '/images/img5',
+    title: 'Honey',
+    author: '@arwinneil',
+    rows: 2,
+    cols: 2,
+    featured: true,
+  },
+  {
+    img: '/images/img6',
+    title: 'Basketball',
+    author: '@tjdragotta',
+  },
+  {
+    img: '/images/img7',
+    title: 'Fern',
+    author: '@katie_wasserman',
+  }
+];
