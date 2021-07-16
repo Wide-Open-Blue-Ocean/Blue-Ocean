@@ -12,6 +12,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 function Meals (props) {
   const [meals, setMeals] = useState([])
@@ -52,6 +53,16 @@ function Meals (props) {
   const dateObj = new Date(uglyDateString.slice(0,4), parseInt(uglyDateString.slice(4, 6)) - 1, uglyDateString.slice(6, 8));
   const finalDate = dateObj.toDateString();
 
+  const handleDelete = (mealName) => {
+    axios.delete('/Meal', {data: {mealName: mealName}})
+    .then((result) => {
+      getMeals();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
   return (
     <div className="workoutContainer">
       <div className="workout">
@@ -69,6 +80,7 @@ function Meals (props) {
             (<InfoIcon style={{color: 'yellow'}} className="Info"/>)
             : (<InfoIcon style={{color: 'white'}} className="Info"/>)}
             {/* <DeleteForeverIcon /> */}
+            {/* <CancelIcon style={{marginBottom: '250px', color: 'red'}}/> */}
             </IconButton>
           }/>
           </ImageListItem>))}

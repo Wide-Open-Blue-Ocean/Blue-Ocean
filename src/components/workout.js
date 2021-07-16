@@ -12,6 +12,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 
 function Workout (props) {
@@ -19,6 +20,17 @@ function Workout (props) {
   const [exercises, setExercises] = useState([])
   const [sessionParams, setSessionParams] = useState({userId: 0,  date: props.date, sessionName: 'TRAINER X\'S WEIGHT TRAINING'});
   const [clicked, setClicked] = useState(undefined);
+
+  // const handleDelete = () => {
+  //   // console.log(props.sessionName);
+  //   axios.delete('/workoutSession', {data: {sessionName: props.sessionName}})
+  //   .then((result) => {
+  //     props.getWorkSessions();
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   })
+  // }
 
   const getWorkSessions = (() => {
     axios.get('/workoutSession', {params: {userId: sessionParams.userId, date: sessionParams.date}})
@@ -49,10 +61,20 @@ function Workout (props) {
     })
   }
 
-  console.log(props.date);
   const uglyDateString = '' + props.date;
   const dateObj = new Date(uglyDateString.slice(0,4), parseInt(uglyDateString.slice(4, 6)) - 1, uglyDateString.slice(6, 8));
   const finalDate = dateObj.toDateString();
+
+
+  const handleDelete = (sessionName) => {
+    axios.delete('/workoutSession', {data: {sessionName: sessionName}})
+    .then((result) => {
+      getWorkSessions();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
 
   return (
     <div className="workoutContainer">
@@ -75,6 +97,7 @@ function Workout (props) {
               (<InfoIcon style={{color: 'yellow'}} className="Info"/>)
               : (<InfoIcon style={{color: 'white'}} className="Info"/>)}
               {/* <DeleteForeverIcon /> */}
+              {/* <CancelIcon style={{marginBottom: '250px', color: 'red'}}/> */}
               </IconButton>
             }/>
           </ImageListItem>))}
