@@ -5,7 +5,6 @@ import {IconContext} from 'react-icons';
 import {FiPlus, FiMinus} from 'react-icons/fi';
 import AddAExercise from './AddAExercise.jsx';
 import RemoveExercise from './RemoveExercise.jsx';
-import WorkoutCheck from './WorkoutCheck.jsx';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -34,9 +33,9 @@ function Exercise (props) {
   }
   const classes = useStyles();
 
-  const handleCheck = (value) => {
+  const handleCheck = (id, value) => {
     let putBody = {
-      _id: props._id,
+      _id: id,
       checked: value
     }
     axios.put('/workout/checked', putBody)
@@ -51,6 +50,7 @@ function Exercise (props) {
       {props.exercises.map((exercise, i) => {
         return (
           <Accordion
+          style={{border: 'solid 2px black'}}
             defaultExpanded="true">
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -58,13 +58,21 @@ function Exercise (props) {
               aria-controls="additional-actions1-content"
               id="additional-actions1-header"
             >
-              <FormControlLabel
+              {exercise.checked ?
+              (<FormControlLabel
                 aria-label="Acknowledge"
-                onClick={(event) => event.stopPropagation()}
+                onClick={(event) => {event.stopPropagation(); handleCheck(exercise._id, false)}}
                 onFocus={(event) => event.stopPropagation()}
                 control={<Checkbox checked={true}/>}
                 label={exercise.exercise.toUpperCase()}
-              />
+              />)
+              : (<FormControlLabel
+                aria-label="Acknowledge"
+                onClick={(event) => {event.stopPropagation(); handleCheck(exercise._id, true)}}
+                onFocus={(event) => event.stopPropagation()}
+                control={<Checkbox checked={false}/>}
+                label={exercise.exercise.toUpperCase()}
+              />)}
             </AccordionSummary>
             <AccordionDetails>
               <Typography color="textSecondary">
@@ -83,25 +91,3 @@ function Exercise (props) {
 }
 
 export default Exercise;
-
-
-// function WorkoutCheck (props) {
-//   const handleCheck = (value) => {
-//     let putBody = {
-//       _id: props._id,
-//       checked: value
-//     }
-//     axios.put('/workout/checked', putBody)
-//     .then(() => {
-//       props.getWorkouts()
-//     })
-//   }
-
-//   if (props.checked === false) {
-//     return  (
-//       <button onClick={() => {handleCheck(true)}} style={{backgroundColor: 'red'}}>check</button>
-//     )
-//   } else {
-//     return (<button onClick={() => {handleCheck(false)}} style={{backgroundColor: 'green'}}>check</button>)
-//   }
-// }

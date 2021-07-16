@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import {IconContext} from 'react-icons';
 import {FiPlus, FiMinus} from 'react-icons/fi';
 import AddAFood from './AddAFood.jsx';
 import RemoveFood from './RemoveFood.jsx';
-import FoodCheck from './FoodCheck.jsx';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -33,12 +33,24 @@ function Food (props) {
   }
   const classes = useStyles();
 
+  const handleCheck = (id, value) => {
+    let putBody = {
+      _id: id,
+      checked: value
+    }
+    axios.put('/food/checked', putBody)
+    .then(() => {
+      props.getFood()
+    })
+  }
+
   return (
     <div>
     <div className={classes.root}>
       {props.food.map((foodItem, i) => {
         return (
           <Accordion
+          style={{border: 'solid 2px black'}}
           defaultExpanded="true">
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -46,13 +58,21 @@ function Food (props) {
               aria-controls="additional-actions1-content"
               id="additional-actions1-header"
             >
-              <FormControlLabel
+            {foodItem.checked ?
+              (<FormControlLabel
                 aria-label="Acknowledge"
-                onClick={(event) => event.stopPropagation()}
+                onClick={(event) => {event.stopPropagation(); handleCheck(foodItem._id, false)}}
                 onFocus={(event) => event.stopPropagation()}
-                control={<Checkbox />}
+                control={<Checkbox checked={true}/>}
                 label={foodItem.item.toUpperCase()}
-              />
+              />)
+              : (<FormControlLabel
+                aria-label="Acknowledge"
+                onClick={(event) => {event.stopPropagation(); handleCheck(foodItem._id, true)}}
+                onFocus={(event) => event.stopPropagation()}
+                control={<Checkbox checked={false}/>}
+                label={foodItem.item.toUpperCase()}
+              />)}
             </AccordionSummary>
             <AccordionDetails>
               <Typography color="textSecondary">
