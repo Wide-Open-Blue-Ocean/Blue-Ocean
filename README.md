@@ -27,6 +27,9 @@
       •
       <a href="https://github.com/marcpetrecca1" target="_blank">MarcAnthony Petrecca</a>
       •
+      <a href="https://github.com/sulisulisulwan" target="_blank">Suliman Tekalli
+</a>
+      •
       <a href="https://github.com/varunchillara" target="_blank">Varun Chillara</a>
       <hr />
     </h3>
