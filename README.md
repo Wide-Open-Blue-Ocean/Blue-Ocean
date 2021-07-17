@@ -172,9 +172,10 @@
 ## Navigation
 **Features:**
 
-  * *Display Public Dive Log Photos*: renders feed of photos from public dive logs uploaded by users across the planet
-  * *Filter By Search Bar*: Can enter search terms in a search bar to filter posts visible in the feed
-  * *Filter By Image Tag*: Can click on a tag on an image to filter posts visible in the feed
+  * *Client-side routing*: React-Router
+  * *Security*: User must login to access navbar
+  * *Routes*: Home, Calendar, Workout, Meals, Journal, Signout
+  * *Alt Routes*: Workout & Meals can also be accessed by clicking the workout/meal tiles on the homepage
 
 
 ## Calendar
