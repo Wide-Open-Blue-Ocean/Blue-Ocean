@@ -235,10 +235,8 @@
 # Back End - API & Database
 
 **Back End Features:**
-  * *Database*: Designed schema in Postgres to store log users and log information, including dive photos and user-created tags, along with relevant meta data
-  * *Integrity*: Used relational tables, foreign keys, and unique constraints to maintain data integrity
-  * *API*: Created a serverless NextJS API to interact with database
-  * *Docs*: Supplied the front-end team with documents explaining the data they can expect to receive and what url to request from for that data
+  * *Database*: Designed Mongoose schemas to store user, workout sessions, workouts, meals, individual food items, and journal entry data in a Mongo cluster.
+  * *API*: Created a simple RESTful API interface within an Express server.  The API not only connects the end-user with the database for all necesarry CRUD operations, but provides a utility endpoint for software maintenance.
 
 <hr />
 
