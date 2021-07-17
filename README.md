@@ -12,6 +12,7 @@
     <br /><br />
   Built by a six-person dev team with <em>Next.js</em>, <em>React</em>, <em>Material-UI</em>, <em>NextAuth</em>, <em>Formik</em>, and <em>Postgres</em>, diverr boasts a simple and intuitive UI while providing a highly performant back end constructed with complex queries that abstract away the front end workload.
     <br /><br />
+    <img src="gifs/about.gif" alt="diverr homepage" />
     <h3 align="center">
       <strong>Contributors »</strong>
       <br />
@@ -25,9 +26,6 @@
       <a href="https://github.com/markPVale" target="_blank">Mark Vale</a>
       •
       <a href="https://github.com/marcpetrecca1" target="_blank">MarcAnthony Petrecca</a>
-      •
-      <a href="https://github.com/sulisulisulwan" target="_blank">Suliman Tekalli
-</a>
       •
       <a href="https://github.com/varunchillara" target="_blank">Varun Chillara</a>
       <hr />
@@ -166,10 +164,9 @@
 ## Chat
 **Features:**
 
-  * *Authentication*: User uniquely identified and created after login page
-  * *Chat Room*: User can create chatroom and invite user identified by their google email
-  * *Real-Time*: User can see in real-time user typing, and chatting.
-  * *Status*: User can be viewed of their current login status whether they're online or offline
+  * *Display Public Dive Log Photos*: renders feed of photos from public dive logs uploaded by users across the planet
+  * *Filter By Search Bar*: Can enter search terms in a search bar to filter posts visible in the feed
+  * *Filter By Image Tag*: Can click on a tag on an image to filter posts visible in the feed
 
 <!-- ![](https://media.giphy.com/media/gkihsToPQCgBc6El4X/giphy.gif)
  -->
@@ -206,15 +203,19 @@
 
 ## Meal
 **Features:**
-
+  * Viewing an individual day's meals
+    * When the user lands on the meal-planning widget, the logged meals for the day are dynamically rendered with basic information, such as time of day and meal name.
   ![](dist/images/Meals/Meals-Initial-Page.png)
+    * When the user clicks on the 'info' button, it turns yellow to indicate which meal has been selected. What appears to the right are the individual items that comprise the meal on the left-hand side.
+    * The user can select which items to include by a check mark, or delete it entirely by selecting the X.
   ![](dist/images/Meals/Meals-All-Open.png)
+    * Ideally, the trainer will have logged all meals for the user for a given day. However, the user can add meals with the '+' button on the left-hand side.
+    * On selecting this button, a form appears to enter the meal name, and time range. When the user selects 'ADD', the meal gets posted to the calendar, and immediately renders on the page without needing to refresh.
   ![](dist/images/Meals/Meals-Meal-Form.png)
+    * The individual items for each meal have a similar form that can be selected from the '+' button on the right hand side.
+    * This allows the user to add individual items for a certain meal, which is selected from the main meal's information button.
+    * When this form is submitted with the 'ADD' button, it too renders immediately on the page without need for refresh.
   ![](dist/images/Meals/Meals-Food-Form.png)
-  * *Data Collection Fields*: combination of 31 different text fields, radio buttons, and checkboxes
-  * *Add Tags*: ability to include tags to make logs and photos searchable
-  * *Add Media*: ability to add photos with each dive log and share on the feed
-
 
 <!--   ![](https://media.giphy.com/media/Rie2JbmhgDfqBidFZq/giphy.gif)
  -->
