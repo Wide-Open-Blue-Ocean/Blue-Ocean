@@ -18,9 +18,26 @@
     <br /><br />
     <img src="https://user-images.githubusercontent.com/64980975/126042794-2a7a6c47-eeaf-4834-b0ad-721911670658.png" alt="Dino-sore Homepage" />
 
-   
-  </p>
 </p>
+</p>
+    <h3 align="center">
+      <strong>Contributors »</strong>
+      <br />
+      <hr />
+      <a href="https://github.com/anthony3662" target="_blank">Anthony Ye</a>
+      •
+      <a href="https://github.com/austinm2040" target="_blank">Austin Miller</a>
+      •
+      <a href="https://github.com/daveanue" target="_blank">David Wang</a>
+      •
+      <a href="https://github.com/markPVale" target="_blank">Mark Vale</a>
+      •
+      <a href="https://github.com/marcpetrecca1" target="_blank">MarcAnthony Petrecca</a>
+      •
+      <a href="https://github.com/varunchillara" target="_blank">Varun Chillara</a>
+      <hr />
+  </h3>
+  
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
