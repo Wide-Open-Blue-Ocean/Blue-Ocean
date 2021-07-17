@@ -7,9 +7,6 @@ const uri = `mongodb+srv://Heroku:${PASSWORD}@fullstack-review.maljn.mongodb.net
 const mongoose = require('mongoose');
 mongoose.connect(uri, { useNewUrlParser: true,
 useUnifiedTopology: true })
-.then(data => {
-  console.log('connected to Mongo')
-})
 .catch(err => {
   console.log(err);
 })

@@ -4,7 +4,6 @@ const shouldBeEightDigitsLong = (number) => {
 }
 
 const parameterShouldExist = (paramName, paramValue) => {
-  // console.log(paramName, paramValue)
   return paramValue === undefined ? [`Make sure ${paramName} is passed through as a parameter`] : false;
 }
 
