@@ -2,29 +2,25 @@
   <h1 align="center">Welcome to<strong> DINO-SORE</strong>!</h1>
 
   <p align="left">
-    Goodbye memorizing what you planned for Workout & Nutrition, hello <strong> DINO-SORE</strong>!
+    Goodbye memorizing what trainer plan for Workout & Nutrition, hello <strong> DINO-SORE</strong>!
     <br /><br />
-  </p>
-    <h3 align="center">
-      <strong>Contributors »</strong>
-      <br />
-      <hr />
-      <a href="https://github.com/anthony3662" target="_blank">Anthony Ye</a>
-      •
-      <a href="https://github.com/austinm2040" target="_blank">Austin Miller</a>
-      •
-      <a href="https://github.com/daveanue" target="_blank">David Wang</a>
-      •
-      <a href="https://github.com/markPVale" target="_blank">Mark Vale</a>
-      •
-      <a href="https://github.com/marcpetrecca1" target="_blank">MarcAnthony Petrecca</a>
-      •
-      <a href="https://github.com/varunchillara" target="_blank">Varun Chillara</a>
-      <hr />
-    </h3>
+    A wellness application that manages the relationship between you and your personal trainer.
+    <br /><br />
+    Your personal trainer has the ability create new exercises, combine them into custom workout routines, add meal plans and then upload your tailored workout program to your own personal fitness app. 
+    <br /><br />
+    Workouts and meals can be added to your calendar to keep you informed and up to date with what's on tap for the day or scheduled for the upcoming week or month. Within the workouts tool, a user can see exercise intervals as well as demonstrations and proper form and techniques. If a user is concerned or curious about calories or body metrics, the Dino-Sore meal planner keeps track of both caloric intake and burn.
+    <br /><br />
+    Keep track of your progress in the Dino-Sore journal. The client journals are only accessible by the client to keep your personal results private and secure.
+    <br /><br />
+    The built-in chat app allows you to communicate directly to your trainer, keeping all aspects of your diet and training regimen within one app.
+    <br /><br />
+  Built by a seven-person dev team with  <em>React</em>, <em>Material-UI</em>, <em>FireBase</em> and <em>MongoDB</em>
+    <br /><br />
+    <img src="https://user-images.githubusercontent.com/64980975/126042794-2a7a6c47-eeaf-4834-b0ad-721911670658.png" alt="Dino-sore Homepage" />
+
+   
   </p>
 </p>
-<br />
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
