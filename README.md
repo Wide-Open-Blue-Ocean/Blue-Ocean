@@ -41,7 +41,7 @@
     <li><a href="#workflow">Workflow</a></li>
     <li><a href="#feature">Features</a></li>
      <ul>
-    <li><a href="#welcome-page">Welcome Page</a></li>
+    <li><a href="#login-page">Login Page</a></li>
     <li><a href="#Chat">Chat</a></li>
     <li><a href="#Navigation">Navigation</a></li>
     <li><a href="#Calendar">Calendar</a></li>
@@ -150,7 +150,7 @@
 
 # Front End
 
-## Welcome Page
+## Login Page
   The site theme was inspired by a photo of a manta ray where sunlight hit the top of the water, and loses permeation of that sunlight as you descend deeper underwater. So, our palette consisted of a range of blues, from an almost white, light blue, to pure black with a touch of blue.
 
 **Features:**
