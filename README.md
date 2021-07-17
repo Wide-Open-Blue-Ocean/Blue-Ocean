@@ -28,8 +28,6 @@
       <a href="https://github.com/marcpetrecca1" target="_blank">MarcAnthony Petrecca</a>
       •
       <a href="https://github.com/varunchillara" target="_blank">Varun Chillara</a>
-      •
-      <a href="https://github.com/sulisulisulwan" target="_blank">Suliman Tekalli</a>
       <hr />
     </h3>
   </p>
@@ -157,12 +155,8 @@
 
 **Features:**
 
-  * Animated electric page to wow new visitors
-  * Sticky info box with a *Join Today* button to allow sign up no matter where users are in the feed
-  * Dynamic Header based on session auth status
-  * *Authentication*: OAuth sign in with Google built using NextAuth
-  * *Login*: A custom login page with video background
-  * *Redirects*: Authentication checks to dynamically render secured pages
+  * *Authentication*: OAuth sign in with Google built using Firebase
+  * *Redirects*: Authentication checks to dynamically render and redirect to home page
   * *Never Lost*: Descriptive and Assertive page routing to lead users to accessible areas
 
 <!-- ![](https://media.giphy.com/media/l0mfQEQLQGyEBZWzGn/giphy.gif ) -->
