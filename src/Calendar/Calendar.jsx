@@ -134,7 +134,6 @@ export default class Calendar extends React.Component {
 
   _onClick(e) {
     if (e.date) { // should only handle events propagated from Column
-      // console.log(e.date, e.clientX, e.clientY);
       this.props.setDate(e.date);
       this.setState({
         modal: {

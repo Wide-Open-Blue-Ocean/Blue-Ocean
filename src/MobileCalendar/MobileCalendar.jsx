@@ -3,7 +3,7 @@ import axios from 'axios';
 import dateUtils from '../utils/dateUtils.js';
 import DaySelection from './DaySelection.jsx';
 import Event from './Event.jsx';
-//
+
 export default class MobileCalendar extends React.Component {
   constructor(props) {
     super(props);
@@ -168,7 +168,6 @@ export default class MobileCalendar extends React.Component {
   openWorkoutWidget () {
     this.props.setDate(this.state.selectedDate);
     this.props.history.push('/workout');
-    // alert(this.state.selectedDate + ' opening workout widget');
   }
 
   openMealWidget () {
@@ -243,7 +242,6 @@ export default class MobileCalendar extends React.Component {
     var yUp = e.touches[0].clientY;
     var xDiff = this.cxDown - xUp;
     var yDiff = this.cyDown - yUp;
-    // console.log( xDiff);
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 30 ) {
         /* left swipe */

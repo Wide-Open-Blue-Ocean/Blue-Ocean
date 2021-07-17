@@ -8,7 +8,6 @@ function MealsCard (props) {
   const history = useHistory();
 
    const mealTileClick = () => {
-    console.log('mealTileclick');
     history.push('/meals')
   }
 
