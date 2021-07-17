@@ -14,7 +14,7 @@
     <br /><br />
     The built-in chat app allows you to communicate directly to your trainer, keeping all aspects of your diet and training regimen within one app.
     <br /><br />
-  Built by a seven-person dev team with  <em>React</em>, <em>Material-UI</em>, <em>FireBase</em> and <em>MongoDB</em>
+  Built by a seven-person dev team using <em>React</em>, <em>Material-UI</em>, <em>FireBase</em> and <em>MongoDB</em>
     <br /><br />
     <img src="https://user-images.githubusercontent.com/64980975/126042794-2a7a6c47-eeaf-4834-b0ad-721911670658.png" alt="Dino-sore Homepage" />
 
