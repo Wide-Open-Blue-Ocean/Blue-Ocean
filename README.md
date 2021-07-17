@@ -164,9 +164,10 @@
 ## Chat
 **Features:**
 
-  * *Display Public Dive Log Photos*: renders feed of photos from public dive logs uploaded by users across the planet
-  * *Filter By Search Bar*: Can enter search terms in a search bar to filter posts visible in the feed
-  * *Filter By Image Tag*: Can click on a tag on an image to filter posts visible in the feed
+  * *Authentication*: User uniquely identified and created after login page
+  * *Chat Room*: User can create chatroom and invite user identified by their google email
+  * *Real-Time*: User can see in real-time user typing, and chatting.
+  * *Status*: User can be viewed of their current login status whether they're online or offline
 
 <!-- ![](https://media.giphy.com/media/gkihsToPQCgBc6El4X/giphy.gif)
  -->
