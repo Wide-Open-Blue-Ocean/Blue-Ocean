@@ -2,17 +2,9 @@
   <h1 align="center">Welcome to<strong> DINO-SORE</strong>!</h1>
 
   <p align="left">
-    Goodbye memorizing what trainer plan for Workout & Nutrition, hello <strong> DINO-SORE</strong>!
+    Goodbye memorizing what you planned for Workout & Nutrition, hello <strong> DINO-SORE</strong>!
     <br /><br />
-    Paper dive logs are difficult to keep track of. Which dives have all my shark photos? Where are all my Australia dives? What equipment did I wear when the water was 48º?
-    <br /><br />
-    That's where diverr comes in, a multi-functional storage and library application with a social component. At the core, it provides an intuitive form to submit logs into an electronic, searchable, & filterable dive log book that is an extension of traditional paper records.
-    <br /><br />
-    Upload your photos to your dive log and instantly share them with a worldwide community of divers who understand the thrill of swimming with manta rays, setting a new personal depth record, and passing the 24-hours-underwater mark.
-    <br /><br />
-  Built by a six-person dev team with <em>Next.js</em>, <em>React</em>, <em>Material-UI</em>, <em>NextAuth</em>, <em>Formik</em>, and <em>Postgres</em>, diverr boasts a simple and intuitive UI while providing a highly performant back end constructed with complex queries that abstract away the front end workload.
-    <br /><br />
-    <img src="gifs/about.gif" alt="diverr homepage" />
+
     <h3 align="center">
       <strong>Contributors »</strong>
       <br />
