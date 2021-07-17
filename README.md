@@ -42,7 +42,7 @@
     <li><a href="#feature">Features</a></li>
      <ul>
     <li><a href="#welcome-page">Welcome Page</a></li>
-    <li><a href="#chat">chat</a></li>
+    <li><a href="#Chat">Chat</a></li>
     <li><a href="#Navigation">Navigation</a></li>
     <li><a href="#Calendar">Calendar</a></li>
     <li><a href="#Workout">Workout</a></li>
@@ -165,7 +165,7 @@
 
 <!-- ![](https://media.giphy.com/media/l0mfQEQLQGyEBZWzGn/giphy.gif ) -->
 
-## chat
+## Chat
 **Features:**
 
   * *Display Public Dive Log Photos*: renders feed of photos from public dive logs uploaded by users across the planet
