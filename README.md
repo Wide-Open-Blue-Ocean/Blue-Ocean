@@ -204,9 +204,14 @@
 ## Meal
 **Features:**
 
+  ![](dist/images/Meals/Meals-Initial-Page.png)
+  ![](dist/images/Meals/Meals-All-Open.png)
+  ![](dist/images/Meals/Meals-Meal-Form.png)
+  ![](dist/images/Meals/Meals-Food-Form.png)
   * *Data Collection Fields*: combination of 31 different text fields, radio buttons, and checkboxes
   * *Add Tags*: ability to include tags to make logs and photos searchable
   * *Add Media*: ability to add photos with each dive log and share on the feed
+
 
 <!--   ![](https://media.giphy.com/media/Rie2JbmhgDfqBidFZq/giphy.gif)
  -->
