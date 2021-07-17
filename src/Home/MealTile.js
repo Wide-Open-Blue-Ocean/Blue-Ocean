@@ -23,7 +23,6 @@ function MealTile (props) {
   const meals = useContext(GlobalMealContext)
 
   const mealTileClick = () => {
-   console.log('mealTileclick');
    history.push('/meals')
  }
 

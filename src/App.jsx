@@ -34,7 +34,6 @@ const App = () => {
     localStorage.setItem('loggedIn', loggedIn)
   }, [loggedIn])
 
-  console.log('localStorage:', localStorage);
 
   return (
     <>

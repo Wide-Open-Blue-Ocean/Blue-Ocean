@@ -7,7 +7,6 @@ const style = {
 function RemoveSession (props) {
 
   const handleDelete = () => {
-    // console.log(props.sessionName);
     axios.delete('/workoutSession', {data: {sessionName: props.sessionName}})
     .then((result) => {
       props.getWorkSessions();

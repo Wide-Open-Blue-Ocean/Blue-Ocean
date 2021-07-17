@@ -6,9 +6,6 @@ function RemoveAMeal (props) {
 
   const handleDelete = () => {
     axios.delete('/meal', {data: {sessionName: props.mealName}})
-    .then((result) => {
-      // props.getWorkSessions();
-    })
     .catch((err) => {
       console.log(err);
     })

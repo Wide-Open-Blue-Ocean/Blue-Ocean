@@ -25,7 +25,6 @@ function AddAExercise (props) {
       checked: false
     }
     axios.post('/workout', exerciseDetail)
-    .then(res => console.log(res.data))
     .then(() => {
       props.getWorkouts();
     })

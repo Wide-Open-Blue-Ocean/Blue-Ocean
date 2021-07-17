@@ -4,7 +4,6 @@ import dateUtils from '../utils/dateUtils'
 import Journal from './journal'
 
 const EntryList = (props) => {
-console.log('this is props', props)
 const deleteEntry = (id) => {
     axios.delete('/journal', {data: {id: id}})
     .then(() => {

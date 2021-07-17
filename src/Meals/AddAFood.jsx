@@ -25,7 +25,6 @@ function AddAFood (props) {
       checked: false
     }
     axios.post('/food', foodDetail)
-    .then(res => console.log(res.data))
     .then(() => {
       props.getFood();
     })
