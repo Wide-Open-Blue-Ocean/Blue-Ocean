@@ -141,11 +141,6 @@
   </tbody>
 </table>
 
-<!-- # About
-
-**diverr** is an electronic log book for storing scuba dive records, as well as a means to share photos from dives. Traditionally, scuba divers record information from each dive in a paper log book. This can become cumbersome to search for a particular log as the number of dives increases. Enter **diverr**!  With **diverr** you can fill out a form for each dive with dive metrics, photos, and tags. The logs are compiled in a dashboard for ease of viewing. Additionally, a feed of photos displays images from all users with searchable tags. -->
-
-<!-- ![](https://media.giphy.com/media/8oqWA5KasbsIqWLCwU/giphy.gif ) -->
 <hr />
 
 # Front End
@@ -159,7 +154,6 @@
   * *Redirects*: Authentication checks to dynamically render and redirect to home page
   * *Never Lost*: Descriptive and Assertive page routing to lead users to accessible areas
 
-<!-- ![](https://media.giphy.com/media/l0mfQEQLQGyEBZWzGn/giphy.gif ) -->
 
 ## Chat
 **Features:**
@@ -168,8 +162,7 @@
   * *Filter By Search Bar*: Can enter search terms in a search bar to filter posts visible in the feed
   * *Filter By Image Tag*: Can click on a tag on an image to filter posts visible in the feed
 
-<!-- ![](https://media.giphy.com/media/gkihsToPQCgBc6El4X/giphy.gif)
- -->
+
 
 ## Navigation
 **Features:**
@@ -178,8 +171,7 @@
   * *Filter By Search Bar*: Can enter search terms in a search bar to filter posts visible in the feed
   * *Filter By Image Tag*: Can click on a tag on an image to filter posts visible in the feed
 
-<!-- ![](https://media.giphy.com/media/gkihsToPQCgBc6El4X/giphy.gif)
- -->
+
 ## Calendar
 **Features:**
 
@@ -188,17 +180,25 @@
   * *Mobile Display Calendar*: Simplified mobile layout for calendar
 
 
-<!--  ![](https://media.giphy.com/media/m6f12JhYnV7OkQf0r0/giphy.gif)
- -->
+
 ## Workout
 **Features:**
 
-  * *Data Collection Fields*: combination of 31 different text fields, radio buttons, and checkboxes
-  * *Add Tags*: ability to include tags to make logs and photos searchable
-  * *Add Media*: ability to add photos with each dive log and share on the feed
+  * Viewing an individual's workouts for the day
+  ![](dist/images/Meals/Workout-Initial-Page.png)
+    * When the user lands on this page, the user can see what workout sessions the trainer has assignmed him/her. The user can also add workouts and delete them.
+    * When the user clicks on the 'info' button, it turns yellow to indicate which workout has been selected. The right side shows the individual workouts inside of the session.
+    * The user can select which items to include by a check mark, or delete it entirely by selecting the X.
+  ![](dist/images/Workout/Workout-All-Open.png)
+    * Ideally, the trainer will have logged all the sessions for the user for a given day. However, the user can add sessions with the '+' button on the left-hand side.
+    * On selecting this button, a form appears to enter the session name, and time range. When the user selects 'ADD', the session gets posted to the calendar, and immediately renders on the page without needing to refresh.
+  ![](dist/images/Workout/Workout-Session-Form.png)
+    * The individual items for each workout have a similar form that can be selected from the '+' button on the right hand side.
+    * This allows the user to add individual items for a certain session, which is selected from the main workout's information.
+    * When this form is submitted with the 'ADD' button, it too renders immediately on the page without need for refresh.
+  ![](dist/images/Workout/Workout-Exercise-Form.png)
 
-<!--   ![](https://media.giphy.com/media/Rie2JbmhgDfqBidFZq/giphy.gif)
- -->
+
 <hr />
 
 ## Meal
@@ -217,8 +217,7 @@
     * When this form is submitted with the 'ADD' button, it too renders immediately on the page without need for refresh.
   ![](dist/images/Meals/Meals-Food-Form.png)
 
-<!--   ![](https://media.giphy.com/media/Rie2JbmhgDfqBidFZq/giphy.gif)
- -->
+
 <hr />
 
 ## Journal
@@ -228,8 +227,7 @@
   * *Add Tags*: ability to include tags to make logs and photos searchable
   * *Add Media*: ability to add photos with each dive log and share on the feed
 
-<!--   ![](https://media.giphy.com/media/Rie2JbmhgDfqBidFZq/giphy.gif)
- -->
+
 <hr />
 
 # Back End - API & Database
@@ -257,25 +255,6 @@ We implemented Git Feature Branch Workflow.  All pull requests in Github were re
 
 ## AWS
 
-<!-- Continuous Integration / Continuous Deployment
 
-**CI**: Husky (Linting), GitHub Actions (Build and Testing)
-
-**CD**: Vercel (Connected GitHub Branch)
-
-This project was built with the above CI/CD pipeline.
-The pipeline and deployment were implemented prior to any building.
-
-  * To standardize styling we used a Husky pre-commit hook that ran Prettier and ESLint (AirBnB) through the project.
-  * GitHub Actions provided another layer of protection on Pull Requests to the Master Branch by running builds on Node 12.x and 14.x, as well as running all available **Jest** tests.
-  * Vercel was connected to the Master Branch and deployed all code pushed to it
-
-<hr />
- -->
 # Challenges and Learning
 
-<!-- * The team decided to learn a new technology, NextJS, in order to implement server-side rendering and dynamic API routing.
-* Due to the amount of data necessary to maintain an accurate dive log book, the back end team was faced with creating complex database queries while balancing ease of accessing data against maintaining a high degree of data integrity.
-* After encountering issues with proper access to data, our back end team switched SQL databases midway through the project and still was able to deliver reliable, high-quality APIs to the front end team.
-* The team used Figma to aid in designing a website that implements a pseudo-social media aspect without overshadowing the core functionality of storing dive log information per our client's request.
-* In order to present a dive log input form that includes all the numerous fields without sacrificing readability, Formik was implemented to capture the necessary data. -->
