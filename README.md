@@ -4,7 +4,7 @@
   <p align="left">
     Goodbye memorizing what you planned for Workout & Nutrition, hello <strong> DINO-SORE</strong>!
     <br /><br />
-
+  </p>
     <h3 align="center">
       <strong>Contributors »</strong>
       <br />
