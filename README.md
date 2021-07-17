@@ -233,7 +233,7 @@
 
 **Back End Features:**
   * *Database*: Designed Mongoose schemas to store user, workout sessions, workouts, meals, individual food items, and journal entry data in a Mongo cluster.
-  * *API*: Created a simple RESTful API interface connecting the end-user with the database for all necesarry CRUD operations.  Utility endpoints also available for software maintenance.
+  * *API*: Created a simple RESTful API interface within an Express server.  The API not only connects the end-user with the database for all necesarry CRUD operations, but provides a utility endpoint for software maintenance.
 
 <hr />
 
