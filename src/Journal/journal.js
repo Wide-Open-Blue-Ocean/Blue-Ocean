@@ -22,7 +22,6 @@ function Journal (props) {
     var past = dateUtils.getFutureOrPast(today, -31)
     axios.get('/journal', {params: {userId: 0, startDate: past, endDate: today}})
     .then((result) => {
-      console.log(result.data)
       setEntries(result.data)
     })
     .catch((err) => {
@@ -49,10 +48,12 @@ function Journal (props) {
   return (
     <div className="journalParent">
       <div className="journalContainer">
-        <>
+        <div style={{marginTop: '30px', marginLeft: '30px'}}>
           <Form onSubmitEntry={onSubmit} mealInputs={mealInputs} workoutInputs={workoutInputs} workoutOnChange={workoutOnChange} mealOnChange={mealOnChange}  />
+        </div>
+        <div style={{marginTop: '30px', marginLeft: '30px'}}>
           <EntryList getEntries={getEntries} entries={entries}/>
-        </>
+        </div>
       </div>
     </div>
   )
