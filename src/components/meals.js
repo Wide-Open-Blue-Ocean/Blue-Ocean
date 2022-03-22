@@ -46,13 +46,6 @@ function Meals (props) {
     .then(result => {
       setMeals(result.data)
     })
-    // .then(() => {
-    //   axios.get('/food', {params: {userId: meals[0].userId, date: meals[0].date, mealName: meals[0].mealName}})
-    //   .then(result => {
-    //     console.log('***newwww', result);
-    //     setFood(result.data);
-    //   })
-    // })
   }, [])
 
   const getFood = (() => {

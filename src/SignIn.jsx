@@ -30,14 +30,10 @@ const uiConfig = {
 
 const SignIn = ({setLoggedIn, setUserID}) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
-  // const [userUID, setuserUID] = useState(null);
-  // const [userEmail, setuserEmail] = useState(null);
-  // Listening to Firebase Auth state to set the local state.
 
   useEffect(() => {
 
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
-      console.log('user data', user);
       setIsSignedIn(!!user);
 
       if (user) {

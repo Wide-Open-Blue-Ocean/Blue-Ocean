@@ -4,15 +4,22 @@
   <p align="left">
     Goodbye memorizing what trainer plan for Workout & Nutrition, hello <strong> DINO-SORE</strong>!
     <br /><br />
-    Paper dive logs are difficult to keep track of. Which dives have all my shark photos? Where are all my Australia dives? What equipment did I wear when the water was 48º?
+    A wellness application that manages the relationship between you and your personal trainer.
     <br /><br />
-    That's where diverr comes in, a multi-functional storage and library application with a social component. At the core, it provides an intuitive form to submit logs into an electronic, searchable, & filterable dive log book that is an extension of traditional paper records.
+    Your personal trainer has the ability create new exercises, combine them into custom workout routines, add meal plans and then upload your tailored workout program to your own personal fitness app. 
     <br /><br />
-    Upload your photos to your dive log and instantly share them with a worldwide community of divers who understand the thrill of swimming with manta rays, setting a new personal depth record, and passing the 24-hours-underwater mark.
+    Workouts and meals can be added to your calendar to keep you informed and up to date with what's on tap for the day or scheduled for the upcoming week or month. Within the workouts tool, a user can see exercise intervals as well as demonstrations and proper form and techniques. If a user is concerned or curious about calories or body metrics, the Dino-Sore meal planner keeps track of both caloric intake and burn.
     <br /><br />
-  Built by a six-person dev team with <em>Next.js</em>, <em>React</em>, <em>Material-UI</em>, <em>NextAuth</em>, <em>Formik</em>, and <em>Postgres</em>, diverr boasts a simple and intuitive UI while providing a highly performant back end constructed with complex queries that abstract away the front end workload.
+    Keep track of your progress in the Dino-Sore journal. The client journals are only accessible by the client to keep your personal results private and secure.
     <br /><br />
-    <img src="gifs/about.gif" alt="diverr homepage" />
+    The built-in chat app allows you to communicate directly to your trainer, keeping all aspects of your diet and training regimen within one app.
+    <br /><br />
+  Built by a seven-person dev team using <em>React</em>, <em>Material-UI</em>, <em>FireBase</em> and <em>MongoDB</em>
+    <br /><br />
+    <img src="https://user-images.githubusercontent.com/64980975/126042794-2a7a6c47-eeaf-4834-b0ad-721911670658.png" alt="Dino-sore Homepage" />
+
+</p>
+</p>
     <h3 align="center">
       <strong>Contributors »</strong>
       <br />
@@ -28,11 +35,11 @@
       <a href="https://github.com/marcpetrecca1" target="_blank">MarcAnthony Petrecca</a>
       •
       <a href="https://github.com/varunchillara" target="_blank">Varun Chillara</a>
+      •
+      <a href="https://github.com/sulisulisulwan" target="_blank">Suliman Tekalli</a>
       <hr />
-    </h3>
-  </p>
-</p>
-<br />
+  </h3>
+  
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -41,7 +48,8 @@
     <li><a href="#workflow">Workflow</a></li>
     <li><a href="#feature">Features</a></li>
      <ul>
-    <li><a href="#welcome-page">Welcome Page</a></li>
+    <li><a href="#login-page">Login Page</a></li>
+    <li><a href="#Chat">Chat</a></li>
     <li><a href="#Navigation">Navigation</a></li>
     <li><a href="#Calendar">Calendar</a></li>
     <li><a href="#Workout">Workout</a></li>
@@ -140,39 +148,38 @@
   </tbody>
 </table>
 
-<!-- # About
-
-**diverr** is an electronic log book for storing scuba dive records, as well as a means to share photos from dives. Traditionally, scuba divers record information from each dive in a paper log book. This can become cumbersome to search for a particular log as the number of dives increases. Enter **diverr**!  With **diverr** you can fill out a form for each dive with dive metrics, photos, and tags. The logs are compiled in a dashboard for ease of viewing. Additionally, a feed of photos displays images from all users with searchable tags. -->
-
-<!-- ![](https://media.giphy.com/media/8oqWA5KasbsIqWLCwU/giphy.gif ) -->
 <hr />
 
 # Front End
 
-## Welcome Page
+## Login Page
   The site theme was inspired by a photo of a manta ray where sunlight hit the top of the water, and loses permeation of that sunlight as you descend deeper underwater. So, our palette consisted of a range of blues, from an almost white, light blue, to pure black with a touch of blue.
 
 **Features:**
 
-  * Animated electric page to wow new visitors
-  * Sticky info box with a *Join Today* button to allow sign up no matter where users are in the feed
-  * Dynamic Header based on session auth status
-  * *Authentication*: OAuth sign in with Google built using NextAuth
-  * *Login*: A custom login page with video background
-  * *Redirects*: Authentication checks to dynamically render secured pages
+  * *Authentication*: OAuth sign in with Google built using Firebase
+  * *Redirects*: Authentication checks to dynamically render and redirect to home page
   * *Never Lost*: Descriptive and Assertive page routing to lead users to accessible areas
 
-<!-- ![](https://media.giphy.com/media/l0mfQEQLQGyEBZWzGn/giphy.gif ) -->
 
-## Navigation
+## Chat
 **Features:**
 
   * *Display Public Dive Log Photos*: renders feed of photos from public dive logs uploaded by users across the planet
   * *Filter By Search Bar*: Can enter search terms in a search bar to filter posts visible in the feed
   * *Filter By Image Tag*: Can click on a tag on an image to filter posts visible in the feed
 
-<!-- ![](https://media.giphy.com/media/gkihsToPQCgBc6El4X/giphy.gif)
- -->
+
+
+## Navigation
+**Features:**
+
+  * *Client-side routing*: React-Router
+  * *Security*: User must login to access navbar
+  * *Routes*: Home, Calendar, Workout, Meals, Journal, Signout
+  * *Alt Routes*: Workout & Meals can also be accessed by clicking the workout/meal tiles on the homepage
+
+
 ## Calendar
 **Features:**
 
@@ -181,28 +188,44 @@
   * *Mobile Display Calendar*: Simplified mobile layout for calendar
 
 
-<!--  ![](https://media.giphy.com/media/m6f12JhYnV7OkQf0r0/giphy.gif)
- -->
+
 ## Workout
 **Features:**
 
-  * *Data Collection Fields*: combination of 31 different text fields, radio buttons, and checkboxes
-  * *Add Tags*: ability to include tags to make logs and photos searchable
-  * *Add Media*: ability to add photos with each dive log and share on the feed
+  * Viewing an individual's workouts for the day
+  ![](dist/images/Meals/Workout-Initial-Page.png)
+    * When the user lands on this page, the user can see what workout sessions the trainer has assignmed him/her. The user can also add workouts and delete them.
+    * When the user clicks on the 'info' button, it turns yellow to indicate which workout has been selected. The right side shows the individual workouts inside of the session.
+    * The user can select which items to include by a check mark, or delete it entirely by selecting the X.
+  ![](dist/images/Workout/Workout-All-Open.png)
+    * Ideally, the trainer will have logged all the sessions for the user for a given day. However, the user can add sessions with the '+' button on the left-hand side.
+    * On selecting this button, a form appears to enter the session name, and time range. When the user selects 'ADD', the session gets posted to the calendar, and immediately renders on the page without needing to refresh.
+  ![](dist/images/Workout/Workout-Session-Form.png)
+    * The individual items for each workout have a similar form that can be selected from the '+' button on the right hand side.
+    * This allows the user to add individual items for a certain session, which is selected from the main workout's information.
+    * When this form is submitted with the 'ADD' button, it too renders immediately on the page without need for refresh.
+  ![](dist/images/Workout/Workout-Exercise-Form.png)
 
-<!--   ![](https://media.giphy.com/media/Rie2JbmhgDfqBidFZq/giphy.gif)
- -->
+
 <hr />
 
 ## Meal
 **Features:**
+  * Viewing an individual day's meals
+    * When the user lands on the meal-planning widget, the logged meals for the day are dynamically rendered with basic information, such as time of day and meal name.
+  ![](dist/images/Meals/Meals-Initial-Page.png)
+    * When the user clicks on the 'info' button, it turns yellow to indicate which meal has been selected. What appears to the right are the individual items that comprise the meal on the left-hand side.
+    * The user can select which items to include by a check mark, or delete it entirely by selecting the X.
+  ![](dist/images/Meals/Meals-All-Open.png)
+    * Ideally, the trainer will have logged all meals for the user for a given day. However, the user can add meals with the '+' button on the left-hand side.
+    * On selecting this button, a form appears to enter the meal name, and time range. When the user selects 'ADD', the meal gets posted to the calendar, and immediately renders on the page without needing to refresh.
+  ![](dist/images/Meals/Meals-Meal-Form.png)
+    * The individual items for each meal have a similar form that can be selected from the '+' button on the right hand side.
+    * This allows the user to add individual items for a certain meal, which is selected from the main meal's information button.
+    * When this form is submitted with the 'ADD' button, it too renders immediately on the page without need for refresh.
+  ![](dist/images/Meals/Meals-Food-Form.png)
 
-  * *Data Collection Fields*: combination of 31 different text fields, radio buttons, and checkboxes
-  * *Add Tags*: ability to include tags to make logs and photos searchable
-  * *Add Media*: ability to add photos with each dive log and share on the feed
 
-<!--   ![](https://media.giphy.com/media/Rie2JbmhgDfqBidFZq/giphy.gif)
- -->
 <hr />
 
 ## Journal
@@ -212,17 +235,14 @@
   * *Add Tags*: ability to include tags to make logs and photos searchable
   * *Add Media*: ability to add photos with each dive log and share on the feed
 
-<!--   ![](https://media.giphy.com/media/Rie2JbmhgDfqBidFZq/giphy.gif)
- -->
+
 <hr />
 
 # Back End - API & Database
 
 **Back End Features:**
-  * *Database*: Designed schema in Postgres to store log users and log information, including dive photos and user-created tags, along with relevant meta data
-  * *Integrity*: Used relational tables, foreign keys, and unique constraints to maintain data integrity
-  * *API*: Created a serverless NextJS API to interact with database
-  * *Docs*: Supplied the front-end team with documents explaining the data they can expect to receive and what url to request from for that data
+  * *Database*: Designed Mongoose schemas to store user, workout sessions, workouts, meals, individual food items, and journal entry data in a Mongo cluster.
+  * *API*: Created a simple RESTful API interface within an Express server.  The API not only connects the end-user with the database for all necesarry CRUD operations, but provides a utility endpoint for software maintenance.
 
 <hr />
 
@@ -241,25 +261,6 @@ We implemented Git Feature Branch Workflow.  All pull requests in Github were re
 
 ## AWS
 
-<!-- Continuous Integration / Continuous Deployment
 
-**CI**: Husky (Linting), GitHub Actions (Build and Testing)
-
-**CD**: Vercel (Connected GitHub Branch)
-
-This project was built with the above CI/CD pipeline.
-The pipeline and deployment were implemented prior to any building.
-
-  * To standardize styling we used a Husky pre-commit hook that ran Prettier and ESLint (AirBnB) through the project.
-  * GitHub Actions provided another layer of protection on Pull Requests to the Master Branch by running builds on Node 12.x and 14.x, as well as running all available **Jest** tests.
-  * Vercel was connected to the Master Branch and deployed all code pushed to it
-
-<hr />
- -->
 # Challenges and Learning
 
-<!-- * The team decided to learn a new technology, NextJS, in order to implement server-side rendering and dynamic API routing.
-* Due to the amount of data necessary to maintain an accurate dive log book, the back end team was faced with creating complex database queries while balancing ease of accessing data against maintaining a high degree of data integrity.
-* After encountering issues with proper access to data, our back end team switched SQL databases midway through the project and still was able to deliver reliable, high-quality APIs to the front end team.
-* The team used Figma to aid in designing a website that implements a pseudo-social media aspect without overshadowing the core functionality of storing dive log information per our client's request.
-* In order to present a dive log input form that includes all the numerous fields without sacrificing readability, Formik was implemented to capture the necessary data. -->

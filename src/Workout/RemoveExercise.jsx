@@ -11,7 +11,6 @@ function RemoveExercise (props) {
     axios.delete('/workout', {data: {_id: props._id}})
     .then((result) => {
       props.getWorkouts();
-      console.log('inside result');
     })
     .catch((err) => {
       console.log(err);
